@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>4shades - Super luminous gb palettes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Neutral grey UI */
+    body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: #eee; color: #333; margin: 20px; padding: 0; transition: background 0.3s, color 0.3s; }
+    .container { max-width: 800px; margin: 0 auto; }
+    .page-header { text-align: center; margin-bottom: 20px; }
+    .page-header h1 { font-size: 2em; margin: 0; }
+    .page-header .subtitle { font-size: 1em; color: #666; margin: 4px 0 0; }
+
+    #tag-filter-container { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; margin-bottom: 20px; padding: 10px; background: #ccc; border: 1px solid #888; border-radius: 4px; }
+    #tag-filter, #primary-sort, #secondary-sort, #sort-direction {
+      margin: 4px 8px;
+      padding: 6px 8px;
+      font-size: 1em;
+      background: #bbb;
+      border: 1px solid #888;
+      border-radius: 4px;
+      color: #333;
+      transition: background 0.3s, border 0.3s, color 0.3s;
+    }
+    .palette-container { position: relative; background: #ccc; border: 1px solid #888; border-radius: 4px; padding: 40px 20px 20px; margin-bottom: 60px; }
+    .palette-reset, .palette-copy { position: absolute; right: 10px; width: 80px; text-align: center; background: #bbb; border: 1px solid #888; border-radius: 4px; padding: 4px 0; font-size: 0.9em; cursor: pointer; transition: background 0.2s; z-index: 10; }
+    .palette-reset { top: 10px; }
+    .palette-copy {
+      bottom: 10px;
+      top: auto;
+    }
+    .palette-reset:hover, .palette-copy:hover { background: #aaa; }
+    .visual-line-container { position: relative; width: 50%; height: 10px; margin: 20px auto; background: linear-gradient(90deg, #fff, #000); border-radius: 5px; box-shadow: inset 0 0 0 1px #888; overflow: visible; }
+    .visual-line-label { position: absolute; top:50%; transform: translateY(-50%); font-size:0.8em; font-weight:bold; color:#555; }
+    .visual-line-label.left { left:0; transform: translate(calc(-100% - 5px), -50%); }
+    .visual-line-label.right { left:100%; transform: translate(5px, -50%); }
+    .marker { position:absolute; bottom:5px; transform:translateX(-50%); cursor:grab; overflow:visible; }
+    .marker:active { cursor:grabbing; }
+    .marker-path { fill-rule:evenodd; stroke:#888; stroke-width:1px; }
+    .l-value { position:absolute; bottom:-20px; transform:translateX(-50%); font-size:0.8em; color:#333; pointer-events:none; }
+    .palette-details { text-align:center; margin-top:30px; }
+    .palette-name { font-size:1.2em; font-weight:bold; color:#333; }
+    .link-icon { margin-left:8px; text-decoration:none; font-size:1.1em; color:#333; }
+    .palette-tags { margin-top:10px; font-style:italic; color:#555; }
+    /* Dark mode overrides via class */
+    body.dark-mode { background: #1e1e1e; color: #e0e0e0; }
+    body.dark-mode .container { max-width: 800px; margin: 0 auto; }
+    body.dark-mode #tag-filter-container { background: #2e2e2e; border-color: #555; }
+    body.dark-mode #tag-filter-container label { color: #e0e0e0; }
+    body.dark-mode #tag-filter, body.dark-mode #primary-sort, body.dark-mode #secondary-sort, body.dark-mode #sort-direction { background: #3a3a3a; border-color: #555; color: #e0e0e0; }
+    body.dark-mode .palette-container { background: #2e2e2e; border-color: #555; }
+    body.dark-mode .palette-reset, body.dark-mode .palette-copy { background: #4a4a4a; border-color: #777; color: #e0e0e0; }
+    body.dark-mode .palette-reset:hover, body.dark-mode .palette-copy:hover { background: #5a5a5a; }
+    body.dark-mode .visual-line-container { box-shadow: inset 0 0 0 1px #555; }
+    body.dark-mode .marker-path { stroke: #888; }
+    body.dark-mode .visual-line-label, body.dark-mode .palette-tags { color: #ccc; }
+    body.dark-mode .l-value { color: #fff; }
+    body.dark-mode .palette-name { color: #f0f0f0; }
+    body.dark-mode .link-icon { color: #e0e0e0; }
+    /* Grayscale filter applied purely by CSS */
+    body.no-chroma .visual-line-container, body.no-chroma .marker { filter: grayscale(100%); }
+    @media (max-width:600px) { .visual-line-container { width:90%; } }
+    /* Override link underline removal */
+    .palette-name { text-decoration: none; }
+    /* Reduce author font size */
+    .palette-author { font-size: 10px; } }
+  </style>
+</head>
+<body class="system-mode">
+  <div id="dark-mode-toggle" title="Toggle theme" style="position:fixed;top:20px;right:20px;cursor:pointer;font-size:1.5em;z-index:1000;">🖥️</div>
+  <div id="chroma-toggle" title="Switch to greyscale" style="position:fixed;top:20px;right:60px;cursor:pointer;font-size:1.5em;z-index:1000;">🎨</div>
+  <div class="container">
+    <div class="page-header">
+      <h1>4shades</h1>
+      <div class="subtitle">Super luminous gb palettes - by aced</div>
+    </div>
+    <div id="tag-filter-container">
+      <label for="tag-filter">Filter:</label>
+      <select id="tag-filter"></select>
+      <label for="primary-sort">Sort by:</label>
+      <select id="primary-sort">
+        <option value="paletteName">Name</option>
+        <option value="0">Col 0</option>
+        <option value="1">Col 1</option>
+        <option value="2">Col 2</option>
+        <option value="3">Col 3</option>
+      </select>
+      <label for="secondary-sort">Then by:</label>
+      <select id="secondary-sort">
+        <option value="">(none)</option>
+      </select>
+      <label for="sort-direction">Order:</label>
+      <select id="sort-direction">
+        <option value="asc">Ascending</option>
+        <option value="desc">Descending</option>
+      </select>
+
+    </div>
+    <div id="palette-container"></div>
+  </div>
+  <script>
+    // Theme toggler
+    const modes=['system','light','dark'], toggle=document.getElementById('dark-mode-toggle');let mi=0;
+    function applyTheme() {
+      // Switch theme class without touching greyscale filter
+      // Remove only theme-related classes
+      document.body.classList.remove('system-mode', 'light-mode', 'dark-mode');
+      document.body.classList.add(modes[mi] + '-mode');
+      // Update theme toggle icon
+      toggle.textContent = modes[mi] === 'system' ? '🖥️'
+                        : modes[mi] === 'light'  ? '☀️'
+                                                : '🌙';
+    }
+    toggle.onclick = () => { mi = (mi + 1) % 3; applyTheme(); };
+    applyTheme();
+    // Chroma display toggle via emoji
+    // Will initialize in DOMContentLoaded
+    // Remove global chromaToggle initialization to avoid duplication
+
+    // State
+    let selectedTag='all', dragData=null;
+
+    // Color conversions
+    function hexToRgb(h){h=h.replace('#','');return{r:parseInt(h.substr(0,2),16),g:parseInt(h.substr(2,2),16),b:parseInt(h.substr(4,2),16)}}
+    function rgbToXyz(r,g,b){const lin=x=>x/255<=0.04045?x/255/12.92:Math.pow((x/255+0.055)/1.055,2.4);const R=lin(r),G=lin(g),B=lin(b);return[(R*0.4124564+G*0.3575761+B*0.1804375)*100,(R*0.2126729+G*0.7151522+B*0.0721750)*100,(R*0.0193339+G*0.1191920+B*0.9503041)*100];}
+    function xyzToLab(X,Y,Z){const ref=[95.047,100,108.883],f=(v,i)=>v/ref[i]>0.008856?Math.cbrt(v/ref[i]):7.787*(v/ref[i])+16/116;const x=f(X,0),y=f(Y,1),z=f(Z,2);return[116*y-16,500*(x-y),200*(y-z)];}
+    function labToXyz(L,a,b){const y=(L+16)/116,x=a/500+y,z=y-b/200;const arr=[x*x*x,y*y*y,z*z*z];return[95.047*(arr[0]>0.008856?arr[0]:(x-16/116)/7.787),100*(arr[1]>0.008856?arr[1]:(y-16/116)/7.787),108.883*(arr[2]>0.008856?arr[2]:(z-16/116)/7.787)];}
+    function xyzToRgb(X,Y,Z){X/=100;Y/=100;Z/=100;let r=X*3.2406+Y*-1.5372+Z*-0.4986,g=X*-0.9689+Y*1.8758+Z*0.0415,b=X*0.0557+Y*-0.2040+Z*1.0570;const conv=v=>v<=0.0031308?12.92*v:1.055*Math.pow(v,1/2.4)-0.055;return{r:Math.round(Math.min(Math.max(conv(r),0),1)*255),g:Math.round(Math.min(Math.max(conv(g),0),1)*255),b:Math.round(Math.min(Math.max(conv(b),0),1)*255)}}
+    function labToRgb(L,a,b){return xyzToRgb(...labToXyz(L,a,b));}
+    function rgbToHsv(r,g,b){r/=255;g/=255;b/=255;const max=Math.max(r,g,b),min=Math.min(r,g,b),d=max-min;let h=0;if(d){if(max===r)h=((g-b)/d+(g<b?6:0));else if(max===g)h=((b-r)/d+2);else h=((r-g)/d+4);h=(h*60)%360;}const s=max?Math.round((d/max)*100):0,v=Math.round(max*100);return{h:Math.round(h),s,v};}
+    function rgbToHex(r,g,b){const t=v=>v.toString(16).padStart(2,'0').toUpperCase();return`#${t(r)}${t(g)}${t(b)}`;}
+
+    // Render functions
+    function renderTagFilter() {
+      const sel = document.getElementById('tag-filter');
+      sel.innerHTML = '';
+      sel.append(new Option('All', 'all'));
+      const data = JSON.parse(document.getElementById('palettes-data').textContent);
+      const tags = new Set();
+      data.forEach(p => p.tags && p.tags.forEach(t => tags.add(t.toLowerCase())));
+      // Populate filter, '@'-tags without hash
+      [...tags].sort().forEach(t => {
+        const label = t.startsWith('@') ? t : '#' + t;
+        sel.append(new Option(label, t));
+      });
+      sel.onchange = () => { selectedTag = sel.value; renderPalettes(); };
+    }
+    function createMarkerSvg(hex,i){const{r,g,b}=hexToRgb(hex);const[L,a,bv]=xyzToLab(...rgbToXyz(r,g,b));const hsv0=rgbToHsv(r,g,b);const ns='http://www.w3.org/2000/svg';const svg=document.createElementNS(ns,'svg');
+      svg.setAttribute('width','40');
+      svg.setAttribute('height','60');svg.classList.add('marker');svg.setAttribute('viewBox','0 0 40 60');svg.style.overflow='visible';const title=document.createElementNS(ns,'title');const C=Math.hypot(a,bv).toFixed(1),hDeg=Math.round((Math.atan2(bv,a)*180/Math.PI+360)%360);title.textContent=`${hex}\nrgb(${r}, ${g}, ${b})\nhsb(${hsv0.h}°, ${hsv0.s}%, ${hsv0.v}%)\nL*C*h_ab(${L.toFixed(1)}, ${C}, ${hDeg}°)`;svg.append(title);const path=document.createElementNS(ns,'path');path.setAttribute('d','M6,0 H34 A6,6 0 0 1 40,6 V26 Q40,32 28,46 L20,60 L12,46 Q0,32 0,26 V6 A6,6 0 0 1 6,0 Z');path.setAttribute('fill', hex);path.classList.add('marker-path');svg.append(path);const txt=document.createElementNS(ns,'text');txt.setAttribute('x','20');txt.setAttribute('y','14');txt.setAttribute('text-anchor','middle');txt.setAttribute('fill','#fff');txt.setAttribute('font-size','14');txt.setAttribute('dy','.35em');txt.textContent=i;svg.append(txt);// Position marker according to reversed L* axis (100→0)
+      svg.style.left = (100 - L) + '%';svg.__labAB={a,b: bv};svg.__origL=L;svg.__hex=hex;return svg;}
+    function renderPalette(p){const box=document.createElement('div');box.className='palette-container';const resetBtn=document.createElement('button');resetBtn.className='palette-reset';resetBtn.textContent='Reset';
+      resetBtn.onclick = () => {
+        // Reset all markers to their original L* positions on reversed axis
+        box.querySelectorAll('.marker').forEach(m => {
+          const origL = m.__origL;
+          m.style.left = (100 - origL) + '%';
+          const { a, b } = m.__labAB;
+          const rgb = labToRgb(origL, a, b);
+          m.querySelector('.marker-path').setAttribute('fill', `rgb(${rgb.r},${rgb.g},${rgb.b})`);
+        });
+      };
+      box.append(resetBtn);const copyBtn = document.createElement('button');
+      copyBtn.className = 'palette-copy';
+      copyBtn.textContent = 'Copy';
+      copyBtn.onclick = () => {
+        // Build GIMP GPL snippet
+        let name = p.paletteName.trim();
+        let modified = false;
+        const markers = box.querySelectorAll('.marker');
+        markers.forEach((m, i) => {
+          if (m.__hex.toUpperCase() !== p.colours[i].toUpperCase()) modified = true;
+        });
+        if (modified) {
+          // ISO date YYYY-MM-DD
+          const today = new Date().toISOString().split('T')[0];
+          name += ` (modified ${today})`;
+        }
+        const lines = [];
+        lines.push('GIMP Palette');
+        lines.push(`Name: ${name}`);
+        if (p.sourceUrl) lines.push(`# Source: ${p.sourceUrl}`);
+        markers.forEach((m, i) => {
+          // export hex without '#' and in lowercase
+          const hex = m.__hex.replace('#', '').toLowerCase();
+          const { r, g, b } = hexToRgb(hex);
+            lines.push(`${r}\t${g}\t${b}\tCol${i}-${hex}`);
+        });
+        navigator.clipboard.writeText(lines.join('\n'));
+      };
+      box.append(copyBtn);const line=document.createElement('div');line.className='visual-line-container';const l0 = document.createElement('div');
+      l0.className = 'visual-line-label left';
+      l0.innerHTML = '<i>L</i>*';const l1 = document.createElement('div');
+      l1.className = 'visual-line-label right';
+      l1.innerHTML = '<i>L</i>*';line.append(l0,l1);p.colours.forEach((hex,i)=>{const m=createMarkerSvg(hex,i);line.append(m);const dot=document.createElement('div');dot.style.width='12px';dot.style.height='12px';dot.style.borderRadius='50%';dot.style.position='absolute';dot.style.bottom='calc(50% - 6px)';dot.style.transform='translateX(-50%)';// Position original dot on reversed axis
+      dot.style.left = (100 - m.__origL) + '%';dot.style.background=hex;dot.style.border='1px solid #888';dot.title = `Reset ${i}`;
+      dot.onclick = () => {
+        // Reset individual marker on reversed axis
+        const origL = m.__origL;
+        m.style.left = (100 - origL) + '%';
+        const { a, b } = m.__labAB;
+        const rgb = labToRgb(origL, a, b);
+        m.querySelector('.marker-path').setAttribute('fill', `rgb(${rgb.r},${rgb.g},${rgb.b})`);
+      };line.append(dot);});box.append(line);const d=document.createElement('div');d.className='palette-details';// palette name (linked if sourceUrl)
+      let nm;
+      if (p.sourceUrl) {
+        nm = document.createElement('a');
+        nm.href = p.sourceUrl;
+        nm.target = '_blank';
+        nm.className = 'palette-name';
+        nm.textContent = p.paletteName;
+      } else {
+        nm = document.createElement('div');
+        nm.className = 'palette-name';
+        nm.textContent = p.paletteName;
+      }
+      d.append(nm);
+      // author subheading
+      if (p.author) {
+        const auth = document.createElement('div');
+        auth.className = 'palette-author';
+        auth.textContent = 'by ' + p.author.trim();
+        d.append(auth);
+      }if(p.tags){const tg=document.createElement('div');tg.className='palette-tags';tg.textContent = p.tags.map(t => {
+          const lower = t.toLowerCase();
+          return lower.startsWith('@') ? lower : '#' + lower;
+        }).join(' ');d.append(tg);}box.append(d);return box;}
+    function renderPalettes() {
+      // Read sort/filter values
+      const primary = document.getElementById('primary-sort').value;
+      const secondarySelect = document.getElementById('secondary-sort');
+      let secondary = secondarySelect.value;
+      const direction = document.getElementById('sort-direction').value;
+
+      // Adjust secondary options
+      if (primary === 'paletteName') {
+        secondarySelect.innerHTML = '<option value="">(none)</option>';
+        secondarySelect.disabled = true;
+        secondary = '';
+      } else {
+        secondarySelect.disabled = false;
+        const prev = secondary;
+        secondarySelect.innerHTML =
+          '<option value="L">L*</option>' +
+          '<option value="C">C*</option>' +
+          '<option value="h">h*</option>';
+        secondarySelect.value = ['L','C','h'].includes(prev) ? prev : 'L';
+        secondary = secondarySelect.value;
+      }
+
+      // Load data
+      let ps = JSON.parse(document.getElementById('palettes-data').textContent);
+
+      // Sort palettes
+      ps.sort((a, b) => {
+        let cmp = 0;
+        if (primary === 'paletteName') {
+          cmp = a.paletteName.localeCompare(b.paletteName);
+        } else {
+          const idx = parseInt(primary, 10);
+          const rgbA = hexToRgb(a.colours[idx]);
+          const rgbB = hexToRgb(b.colours[idx]);
+          const [La, aA, bA] = xyzToLab(...rgbToXyz(rgbA.r, rgbA.g, rgbA.b));
+          const [Lb, aB, bB] = xyzToLab(...rgbToXyz(rgbB.r, rgbB.g, rgbB.b));
+          const metric = (L, aVal, bVal) => {
+            if (secondary === 'C') return Math.hypot(aVal, bVal);
+            if (secondary === 'h') return (Math.atan2(bVal, aVal) * 180/Math.PI + 360) % 360;
+            return L;
+          };
+          cmp = metric(La, aA, bA) - metric(Lb, aB, bB);
+        }
+        return direction === 'desc' ? -cmp : cmp;
+      });
+
+      // Filter and render
+      const container = document.getElementById('palette-container');
+      container.innerHTML = '';
+      ps.filter(p => selectedTag === 'all' || (p.tags && p.tags.map(t => t.toLowerCase()).includes(selectedTag)))
+        .forEach(p => container.appendChild(renderPalette(p)));
+
+      bindDrag();}
+    function bindDrag(){document.querySelectorAll('.marker').forEach(m=>{m.onmousedown = e => {
+        e.preventDefault();
+        const startX = e.clientX;
+        const startCoord = parseFloat(m.style.left);
+        const startL = 100 - startCoord;  // convert to actual L* value
+        const rect = m.parentElement.getBoundingClientRect();
+        const lv = document.createElement('div');lv.className='l-value';m.parentElement.append(lv);dragData={m,startX,startL,rect,lv};document.onmousemove=doDrag;document.onmouseup=endDrag;};});}
+    function doDrag(e) {
+      if (!dragData) return;
+      e.preventDefault();
+      const { m, startX, startL, rect, lv } = dragData;
+      const dx = e.clientX - startX;
+      const newL = Math.min(100, Math.max(0, startL - (dx / rect.width) * 100));
+      // Position dragged marker on reversed axis
+      m.style.left = (100 - newL) + '%';
+
+      // Recalculate RGB and HEX
+      const { a, b } = m.__labAB;
+      const rgb = labToRgb(newL, a, b);
+      const newHex = rgbToHex(rgb.r, rgb.g, rgb.b);
+      m.__hex = newHex;
+
+      // Update marker fill
+            // Always update to true color; CSS handles grayscale
+      const path = m.querySelector('.marker-path');
+      if (path) path.setAttribute('fill', `rgb(${rgb.r},${rgb.g},${rgb.b})`);
+
+      // Update live L label
+      lv.textContent = Math.round(newL) + '%';
+      // Position live L label on reversed axis
+      lv.style.left = (100 - newL) + '%';
+
+      // Recalculate HSB and Lab metrics
+      const hsb = rgbToHsv(rgb.r, rgb.g, rgb.b);
+      const Cval = Math.hypot(a, b).toFixed(1);
+      const hDeg = Math.round((Math.atan2(b, a) * 180/Math.PI + 360) % 360);
+
+      // Update tooltip text
+      const titleElem = m.querySelector('title');
+      if (titleElem) {
+        titleElem.textContent =
+          `${newHex}
+` +
+          `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})
+` +
+          `hsb(${hsb.h}°, ${hsb.s}%, ${hsb.v}%)
+` +
+          `L*C*h_ab(${newL.toFixed(1)}, ${Cval}, ${hDeg}°)`;
+      }
+    }
+
+    function endDrag() {
+      if (dragData && dragData.lv) {
+        dragData.lv.remove();
+      }
+      document.onmousemove = null;
+      document.onmouseup = null;
+      dragData = null;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderTagFilter();
+      ['primary-sort','secondary-sort','sort-direction'].forEach(id =>
+        document.getElementById(id).addEventListener('change', renderPalettes)
+      );
+      // Chroma toggle: apply CSS class for grayscale
+      const chromaToggle = document.getElementById('chroma-toggle');
+      // initialize toggle state and icon
+      const isNoInitial = document.body.classList.contains('no-chroma');
+      chromaToggle.textContent = isNoInitial ? '🎨' : '🩶';
+      chromaToggle.title = isNoInitial ? 'Display with color' : 'Display as grayscale';
+      chromaToggle.onclick = () => {
+        const isNo = document.body.classList.toggle('no-chroma');
+        chromaToggle.textContent = isNo ? '🎨' : '🩶';
+        chromaToggle.title = isNo ? 'Display with color' : 'Display as grayscale';
+      };
+      renderPalettes();
+    });
+  </script>
+  <script type="application/json" id="palettes-data">
+    [
+    {
+      "paletteName": "Velvet Cherry GB",
+      "author": "Klafooty",
+      "sourceUrl": "https://lospec.com/palette-list/velvet-cherry-gb",
+      "colours": ["#9775a6","#683a68","#412752","#2d162c"],
+      "tags": ["Lospec","💜"]
+    },
+    {
+      "paletteName": "Fiery Plague GB",
+      "author": "Klafooty",
+      "sourceUrl": "https://lospec.com/palette-list/fiery-plague-gb",
+      "colours": [
+        "#713141",
+        "#512839",
+        "#312137",
+        "#1a2129"
+      ],
+      "tags": [
+        "Lospec",
+        "❤️",
+        "💜"
+      ]
+    },
+    {
+      "paletteName": "Moon Crystal",
+      "author": "Doph",
+      "sourceUrl": "https://lospec.com/palette-list/moon-crystal",
+      "colours": [
+        "#ffe2db",
+        "#d9a7c6",
+        "#8d89c7",
+        "#755f9c"
+      ],
+      "tags": [
+        "Lospec",
+        "Pastel",
+        "💜",
+        "🩷"
+      ]
+    },
+    {
+      "paletteName": "Optimized Grayscale 4",
+      "author": "Yousurname",
+      "sourceUrl": "https://lospec.com/palette-list/optimized-grayscale-4",
+      "colours": [
+        "#dfdfdf",
+        "#9f9f9f",
+        "#606060",
+        "#202020"
+      ],
+      "tags": [
+        "Lospec",
+        "Mono",
+        "🩶"
+      ]
+    },
+    {
+      "paletteName": "Absorbent and Yellow",
+      "author": "TheWolfBunny64",
+      "sourceUrl": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+      "colours": [
+        "#fff752",
+        "#aec600",
+        "#687600",
+        "#343b00"
+      ],
+      "tags": ["@thewolfbunny64","Am-Pop-Culture","💛","💚"]
+    },
+    {
+      "paletteName": "Barbie Pink",
+      "author": "TheWolfBunny64",
+      "sourceUrl": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+      "colours": [
+        "#f200a1",
+        "#c10080",
+        "#790050",
+        "#480030"
+      ],
+      "tags": [
+        "@thewolfbunny64",
+        "Am-Pop-Culture",
+        "🩷"
+      ]
+    },
+    {
+      "paletteName": "Bedrock Caveman Vision",
+      "author": "TheWolfBunny64",
+      "sourceUrl": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+      "colours": ["#ff7f00","#009eb8","#005e6e","#002f37"],
+      "tags": ["@thewolfbunny64","Am-Pop-Culture","🌈"]
+    },
+    {
+        "paletteName": "Bikini Bottom Ver.",
+        "author": "TheWolfBunny64",
+        "sourceUrl": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colours": ["#f8f880","#48f8e0","#2098f0","#606000"],
+        "tags": ["@thewolfbunny64","Am-Pop-Culture","🌈"]
+      }
+  ]
+  </script>
+</body>
+</html>
