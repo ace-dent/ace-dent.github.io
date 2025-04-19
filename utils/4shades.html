@@ -170,7 +170,7 @@
         let modified = false;
         const markers = box.querySelectorAll('.marker');
         markers.forEach((m, i) => {
-          if (m.__hex.toUpperCase() !== p.colours[i].toUpperCase()) modified = true;
+          if (m.__hex.toUpperCase() !== p.colors[i].toUpperCase()) modified = true;
         });
         if (modified) {
           // ISO date YYYY-MM-DD
@@ -180,7 +180,7 @@
         const lines = [];
         lines.push('GIMP Palette');
         lines.push(`Name: ${name}`);
-        if (p.sourceUrl) lines.push(`# Source: ${p.sourceUrl}`);
+        if (p.source) lines.push(`# Source: ${p.source}`);
         markers.forEach((m, i) => {
           // export hex without '#' and in lowercase
           const hex = m.__hex.replace('#', '').toLowerCase();
@@ -193,7 +193,7 @@
       l0.className = 'visual-line-label left';
       l0.innerHTML = '<i>L</i>*';const l1 = document.createElement('div');
       l1.className = 'visual-line-label right';
-      l1.innerHTML = '<i>L</i>*';line.append(l0,l1);p.colours.forEach((hex,i)=>{const m=createMarkerSvg(hex,i);line.append(m);const dot=document.createElement('div');dot.style.width='12px';dot.style.height='12px';dot.style.borderRadius='50%';dot.style.position='absolute';dot.style.bottom='calc(50% - 6px)';dot.style.transform='translateX(-50%)';// Position original dot on reversed axis
+      l1.innerHTML = '<i>L</i>*';line.append(l0,l1);p.colors.forEach((hex,i)=>{const m=createMarkerSvg(hex,i);line.append(m);const dot=document.createElement('div');dot.style.width='12px';dot.style.height='12px';dot.style.borderRadius='50%';dot.style.position='absolute';dot.style.bottom='calc(50% - 6px)';dot.style.transform='translateX(-50%)';// Position original dot on reversed axis
       dot.style.left = (100 - m.__origL) + '%';dot.style.background=hex;dot.style.border='1px solid #888';dot.title = `Reset ${i}`;
       dot.onclick = () => {
         // Reset individual marker on reversed axis
@@ -202,11 +202,11 @@
         const { a, b } = m.__labAB;
         const rgb = labToRgb(origL, a, b);
         m.querySelector('.marker-path').setAttribute('fill', `rgb(${rgb.r},${rgb.g},${rgb.b})`);
-      };line.append(dot);});box.append(line);const d=document.createElement('div');d.className='palette-details';// palette name (linked if sourceUrl)
+      };line.append(dot);});box.append(line);const d=document.createElement('div');d.className='palette-details';// palette name (linked if source)
       let nm;
-      if (p.sourceUrl) {
+      if (p.source) {
         nm = document.createElement('a');
-        nm.href = p.sourceUrl;
+        nm.href = p.source;
         nm.target = '_blank';
         nm.className = 'palette-name';
         nm.textContent = p.paletteName;
@@ -259,8 +259,8 @@
           cmp = a.paletteName.localeCompare(b.paletteName);
         } else {
           const idx = parseInt(primary, 10);
-          const rgbA = hexToRgb(a.colours[idx]);
-          const rgbB = hexToRgb(b.colours[idx]);
+          const rgbA = hexToRgb(a.colors[idx]);
+          const rgbB = hexToRgb(b.colors[idx]);
           const [La, aA, bA] = xyzToLab(...rgbToXyz(rgbA.r, rgbA.g, rgbA.b));
           const [Lb, aB, bB] = xyzToLab(...rgbToXyz(rgbB.r, rgbB.g, rgbB.b));
           const metric = (L, aVal, bVal) => {
@@ -364,22 +364,22 @@
     {
       "paletteName": "Velvet Cherry GB",
       "author": "Klafooty",
-      "sourceUrl": "https://lospec.com/palette-list/velvet-cherry-gb",
-      "colours": ["#9775a6","#683a68","#412752","#2d162c"],
+      "source": "https://lospec.com/palette-list/velvet-cherry-gb",
+      "colors": ["#9775a6","#683a68","#412752","#2d162c"],
       "tags": ["Lospec","💜"]
     },
     {
       "paletteName": "Fiery Plague GB",
       "author": "Klafooty",
-      "sourceUrl": "https://lospec.com/palette-list/fiery-plague-gb",
-      "colours": [
+      "source": "https://lospec.com/palette-list/fiery-plague-gb",
+      "colors": [
         "#713141",
         "#512839",
         "#312137",
         "#1a2129"
       ],
       "tags": [
-        "Lospec",
+        "Lospec","Dark",
         "❤️",
         "💜"
       ]
@@ -387,8 +387,8 @@
     {
       "paletteName": "Moon Crystal",
       "author": "Doph",
-      "sourceUrl": "https://lospec.com/palette-list/moon-crystal",
-      "colours": [
+      "source": "https://lospec.com/palette-list/moon-crystal",
+      "colors": [
         "#ffe2db",
         "#d9a7c6",
         "#8d89c7",
@@ -404,60 +404,114 @@
     {
       "paletteName": "Optimized Grayscale 4",
       "author": "Yousurname",
-      "sourceUrl": "https://lospec.com/palette-list/optimized-grayscale-4",
-      "colours": [
-        "#dfdfdf",
-        "#9f9f9f",
-        "#606060",
-        "#202020"
-      ],
-      "tags": [
-        "Lospec",
-        "Mono",
-        "🩶"
-      ]
+      "source": "https://lospec.com/palette-list/optimized-grayscale-4",
+      "colors": ["#dfdfdf","#9f9f9f","#606060","#202020"],
+      "tags": ["Lospec","No-Chroma","🩶"]
     },
     {
       "paletteName": "Absorbent and Yellow",
       "author": "TheWolfBunny64",
-      "sourceUrl": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
-      "colours": [
-        "#fff752",
-        "#aec600",
-        "#687600",
-        "#343b00"
-      ],
-      "tags": ["@thewolfbunny64","Am-Pop-Culture","💛","💚"]
+      "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+      "colors": ["#fff752","#aec600","#687600","#343b00"],
+      "tags": ["@thewolfbunny64","Am-Pop-Culture","DMG","💛","💚"]
     },
     {
       "paletteName": "Barbie Pink",
       "author": "TheWolfBunny64",
-      "sourceUrl": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
-      "colours": [
-        "#f200a1",
-        "#c10080",
-        "#790050",
-        "#480030"
-      ],
-      "tags": [
-        "@thewolfbunny64",
-        "Am-Pop-Culture",
-        "🩷"
-      ]
+      "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+      "colors": ["#f200a1","#c10080","#790050","#480030"],
+      "tags": ["@thewolfbunny64","Am-Pop-Culture","🩷"]
     },
     {
       "paletteName": "Bedrock Caveman Vision",
       "author": "TheWolfBunny64",
-      "sourceUrl": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
-      "colours": ["#ff7f00","#009eb8","#005e6e","#002f37"],
+      "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+      "colors": ["#ff7f00","#009eb8","#005e6e","#002f37"],
       "tags": ["@thewolfbunny64","Am-Pop-Culture","🌈"]
     },
     {
         "paletteName": "Bikini Bottom Ver.",
         "author": "TheWolfBunny64",
-        "sourceUrl": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
-        "colours": ["#f8f880","#48f8e0","#2098f0","#606000"],
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#f8f880","#48f8e0","#2098f0","#606000"],
         "tags": ["@thewolfbunny64","Am-Pop-Culture","🌈"]
+      },
+      {
+        "paletteName": "Blossom Pink",
+        "author": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#f59bb2","#c47c8e","#7a4d59","#492e35"],
+        "tags": ["@thewolfbunny64","Am-Pop-Culture","🩷"]
+      },
+      {
+        "paletteName": "BMO Ver.",
+        "author": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#c0ffcc","#99cca3","#607f66","#394c3d"],
+        "tags": ["@thewolfbunny64","Am-Pop-Culture","MGB","💚"]
+      },
+      {
+        "paletteName": "Bubbles Blue",
+        "author": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#64c4e9","#509cba","#326274","#1e3a45"],
+        "tags": ["@thewolfbunny64","Am-Pop-Culture","🩵"]
+      },
+      {
+        "paletteName": "Buttercup Green",
+        "author": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#bedc8d","#98b070","#5f6e46","#39442a"],
+        "tags": ["@thewolfbunny64","Am-Pop-Culture","DMG","MGB","💚"]
+      },
+      {
+        "paletteName": "Danny Phantom Silver",
+        "author": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#abbbcc","#8895a3","#555d66","#33383d"],
+        "tags": ["@thewolfbunny64","Am-Pop-Culture","🩵","🩶"]
+      },
+      {
+        "paletteName": "Fairly OddPalette",
+        "author": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#7bb850","#ce5a99","#7b365b","#3d1b2d"],
+        "tags": ["@thewolfbunny64","Am-Pop-Culture","🌈"]
+      },
+      {
+        "paletteName": "Garfield Vision",
+        "author": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#f5ea8b","#e59436","#964220","#2d1309"],
+        "tags": ["@thewolfbunny64","Am-Pop-Culture","🧡","🤎"]
+      },
+      {
+        "paletteName": "Hogwarts Goldius",
+        "author": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#b6a571","#91845a","#5b5238","#363121"],
+        "tags": ["@thewolfbunny64","Am-Pop-Culture","🤎","💛"]
+      },
+      {
+        "paletteName": "Invincible Yellow and Blue",
+        "author": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#fee566","#39c9eb","#22788d","#113c46"],
+        "tags": ["@thewolfbunny64","Am-Pop-Culture","🌈"]
+      },
+      {
+        "paletteName": "Nick Orange",
+        "author": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#ff6700","#cc5200","#7f3300","#4c1e00"],
+        "tags": ["@thewolfbunny64","Am-Pop-Culture","🧡","🤎"]
+      },
+      {
+        "paletteName": "There's Always Money (banana)",
+        "author": "HerrZatacke",
+        "source": "https://github.com/HerrZatacke/gb-palettes",
+        "colors": ["#fdfe0a","#fed638","#977b25","#221a09"],
+        "tags": ["@HerrZatacke","💛","🤎"]
       }
   ]
   </script>
