@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>4shades - Super luminous gb palettes</title>
+  <title>4shades – Super luminous gb palettes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     /* Neutral grey UI */
     body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: #eee; color: #333; margin: 20px; padding: 0; transition: background 0.3s, color 0.3s; }
     .container { max-width: 800px; margin: 0 auto; }
     .page-header { text-align: center; margin-bottom: 20px; }
-    .page-header h1 { font-size: 2em; margin: 0; }
+    .page-header h1 { font-size: 3em; margin: 0; }
     .page-header .subtitle { font-size: 1em; color: #666; margin: 4px 0 0; }
 
     #tag-filter-container { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; margin-bottom: 20px; padding: 10px; background: #ccc; border: 1px solid #888; border-radius: 4px; }
@@ -24,13 +24,40 @@
       transition: background 0.3s, border 0.3s, color 0.3s;
     }
     .palette-container { position: relative; background: #ccc; border: 1px solid #888; border-radius: 4px; padding: 40px 20px 20px; margin-bottom: 60px; }
-    .palette-reset, .palette-copy { position: absolute; right: 10px; width: 80px; text-align: center; background: #bbb; border: 1px solid #888; border-radius: 4px; padding: 4px 0; font-size: 0.9em; cursor: pointer; transition: background 0.2s; z-index: 10; }
+    .palette-reset, .palette-copy, .palette-preview {
+      /* default: 50% transparent, fully grayscale */
+      opacity: 0.5;
+      filter: grayscale(100%);
+      position: absolute;
+      right: 10px;
+      width: 40px;
+      height: 32px;
+      text-align: center;
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: 1.5em;
+      line-height: 32px;
+      cursor: pointer;
+      transition: opacity 0.2s, filter 0.2s, transform 0.1s;
+      z-index: 10;
+     }
+    /* Preview button positioned bottom-left */
+    .palette-preview {
+      left: 10px;
+      right: auto;
+      bottom: 10px;
+    }
     .palette-reset { top: 10px; }
     .palette-copy {
       bottom: 10px;
       top: auto;
     }
-    .palette-reset:hover, .palette-copy:hover { background: #aaa; }
+    .palette-reset:hover, .palette-copy:hover, .palette-preview:hover {
+      /* on-hover: full opacity, reduced grayscale */
+      opacity: 1;
+      filter: grayscale(50%);
+    }
     .visual-line-container { position: relative; width: 50%; height: 10px; margin: 20px auto; background: linear-gradient(90deg, #fff, #000); border-radius: 5px; box-shadow: inset 0 0 0 1px #888; overflow: visible; }
     .visual-line-label { position: absolute; top:50%; transform: translateY(-50%); font-size:0.8em; font-weight:bold; color:#555; }
     .visual-line-label.left { left:0; transform: translate(calc(-100% - 5px), -50%); }
@@ -39,8 +66,21 @@
     .marker:active { cursor:grabbing; }
     .marker-path { fill-rule:evenodd; stroke:#888; stroke-width:1px; }
     .l-value { position:absolute; bottom:-20px; transform:translateX(-50%); font-size:0.8em; color:#333; pointer-events:none; }
-    .palette-details { text-align:center; margin-top:30px; }
-    .palette-name { font-size:1.2em; font-weight:bold; color:#333; }
+    .palette-details {
+      text-align: center;
+      margin-top: 30px; /* original spacing */
+    }
+    .palette-name {
+      margin: 0; /* remove default h2 spacing */
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #333;
+    }
+    /* Palette name links: inherit color and remove underline */
+    .palette-name a {
+      text-decoration: none;
+      color: inherit;
+    }
     .link-icon { margin-left:8px; text-decoration:none; font-size:1.1em; color:#333; }
     .palette-tags { margin-top:10px; font-style:italic; color:#555; }
     /* Dark mode overrides via class */
@@ -50,21 +90,37 @@
     body.dark-mode #tag-filter-container label { color: #e0e0e0; }
     body.dark-mode #tag-filter, body.dark-mode #primary-sort, body.dark-mode #secondary-sort, body.dark-mode #sort-direction { background: #3a3a3a; border-color: #555; color: #e0e0e0; }
     body.dark-mode .palette-container { background: #2e2e2e; border-color: #555; }
-    body.dark-mode .palette-reset, body.dark-mode .palette-copy { background: #4a4a4a; border-color: #777; color: #e0e0e0; }
-    body.dark-mode .palette-reset:hover, body.dark-mode .palette-copy:hover { background: #5a5a5a; }
+    body.dark-mode .palette-reset, body.dark-mode .palette-copy {
+      background: none;
+      border: none;
+      color: #e0e0e0;
+    }
+    body.dark-mode .palette-reset:hover, body.dark-mode .palette-copy:hover {
+      background: none;
+    }
     body.dark-mode .visual-line-container { box-shadow: inset 0 0 0 1px #555; }
     body.dark-mode .marker-path { stroke: #888; }
     body.dark-mode .visual-line-label, body.dark-mode .palette-tags { color: #ccc; }
     body.dark-mode .l-value { color: #fff; }
-    body.dark-mode .palette-name { color: #f0f0f0; }
+    body.dark-mode .palette-name { color: #bbb; }
     body.dark-mode .link-icon { color: #e0e0e0; }
     /* Grayscale filter applied purely by CSS */
     body.no-chroma .visual-line-container, body.no-chroma .marker { filter: grayscale(100%); }
     @media (max-width:600px) { .visual-line-container { width:90%; } }
     /* Override link underline removal */
     .palette-name { text-decoration: none; }
-    /* Reduce author font size */
-    .palette-author { font-size: 10px; } }
+    /* Reduce author font size */    /* Light mode button overrides (transparent) */
+    body.light-mode .palette-reset, body.light-mode .palette-copy {
+      background: none;
+      border: none;
+    }
+    body.light-mode .palette-reset:hover, body.light-mode .palette-copy:hover {
+      background: none;
+    }
+      /* Press feedback: depress buttons by moving 5px */
+    .palette-reset:active, .palette-copy:active, .palette-preview:active {
+      transform: translate(2px, 2px);
+    }
   </style>
 </head>
 <body class="system-mode">
@@ -73,14 +129,15 @@
   <div class="container">
     <div class="page-header">
       <h1>4shades</h1>
-      <div class="subtitle">Super luminous gb palettes - by aced</div>
+      <div class="subtitle">Super luminous gb palettes – by aced</div>
+      <p class="description">Visualize the perceptual luminance (L*) of 4‑tone Game Boy palettes. Tweak color values by dragging the markers.</p>
     </div>
     <div id="tag-filter-container">
       <label for="tag-filter">Filter:</label>
       <select id="tag-filter"></select>
       <label for="primary-sort">Sort by:</label>
       <select id="primary-sort">
-        <option value="paletteName">Name</option>
+        <option value="title">Name</option>
         <option value="0">Col 0</option>
         <option value="1">Col 1</option>
         <option value="2">Col 2</option>
@@ -103,14 +160,17 @@
     // Theme toggler
     const modes=['system','light','dark'], toggle=document.getElementById('dark-mode-toggle');let mi=0;
     function applyTheme() {
-      // Switch theme class without touching greyscale filter
-      // Remove only theme-related classes
-      document.body.classList.remove('system-mode', 'light-mode', 'dark-mode');
-      document.body.classList.add(modes[mi] + '-mode');
-      // Update theme toggle icon
-      toggle.textContent = modes[mi] === 'system' ? '🖥️'
-                        : modes[mi] === 'light'  ? '☀️'
-                                                : '🌙';
+      const theme = modes[mi];
+      if (theme === 'system') {
+        const dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.body.classList.toggle('dark-mode', dark);
+        document.body.classList.toggle('light-mode', !dark);
+      } else {
+        document.body.classList.toggle('dark-mode', theme === 'dark');
+        document.body.classList.toggle('light-mode', theme === 'light');
+      }
+      // update toggle icon
+      toggle.textContent = theme === 'system' ? '🖥️' : theme === 'light' ? '☀️' : '🌙';
     }
     toggle.onclick = () => { mi = (mi + 1) % 3; applyTheme(); };
     applyTheme();
@@ -129,7 +189,7 @@
     function xyzToRgb(X,Y,Z){X/=100;Y/=100;Z/=100;let r=X*3.2406+Y*-1.5372+Z*-0.4986,g=X*-0.9689+Y*1.8758+Z*0.0415,b=X*0.0557+Y*-0.2040+Z*1.0570;const conv=v=>v<=0.0031308?12.92*v:1.055*Math.pow(v,1/2.4)-0.055;return{r:Math.round(Math.min(Math.max(conv(r),0),1)*255),g:Math.round(Math.min(Math.max(conv(g),0),1)*255),b:Math.round(Math.min(Math.max(conv(b),0),1)*255)}}
     function labToRgb(L,a,b){return xyzToRgb(...labToXyz(L,a,b));}
     function rgbToHsv(r,g,b){r/=255;g/=255;b/=255;const max=Math.max(r,g,b),min=Math.min(r,g,b),d=max-min;let h=0;if(d){if(max===r)h=((g-b)/d+(g<b?6:0));else if(max===g)h=((b-r)/d+2);else h=((r-g)/d+4);h=(h*60)%360;}const s=max?Math.round((d/max)*100):0,v=Math.round(max*100);return{h:Math.round(h),s,v};}
-    function rgbToHex(r,g,b){const t=v=>v.toString(16).padStart(2,'0').toUpperCase();return`#${t(r)}${t(g)}${t(b)}`;}
+    function rgbToHex(r,g,b){const t=v=>v.toString(16).padStart(2,'0').toLowerCase();return `#${t(r)}${t(g)}${t(b)}`;}
 
     // Render functions
     function renderTagFilter() {
@@ -149,24 +209,42 @@
     function createMarkerSvg(hex,i){const{r,g,b}=hexToRgb(hex);const[L,a,bv]=xyzToLab(...rgbToXyz(r,g,b));const hsv0=rgbToHsv(r,g,b);const ns='http://www.w3.org/2000/svg';const svg=document.createElementNS(ns,'svg');
       svg.setAttribute('width','40');
       svg.setAttribute('height','60');svg.classList.add('marker');svg.setAttribute('viewBox','0 0 40 60');svg.style.overflow='visible';const title=document.createElementNS(ns,'title');const C=Math.hypot(a,bv).toFixed(1),hDeg=Math.round((Math.atan2(bv,a)*180/Math.PI+360)%360);title.textContent=`${hex}\nrgb(${r}, ${g}, ${b})\nhsb(${hsv0.h}°, ${hsv0.s}%, ${hsv0.v}%)\nL*C*h_ab(${L.toFixed(1)}, ${C}, ${hDeg}°)`;svg.append(title);const path=document.createElementNS(ns,'path');path.setAttribute('d','M6,0 H34 A6,6 0 0 1 40,6 V26 Q40,32 28,46 L20,60 L12,46 Q0,32 0,26 V6 A6,6 0 0 1 6,0 Z');path.setAttribute('fill', hex);path.classList.add('marker-path');svg.append(path);const txt=document.createElementNS(ns,'text');txt.setAttribute('x','20');txt.setAttribute('y','14');txt.setAttribute('text-anchor','middle');txt.setAttribute('fill','#fff');txt.setAttribute('font-size','14');txt.setAttribute('dy','.35em');txt.textContent=i;svg.append(txt);// Position marker according to reversed L* axis (100→0)
-      svg.style.left = (100 - L) + '%';svg.__labAB={a,b: bv};svg.__origL=L;svg.__hex=hex;return svg;}
-    function renderPalette(p){const box=document.createElement('div');box.className='palette-container';const resetBtn=document.createElement('button');resetBtn.className='palette-reset';resetBtn.textContent='Reset';
+      svg.style.left = (100 - L) + '%';svg.__labAB={a,b: bv};svg.__origL=L;svg.__hex = hex;
+      svg.__origHex = hex;return svg;}
+    function renderPalette(p){const box=document.createElement('div');box.className='palette-container';const resetBtn=document.createElement('button');resetBtn.className='palette-reset';resetBtn.textContent = '↩️';
+      resetBtn.title = 'Reset palette';
       resetBtn.onclick = () => {
         // Reset all markers to their original L* positions on reversed axis
         box.querySelectorAll('.marker').forEach(m => {
           const origL = m.__origL;
           m.style.left = (100 - origL) + '%';
+          // revert hex to original
+          m.__hex = m.__origHex;
           const { a, b } = m.__labAB;
           const rgb = labToRgb(origL, a, b);
-          m.querySelector('.marker-path').setAttribute('fill', `rgb(${rgb.r},${rgb.g},${rgb.b})`);
+          const path = m.querySelector('.marker-path');
+          if (path) path.setAttribute('fill', `rgb(${rgb.r},${rgb.g},${rgb.b})`);
+          // update tooltip
+          const titleElem = m.querySelector('title');
+          if (titleElem) {
+            const C = Math.hypot(a, b).toFixed(1);
+            const hsv = rgbToHsv(rgb.r, rgb.g, rgb.b);
+            const hDeg = Math.round((Math.atan2(b, a) * 180/Math.PI + 360) % 360);
+            titleElem.textContent =
+              `${m.__hex}
+rgb(${rgb.r}, ${rgb.g}, ${rgb.b})
+hsb(${hsv.h}°, ${hsv.s}%, ${hsv.v}%)
+L*C*h_ab(${origL.toFixed(1)}, ${C}, ${hDeg}°)`;
+          }
         });
       };
       box.append(resetBtn);const copyBtn = document.createElement('button');
       copyBtn.className = 'palette-copy';
-      copyBtn.textContent = 'Copy';
+      copyBtn.textContent = '📄';
+      copyBtn.title = 'Copy palette';
       copyBtn.onclick = () => {
         // Build GIMP GPL snippet
-        let name = p.paletteName.trim();
+        let name = p.title.trim();
         let modified = false;
         const markers = box.querySelectorAll('.marker');
         markers.forEach((m, i) => {
@@ -180,6 +258,8 @@
         const lines = [];
         lines.push('GIMP Palette');
         lines.push(`Name: ${name}`);
+        // Add origin as comment
+        if (p.origin) lines.push(`# Origin: ${p.origin.trim()}`);
         if (p.source) lines.push(`# Source: ${p.source}`);
         markers.forEach((m, i) => {
           // export hex without '#' and in lowercase
@@ -189,38 +269,90 @@
         });
         navigator.clipboard.writeText(lines.join('\n'));
       };
-      box.append(copyBtn);const line=document.createElement('div');line.className='visual-line-container';const l0 = document.createElement('div');
+      box.append(copyBtn);
+      // preview button for image mapping
+      const previewBtn = document.createElement('button');
+      previewBtn.className = 'palette-preview';
+      previewBtn.textContent = '🖼️';
+      previewBtn.title = 'Preview image';
+      previewBtn.onclick = () => {
+        // Toggle preview area
+        const existing = box.querySelector('.preview-area');
+        if (existing) {
+          existing.remove();
+          return;
+        }
+        const area = document.createElement('div');
+        area.className = 'preview-area';
+        // Create scaled canvas
+        const cv = document.createElement('canvas');
+        cv.width = 160;
+        cv.height = 144;
+        cv.style.width = '320px';
+        cv.style.height = '288px';
+        cv.style.display = 'block';
+        cv.style.margin = '10px auto';
+        const ctx2 = cv.getContext('2d');
+        ctx2.imageSmoothingEnabled = false;
+        if (typeof img !== 'undefined' && img.src) {
+          ctx2.drawImage(img, 0, 0, cv.width, cv.height);
+        } else {
+          // No image loaded
+          ctx2.fillStyle = '#999'; ctx2.fillRect(0,0,cv.width,cv.height);
+          ctx2.fillStyle = '#666'; ctx2.font = '14px sans-serif'; ctx2.textAlign = 'center';
+          ctx2.fillText('Select image', cv.width/2, cv.height/2);
+        }
+        area.append(cv);
+        box.append(area);
+      };
+      box.append(previewBtn);const line=document.createElement('div');line.className='visual-line-container';const l0 = document.createElement('div');
       l0.className = 'visual-line-label left';
-      l0.innerHTML = '<i>L</i>*';const l1 = document.createElement('div');
-      l1.className = 'visual-line-label right';
-      l1.innerHTML = '<i>L</i>*';line.append(l0,l1);p.colors.forEach((hex,i)=>{const m=createMarkerSvg(hex,i);line.append(m);const dot=document.createElement('div');dot.style.width='12px';dot.style.height='12px';dot.style.borderRadius='50%';dot.style.position='absolute';dot.style.bottom='calc(50% - 6px)';dot.style.transform='translateX(-50%)';// Position original dot on reversed axis
+      l0.innerHTML = '<i>L</i>*';
+      line.append(l0);p.colors.forEach((hex,i)=>{const m=createMarkerSvg(hex,i);line.append(m);const dot=document.createElement('div');dot.style.width='12px';dot.style.height='12px';dot.style.borderRadius='50%';dot.style.position='absolute';dot.style.bottom='calc(50% - 6px)';dot.style.transform='translateX(-50%)';// Position original dot on reversed axis
       dot.style.left = (100 - m.__origL) + '%';dot.style.background=hex;dot.style.border='1px solid #888';dot.title = `Reset ${i}`;
       dot.onclick = () => {
-        // Reset individual marker on reversed axis
-        const origL = m.__origL;
-        m.style.left = (100 - origL) + '%';
-        const { a, b } = m.__labAB;
-        const rgb = labToRgb(origL, a, b);
-        m.querySelector('.marker-path').setAttribute('fill', `rgb(${rgb.r},${rgb.g},${rgb.b})`);
-      };line.append(dot);});box.append(line);const d=document.createElement('div');d.className='palette-details';// palette name (linked if source)
-      let nm;
+          const origL = m.__origL;
+          // revert hex to original
+          m.__hex = m.__origHex;
+          // reposition marker on reversed axis
+          m.style.left = (100 - origL) + '%';
+          const { a, b } = m.__labAB;
+          const rgb = labToRgb(origL, a, b);
+          const path = m.querySelector('.marker-path');
+          if (path) path.setAttribute('fill', `rgb(${rgb.r},${rgb.g},${rgb.b})`);
+          // update tooltip
+          const titleElem = m.querySelector('title');
+          if (titleElem) {
+            const C = Math.hypot(a, b).toFixed(1);
+            const hsv = rgbToHsv(rgb.r, rgb.g, rgb.b);
+            const hDeg = Math.round((Math.atan2(b, a) * 180/Math.PI + 360) % 360);
+            titleElem.textContent =
+              `${m.__hex}
+rgb(${rgb.r}, ${rgb.g}, ${rgb.b})
+hsb(${hsv.h}°, ${hsv.s}%, ${hsv.v}%)
+L*C*h_ab(${origL.toFixed(1)}, ${C}, ${hDeg}°)`;
+          }
+        };line.append(dot);});box.append(line);const d=document.createElement('div');d.className='palette-details';// palette title as a header with link and id for deep linking
+      const nm = document.createElement('h2');
+      nm.className = 'palette-name';
+      // generate slug id from paletteName
+      const slug = p.title.trim().toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+      nm.id = slug;
       if (p.source) {
-        nm = document.createElement('a');
-        nm.href = p.source;
-        nm.target = '_blank';
-        nm.className = 'palette-name';
-        nm.textContent = p.paletteName;
+        const link = document.createElement('a');
+        link.href = p.source;
+        link.target = '_blank';
+        link.textContent = p.title;
+        nm.append(link);
       } else {
-        nm = document.createElement('div');
-        nm.className = 'palette-name';
-        nm.textContent = p.paletteName;
+        nm.textContent = p.title;
       }
       d.append(nm);
       // author subheading
-      if (p.author) {
+      if (p.origin) {
         const auth = document.createElement('div');
         auth.className = 'palette-author';
-        auth.textContent = 'by ' + p.author.trim();
+        auth.textContent = 'by ' + p.origin.trim();
         d.append(auth);
       }if(p.tags){const tg=document.createElement('div');tg.className='palette-tags';tg.textContent = p.tags.map(t => {
           const lower = t.toLowerCase();
@@ -234,7 +366,7 @@
       const direction = document.getElementById('sort-direction').value;
 
       // Adjust secondary options
-      if (primary === 'paletteName') {
+      if (primary === 'title') {
         secondarySelect.innerHTML = '<option value="">(none)</option>';
         secondarySelect.disabled = true;
         secondary = '';
@@ -255,8 +387,8 @@
       // Sort palettes
       ps.sort((a, b) => {
         let cmp = 0;
-        if (primary === 'paletteName') {
-          cmp = a.paletteName.localeCompare(b.paletteName);
+        if (primary === 'title') {
+          cmp = a.title.localeCompare(b.title);
         } else {
           const idx = parseInt(primary, 10);
           const rgbA = hexToRgb(a.colors[idx]);
@@ -341,6 +473,11 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+      // listen for system theme changes
+      const mq = window.matchMedia('(prefers-color-scheme: dark)');
+      mq.addEventListener('change', () => {
+        if (modes[mi] === 'system') applyTheme();
+      });
       renderTagFilter();
       ['primary-sort','secondary-sort','sort-direction'].forEach(id =>
         document.getElementById(id).addEventListener('change', renderPalettes)
@@ -362,156 +499,219 @@
   <script type="application/json" id="palettes-data">
     [
     {
-      "paletteName": "Velvet Cherry GB",
-      "author": "Klafooty",
+      "title": "Velvet Cherry GB", "origin": "Klafooty",
       "source": "https://lospec.com/palette-list/velvet-cherry-gb",
       "colors": ["#9775a6","#683a68","#412752","#2d162c"],
       "tags": ["Lospec","💜"]
     },
     {
-      "paletteName": "Fiery Plague GB",
-      "author": "Klafooty",
+      "title": "Fiery Plague GB", "origin": "Klafooty",
       "source": "https://lospec.com/palette-list/fiery-plague-gb",
-      "colors": [
-        "#713141",
-        "#512839",
-        "#312137",
-        "#1a2129"
-      ],
-      "tags": [
-        "Lospec","Dark",
-        "❤️",
-        "💜"
-      ]
+      "colors": ["#713141","#512839","#312137","#1a2129"],
+      "tags": ["Lospec","Dark","❤️","💜"]
     },
     {
-      "paletteName": "Moon Crystal",
-      "author": "Doph",
+      "title": "Moon Crystal", "origin": "Doph",
       "source": "https://lospec.com/palette-list/moon-crystal",
-      "colors": [
-        "#ffe2db",
-        "#d9a7c6",
-        "#8d89c7",
-        "#755f9c"
-      ],
-      "tags": [
-        "Lospec",
-        "Pastel",
-        "💜",
-        "🩷"
-      ]
-    },
+      "colors": ["#ffe2db","#d9a7c6","#8d89c7","#755f9c"],
+      "tags": ["Lospec","Pastel","💜","🩷"]},
     {
-      "paletteName": "Optimized Grayscale 4",
-      "author": "Yousurname",
+      "title": "Optimized Grayscale 4", "origin": "Yousurname",
       "source": "https://lospec.com/palette-list/optimized-grayscale-4",
       "colors": ["#dfdfdf","#9f9f9f","#606060","#202020"],
       "tags": ["Lospec","No-Chroma","🩶"]
     },
     {
-      "paletteName": "Absorbent and Yellow",
-      "author": "TheWolfBunny64",
+      "title": "Absorbent and Yellow", "origin": "TheWolfBunny64",
       "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
       "colors": ["#fff752","#aec600","#687600","#343b00"],
-      "tags": ["@thewolfbunny64","Am-Pop-Culture","DMG","💛","💚"]
+      "tags": ["@TheWolfBunny64","Am-Pop-Culture","DMG","💚"]
     },
     {
-      "paletteName": "Barbie Pink",
-      "author": "TheWolfBunny64",
+      "title": "Barbie Pink", "origin": "TheWolfBunny64",
       "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
       "colors": ["#f200a1","#c10080","#790050","#480030"],
-      "tags": ["@thewolfbunny64","Am-Pop-Culture","🩷"]
+      "tags": ["@TheWolfBunny64","Am-Pop-Culture","🩷"]
     },
     {
-      "paletteName": "Bedrock Caveman Vision",
-      "author": "TheWolfBunny64",
+      "title": "Bedrock Caveman Vision", "origin": "TheWolfBunny64",
       "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
       "colors": ["#ff7f00","#009eb8","#005e6e","#002f37"],
-      "tags": ["@thewolfbunny64","Am-Pop-Culture","🌈"]
+      "tags": ["@TheWolfBunny64","Am-Pop-Culture","🌈"]
     },
     {
-        "paletteName": "Bikini Bottom Ver.",
-        "author": "TheWolfBunny64",
+        "title": "Bikini Bottom Ver.", "origin": "TheWolfBunny64",
         "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
         "colors": ["#f8f880","#48f8e0","#2098f0","#606000"],
-        "tags": ["@thewolfbunny64","Am-Pop-Culture","🌈"]
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🌈"]
       },
       {
-        "paletteName": "Blossom Pink",
-        "author": "TheWolfBunny64",
+        "title": "Blossom Pink", "origin": "TheWolfBunny64",
         "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
         "colors": ["#f59bb2","#c47c8e","#7a4d59","#492e35"],
-        "tags": ["@thewolfbunny64","Am-Pop-Culture","🩷"]
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🩷"]
       },
       {
-        "paletteName": "BMO Ver.",
-        "author": "TheWolfBunny64",
+        "title": "BMO Ver.", "origin": "TheWolfBunny64",
         "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
         "colors": ["#c0ffcc","#99cca3","#607f66","#394c3d"],
-        "tags": ["@thewolfbunny64","Am-Pop-Culture","MGB","💚"]
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","MGB","💚"]
       },
       {
-        "paletteName": "Bubbles Blue",
-        "author": "TheWolfBunny64",
+        "title": "Bubbles Blue", "origin": "TheWolfBunny64",
         "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
         "colors": ["#64c4e9","#509cba","#326274","#1e3a45"],
-        "tags": ["@thewolfbunny64","Am-Pop-Culture","🩵"]
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🩵"]
       },
       {
-        "paletteName": "Buttercup Green",
-        "author": "TheWolfBunny64",
+        "title": "Buttercup Green", "origin": "TheWolfBunny64",
         "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
         "colors": ["#bedc8d","#98b070","#5f6e46","#39442a"],
-        "tags": ["@thewolfbunny64","Am-Pop-Culture","DMG","MGB","💚"]
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","DMG","MGB","💚"]
       },
       {
-        "paletteName": "Danny Phantom Silver",
-        "author": "TheWolfBunny64",
+        "title": "Danny Phantom Silver", "origin": "TheWolfBunny64",
         "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
         "colors": ["#abbbcc","#8895a3","#555d66","#33383d"],
-        "tags": ["@thewolfbunny64","Am-Pop-Culture","🩵","🩶"]
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🩵","🩶"]
       },
       {
-        "paletteName": "Fairly OddPalette",
-        "author": "TheWolfBunny64",
+        "title": "Fairly OddPalette", "origin": "TheWolfBunny64",
         "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
         "colors": ["#7bb850","#ce5a99","#7b365b","#3d1b2d"],
-        "tags": ["@thewolfbunny64","Am-Pop-Culture","🌈"]
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🌈"]
       },
       {
-        "paletteName": "Garfield Vision",
-        "author": "TheWolfBunny64",
+        "title": "Garfield Vision", "origin": "TheWolfBunny64",
         "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
         "colors": ["#f5ea8b","#e59436","#964220","#2d1309"],
-        "tags": ["@thewolfbunny64","Am-Pop-Culture","🧡","🤎"]
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🧡","🤎"]
       },
       {
-        "paletteName": "Hogwarts Goldius",
-        "author": "TheWolfBunny64",
+        "title": "Hogwarts Goldius", "origin": "TheWolfBunny64",
         "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
         "colors": ["#b6a571","#91845a","#5b5238","#363121"],
-        "tags": ["@thewolfbunny64","Am-Pop-Culture","🤎","💛"]
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🤎"]
       },
       {
-        "paletteName": "Invincible Yellow and Blue",
-        "author": "TheWolfBunny64",
+        "title": "Invincible Yellow and Blue", "origin": "TheWolfBunny64",
         "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
         "colors": ["#fee566","#39c9eb","#22788d","#113c46"],
-        "tags": ["@thewolfbunny64","Am-Pop-Culture","🌈"]
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🌈"]
       },
       {
-        "paletteName": "Nick Orange",
-        "author": "TheWolfBunny64",
+        "title": "Nick Orange", "origin": "TheWolfBunny64",
         "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
         "colors": ["#ff6700","#cc5200","#7f3300","#4c1e00"],
-        "tags": ["@thewolfbunny64","Am-Pop-Culture","🧡","🤎"]
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🧡"]
       },
       {
-        "paletteName": "There's Always Money (banana)",
-        "author": "HerrZatacke",
+        "title": "Ninja Turtle Green", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#86bc25","#6b961d","#435e12","#28380b"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","💚"]
+      },
+      {
+        "title": "Optimus Prime Palette", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#d3d3d3","#d92121","#0057ab","#001533"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🌈"]
+      },
+      {
+        "title": "Patrick Star Pink", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#ff808b","#cc666f","#7f4045","#4c2629"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🩷"]
+      },
+      {
+        "title": "Retro Bogeda", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#fbfd1b","#ff6cff","#6408ff","#000000"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🌈"]
+      },
+      {
+        "title": "Rocket Portable Power", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#fee998","#bdd539","#213f99","#09122d"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🌈"]
+      },
+      {
+        "title": "Rugrats Playtime Palette", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#ffffff","#ffde17","#ed1c24","#662d91"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🌈"]
+      },
+      {
+        "title": "Sailor Spinach Green", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#7bb03c","#628c30","#3d581e","#243412"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","💚"]
+      },
+      {
+        "title": "Scooby-Doo Mystery Ver.", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#c6de31","#f79321","#8f59a5","#2a1a31"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🌈"]
+      },
+      {
+        "title": "Smurfy Blue", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#2cb9ef","#2394bf","#165c77","#0d3747"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🩵"]
+      },
+      {
+        "title": "SpongeBob Yellow", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#f7e948","#c5ba39","#7b7424","#4a4515"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","💛"]
+      },
+      {
+        "title": "Squidward Sea Foam Green", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#b9d7cd","#94aca4","#5c6b66","#37403d"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","MGB","💚"]
+      },
+      {
+        "title": "There's Always Money /banana", "origin": "HerrZatacke",
         "source": "https://github.com/HerrZatacke/gb-palettes",
         "colors": ["#fdfe0a","#fed638","#977b25","#221a09"],
         "tags": ["@HerrZatacke","💛","🤎"]
+      },
+      {
+        "title": "GrafxKid GameBoy Pocket Gray", "origin": "GrafxKid",
+        "source": "https://lospec.com/palette-list/grafxkid-gameboy-pocket-gray",
+        "colors": ["#e0dbcd","#a89f94","#706b66","#2b2b26"],
+        "tags": ["Lospec","🩶"]
+      },
+      {
+        "title": "GrafxKid GameBoy Pocket Green", "origin": "GrafxKid",
+        "source": "https://lospec.com/palette-list/grafxkid-gameboy-pocket-green",
+        "colors": ["#dbf4b4","#abc396","#7b9278","#4c625a"],
+        "tags": ["Lospec","DMG","MGB","💚"]
+      },
+      {
+        "title": "GB Easy Greens", "origin": "GrafxKid",
+        "source": "https://lospec.com/palette-list/gb-easy-greens",
+        "colors": ["#ebdd77","#a1bc00","#0d8833","#004333"],
+        "tags": ["Lospec","DMG","💚"]
+      },
+      {
+        "title": "GB Chocolate", "origin": "GrafxKid",
+        "source": "https://lospec.com/palette-list/gb-chocolate",
+        "colors": ["#ffe4c2","#dca456","#a9604c","#422936"],
+        "tags": ["Lospec","🤎"]
+      },
+      {
+        "title": "Grapefruit", "origin": "GrafxKid",
+        "source": "https://lospec.com/palette-list/grapefruit",
+        "colors": ["#ffe4c2","#dca456","#b76591","#65296c"],
+        "tags": ["Lospec","🌈"]
+      },
+      {
+        "title": "Blog of Dreams 4", "origin": "StellarBee",
+        "source": "https://lospec.com/palette-list/blog-of-dreams-4",
+        "colors": ["#f8e6c8","#f8c8d7","#bccce6","#db4574"],
+        "tags": ["Lospec","Pastel","🌈"]
       }
   ]
   </script>
