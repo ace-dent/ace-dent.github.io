@@ -141,7 +141,11 @@
     body.dark-mode .palette-name { color: #bbb; }
     body.dark-mode .link-icon { color: #e0e0e0; }
     /* Grayscale filter applied purely by CSS */
-    body.no-chroma .visual-line-container, body.no-chroma .marker { filter: grayscale(100%); }
+    body.no-chroma .visual-line-container,
+    body.no-chroma .marker,
+    body.no-chroma .preview-area canvas {
+      filter: grayscale(100%);
+    }
     @media (max-width:600px) { .visual-line-container { width:90%; } }
     /* Override link underline removal */
     .palette-name { text-decoration: none; }
@@ -216,6 +220,8 @@
 
     // State
     let selectedTag='all', dragData=null;
+    // throttle flag for live preview
+    let needsRemap = false;
     // Shared image preview variables
     let globalFileInput;
     let imgSelected = new Image();
@@ -233,19 +239,27 @@
 
     // Remap a single canvas to a 4-tone palette based on its markers (0=light → 3=dark)
     function remapCanvas(ctx, w, h, markers) {
+      // Pre-flatten and invert palette: bucket 0 maps to markers[3], 1→2, 2→1, 3→0
+      const flat = [];
+      for (let j = markers.length - 1; j >= 0; j--) {
+        const { r, g, b } = hexToRgb(markers[j].__hex);
+        flat.push(r, g, b);
+      }
+
+      // Perform posterization by using red-channel bucket and flat palette
       const imgData = ctx.getImageData(0, 0, w, h);
-      const d = imgData.data;
-      for (let i = 0; i < d.length; i += 4) {
-        const avg = (d[i] + d[i+1] + d[i+2]) / 3;
-        const bucket = Math.min(3, Math.floor(avg / 64));
-        const inv = 3 - bucket;
-        const hex = markers[inv].__hex;
-        const c = hexToRgb(hex);
-        d[i] = c.r; d[i+1] = c.g; d[i+2] = c.b;
+      const data = imgData.data;
+      for (let i = 0; i < data.length; i += 4) {
+        // bucket from red channel (0..3)
+        const bucket = data[i] >> 6;
+        // direct lookup: flat[ bucket*3 + 0..2 ]
+        const base = bucket * 3;
+        data[i]   = flat[base];
+        data[i+1] = flat[base+1];
+        data[i+2] = flat[base+2];
       }
       ctx.putImageData(imgData, 0, 0);
     }
-
     // Re-render all open previews after any change
     function remapAllPreviews() {
       document.querySelectorAll('.preview-area canvas').forEach(cv => {
@@ -309,31 +323,33 @@
           if (path) path.setAttribute('fill', `rgb(${rgb.r},${rgb.g},${rgb.b})`);
           // update tooltip
           const titleElem = m.querySelector('title');
-      // Update preview canvas if present
-      const previewCv = m.closest('.palette-container').querySelector('.preview-area canvas');
-      if (previewCv) {
-        const pw = previewCv.width, ph = previewCv.height;
-        const pctx = previewCv.getContext('2d');
-        pctx.clearRect(0, 0, pw, ph);
-        pctx.imageSmoothingEnabled = false;
-        pctx.drawImage(imgBuffer, 0, 0, pw, ph);
-        const id2 = pctx.getImageData(0, 0, pw, ph);
-        const d2 = id2.data;
-        const marks = m.closest('.palette-container').querySelectorAll('.marker');
-        for (let k = 0; k < d2.length; k += 4) {
-          const avg2 = (d2[k] + d2[k+1] + d2[k+2]) / 3;
-          const bucket2 = Math.min(3, Math.floor(avg2 / 64));
-          const inv2 = 3 - bucket2;
-          const hex2 = marks[inv2].__hex;
-          const col2 = hexToRgb(hex2);
-          d2[k] = col2.r;
-          d2[k+1] = col2.g;
-          d2[k+2] = col2.b;
+          if (titleElem) {
+            const hsv = rgbToHsv(rgb.r, rgb.g, rgb.b);
+            const Cval = Math.hypot(a, b).toFixed(1);
+            const hDeg = Math.round((Math.atan2(b, a) * 180/Math.PI + 360) % 360);
+            titleElem.textContent =
+              `${m.__hex}
+rgb(${rgb.r}, ${rgb.g}, ${rgb.b})
+hsb(${hsv.h}°, ${hsv.s}%, ${hsv.v}% )
+L*C*h_ab(${origL.toFixed(1)}, ${Cval}, ${hDeg}°)`;
+          }
+        });
+        // If a preview canvas exists but no image loaded, redraw placeholder
+        const area = box.querySelector('.preview-area');
+        if (area && !imgSelected.src) {
+          const cv = area.querySelector('canvas');
+          if (cv) {
+            const ctx = cv.getContext('2d');
+            const w = cv.width, h = cv.height;
+            ctx.fillStyle = '#999'; ctx.fillRect(0, 0, w, h);
+            ctx.fillStyle = '#666'; ctx.font = '14px sans-serif'; ctx.textAlign = 'center';
+            ctx.fillText('Select image', w / 2, h / 2);
+          }
         }
-        pctx.putImageData(id2, 0, 0);
-      }
-    });
-      };
+
+        // Update any open previews with the reset palette
+        remapAllPreviews();
+    }; // close onclick callback
       box.append(resetBtn);const copyBtn = document.createElement('button');
       copyBtn.className = 'palette-copy';
       // Font Awesome 'copy' icon
@@ -598,17 +614,17 @@
       const { m, startX, startL, rect, lv } = dragData;
       const dx = e.clientX - startX;
       const newL = Math.min(100, Math.max(0, startL - (dx / rect.width) * 100));
-      // Position marker
+      // Position marker on reversed axis
       m.style.left = (100 - newL) + '%';
-      // Recalculate RGB and HEX
+      // Recalculate color
       const { a, b } = m.__labAB;
       const rgb = labToRgb(newL, a, b);
       const newHex = rgbToHex(rgb.r, rgb.g, rgb.b);
       m.__hex = newHex;
-      // Update fill
+      // Update marker fill
       const path = m.querySelector('.marker-path');
       if (path) path.setAttribute('fill', `rgb(${rgb.r},${rgb.g},${rgb.b})`);
-      // Update label
+      // Update live label
       lv.textContent = Math.round(newL) + '%';
       lv.style.left = (100 - newL) + '%';
       // Update tooltip
@@ -623,28 +639,10 @@ rgb(${rgb.r}, ${rgb.g}, ${rgb.b})
 hsb(${hsv.h}°, ${hsv.s}%, ${hsv.v}%)
 L*C*h_ab(${newL.toFixed(1)}, ${Cval}, ${hDeg}°)`;
       }
-      // Live update
-      // Resize existing preview canvases to match new image dimensions
-          document.querySelectorAll('.preview-area canvas').forEach(cv => {
-            const bufW = imgBuffer.width || imgBuffer.naturalWidth;
-            const bufH = imgBuffer.height || imgBuffer.naturalHeight;
-            let w, h;
-            if (bufW > 600 || bufH > 600) {
-              w = Math.round(bufW / 2);
-              h = Math.round(bufH / 2);
-            } else if (bufW < 200 || bufH < 200) {
-              w = bufW * 2;
-              h = bufH * 2;
-            } else {
-              w = bufW;
-              h = bufH;
-            }
-            cv.width = w;
-            cv.height = h;
-            cv.style.width = w + 'px';
-            cv.style.height = h + 'px';
-          });
-          remapAllPreviews();
+      // Schedule live preview update
+      needsRemap = true;
+      // immediate fallback to ensure preview updates
+      remapAllPreviews();
     }
 
     function endDrag() {
