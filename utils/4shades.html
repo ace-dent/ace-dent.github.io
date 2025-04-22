@@ -306,7 +306,7 @@
     function remapAllPreviews() {
       document.querySelectorAll('.preview-area canvas').forEach(cv => {
         const w = cv.width, h = cv.height;
-        const ctx = cv.getContext('2d');
+        const ctx = cv.getContext('2d', { willReadFrequently: true });
         // redraw without resizing canvas
         ctx.clearRect(0,0,w,h);
         ctx.imageSmoothingEnabled = false;
@@ -814,7 +814,7 @@ L*C*h_ab(${newL.toFixed(1)}, ${Cval}, ${hDeg}°)`;
     {"title":"Velvet Cherry GB","origin":"Klafooty","source":"https://lospec.com/palette-list/velvet-cherry-gb","colors": ["#9775a6","#683a68","#412752","#2d162c"],"tags":["Lospec","💜"]},
     {"title":"Fiery Plague GB","origin":"Klafooty","source":"https://lospec.com/palette-list/fiery-plague-gb","colors":["#713141","#512839","#312137","#1a2129"],"tags":["Lospec","Dark","❤️","💜"]},
     {"title":"Moon Crystal","origin":"Doph","source":"https://lospec.com/palette-list/moon-crystal","colors": ["#ffe2db","#d9a7c6","#8d89c7","#755f9c"],"tags":["Lospec","Pastel", "💜","🩷"]},
-    {"title":"Optimized Grayscale 4","origin":"Yousurname","source":"https://lospec.com/palette-list/optimized-grayscale-4","colors": ["#dfdfdf","#9f9f9f","#606060","#202020"],"tags":["Lospec","No-Chroma","🩶"]},
+    {"title":"Optimized Grayscale 4","origin":"Yousurname","source":"https://lospec.com/palette-list/optimized-grayscale-4","colors": ["#dfdfdf","#9f9f9f","#606060","#202020"],"tags":["Lospec","Lo-Chroma","🩶"]},
     {"title":"Absorbent and Yellow","origin":"TheWolfBunny64","source":"https://thewolfbunny64.itch.io/game-boy-custom-palettes","colors": ["#fff752","#aec600","#687600","#343b00"],"tags":["@TheWolfBunny64","Am-Pop-Culture","DMG","💚"]},
     {"title":"Barbie Pink","origin":"TheWolfBunny64","source":"https://thewolfbunny64.itch.io/game-boy-custom-palettes","colors": ["#f200a1","#c10080","#790050","#480030"],"tags":["@TheWolfBunny64","Am-Pop-Culture","🩷"]},
     {"title":"Bedrock Caveman Vision","origin":"TheWolfBunny64","source":"https://thewolfbunny64.itch.io/game-boy-custom-palettes","colors": ["#ff7f00","#009eb8","#005e6e","#002f37"],"tags":["@TheWolfBunny64","Am-Pop-Culture","🌈"]}
