@@ -1,0 +1,593 @@
+[
+    {
+      "title": "Velvet Cherry GB", "origin": "Klafooty",
+      "source": "https://lospec.com/palette-list/velvet-cherry-gb",
+      "colors": ["#9775a6","#683a68","#412752","#2d162c"],
+      "tags": ["Lospec","💜"]
+    },
+    {
+      "title": "Fiery Plague GB", "origin": "Klafooty",
+      "source": "https://lospec.com/palette-list/fiery-plague-gb",
+      "colors": ["#713141","#512839","#312137","#1a2129"],
+      "tags": ["Lospec","Dark","❤️","💜"]
+    },
+    {
+      "title": "Moon Crystal", "origin": "Doph",
+      "source": "https://lospec.com/palette-list/moon-crystal",
+      "colors": ["#ffe2db","#d9a7c6","#8d89c7","#755f9c"],
+      "tags": ["Lospec","Pastel","💜","🩷"]},
+    {
+      "title": "Optimized Grayscale 4", "origin": "Yousurname",
+      "source": "https://lospec.com/palette-list/optimized-grayscale-4",
+      "colors": ["#dfdfdf","#9f9f9f","#606060","#202020"],
+      "tags": ["Lospec","No-Chroma","🩶"]
+    },
+
+
+
+
+
+
+    {
+      "title": "Absorbent and Yellow", "origin": "TheWolfBunny64",
+      "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+      "colors": ["#fff752","#aec600","#687600","#343b00"],
+      "tags": ["@TheWolfBunny64","Am-Pop-Culture","DMG","💚"]
+    },
+    {
+      "title": "Barbie Pink", "origin": "TheWolfBunny64",
+      "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+      "colors": ["#f200a1","#c10080","#790050","#480030"],
+      "tags": ["@TheWolfBunny64","Am-Pop-Culture","🩷"]
+    },
+    {
+      "title": "Bedrock Caveman Vision", "origin": "TheWolfBunny64",
+      "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+      "colors": ["#ff7f00","#009eb8","#005e6e","#002f37"],
+      "tags": ["@TheWolfBunny64","Am-Pop-Culture","🌈"]
+    },
+    {
+        "title": "Bikini Bottom Ver.", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#f8f880","#48f8e0","#2098f0","#606000"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🌈"]
+      },
+      {
+        "title": "Blossom Pink", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#f59bb2","#c47c8e","#7a4d59","#492e35"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🩷"]
+      },
+      {
+        "title": "BMO Ver.", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#c0ffcc","#99cca3","#607f66","#394c3d"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","MGB","💚"]
+      },
+      {
+        "title": "Bubbles Blue", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#64c4e9","#509cba","#326274","#1e3a45"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🩵"]
+      },
+      {
+        "title": "Buttercup Green", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#bedc8d","#98b070","#5f6e46","#39442a"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","DMG","MGB","💚"]
+      },
+      {
+        "title": "Danny Phantom Silver", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#abbbcc","#8895a3","#555d66","#33383d"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🩵","🩶"]
+      },
+      {
+        "title": "Fairly OddPalette", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#7bb850","#ce5a99","#7b365b","#3d1b2d"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🌈"]
+      },
+      {
+        "title": "Garfield Vision", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#f5ea8b","#e59436","#964220","#2d1309"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🧡","🤎"]
+      },
+      {
+        "title": "Hogwarts Goldius", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#b6a571","#91845a","#5b5238","#363121"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🤎"]
+      },
+      {
+        "title": "Invincible Yellow and Blue", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#fee566","#39c9eb","#22788d","#113c46"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🌈"]
+      },
+      {
+        "title": "Nick Orange", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#ff6700","#cc5200","#7f3300","#4c1e00"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🧡"]
+      },
+      {
+        "title": "Ninja Turtle Green", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#86bc25","#6b961d","#435e12","#28380b"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","💚"]
+      },
+      {
+        "title": "Optimus Prime Palette", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#d3d3d3","#d92121","#0057ab","#001533"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🌈"]
+      },
+      {
+        "title": "Patrick Star Pink", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#ff808b","#cc666f","#7f4045","#4c2629"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🩷"]
+      },
+      {
+        "title": "Retro Bogeda", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#fbfd1b","#ff6cff","#6408ff","#000000"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🌈"]
+      },
+      {
+        "title": "Rocket Portable Power", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#fee998","#bdd539","#213f99","#09122d"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🌈"]
+      },
+      {
+        "title": "Rugrats Playtime Palette", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#ffffff","#ffde17","#ed1c24","#662d91"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🌈"]
+      },
+      {
+        "title": "Sailor Spinach Green", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#7bb03c","#628c30","#3d581e","#243412"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","💚"]
+      },
+      {
+        "title": "Scooby-Doo Mystery Ver.", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#c6de31","#f79321","#8f59a5","#2a1a31"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🌈"]
+      },
+      {
+        "title": "Smurfy Blue", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#2cb9ef","#2394bf","#165c77","#0d3747"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🩵"]
+      },
+      {
+        "title": "SpongeBob Yellow", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#f7e948","#c5ba39","#7b7424","#4a4515"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","💛"]
+      },
+      {
+        "title": "Squidward Sea Foam Green", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#b9d7cd","#94aca4","#5c6b66","#37403d"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","MGB","💚"]
+      },
+      {
+        "title": "Swampy Ogre Green", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#c1d62e","#9aab24","#606b17","#39400d"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","DMG","💚"]
+      },
+      {
+        "title": "Timmy Turner Pink", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#bc486d","#963957","#5e2436","#381520"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","🩷","❤️"]
+      },
+      {
+        "title": "Universal Studios Blue", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#036ce2","#0256b4","#013671","#002043"],
+        "tags": ["@TheWolfBunny64","Am-Pop-Culture","💙"]
+      },
+
+
+
+
+      {
+        "title": "LisAni Orange!", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#eb5e01","#bc4b00","#752f00","#461c00"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🧡","🤎"]
+      },
+      {
+        "title": "Orange Namekian", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#ffba33","#cc9428","#7f5d19","#4c370f"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🧡"]
+      },
+      {
+        "title": "Perfect Majin Emperor", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#fdc1bf","#a3b453","#8550a9","#271832"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🌈"]
+      },
+      {
+        "title": "Perfected Ultra Instinct", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#c0c8d8","#99a0ac","#60646c","#393c40"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🩶"]
+      },
+      {
+        "title": "Precure Marble Raspberry", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#d6225c","#ab1b49","#6b112e","#400a1b"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","❤️"]
+      },
+      {
+        "title": "Pretty Guardian Gold", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#b4aa82","#908868","#5a5541","#363327"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","💛"]
+      },
+      {
+        "title": "Saiyan Beast Silver", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#969baf","#787c8c","#4b4d57","#2d2e34"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🩶"]
+      },
+      {
+        "title": "Shenron Green", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#5ac34a","#489c3b","#2d6125","#1b3a16"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","💚"]
+      },
+      {
+        "title": "Straw Hat Red", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#f8523c","#c64130","#7c291e","#4a1812"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","❤️"]
+      },
+      {
+        "title": "Super Saiyan 3", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#f8c838","#c6a02c","#7c641c","#4a3c10"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","💛","🤎"]
+      },
+      {
+        "title": "Super Saiyan Blue Evolved", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#1b97d1","#1578a7","#0d4b68","#082d3e"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","💙","🩵"]
+      },
+      {
+        "title": "Super Saiyan Blue", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#05bccc","#0496a3","#025d66","#01383d"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🩵"]
+      },
+      {
+        "title": "Super Saiyan God", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#d70362","#ac024e","#6b0131","#40001d"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","❤️"]
+      },
+      {
+        "title": "Super Saiyan Rose", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#f7afb3","#c58c8f","#7b5759","#4a3435"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🩷"]
+      },
+      {
+        "title": "Super Saiyan", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#fefcc1","#cbc99a","#7f7e60","#4c4b39"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","💛"]
+      },
+      {
+        "title": "Survey Corps Uniform", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#acaba9","#ac7c59","#593d34","#321d1a"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🌈"]
+      },
+      {
+        "title": "Sword Art Cyan", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#59c3e2","#479cb4","#2c6171","#1a3a43"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🩵"]
+      },
+      {
+        "title": "Team Rocket Uniform", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#eeefeb","#e94e60","#755e88","#474f4d"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🌈"]
+      },
+      {
+        "title": "Tri Digivice Ver.", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#848f79","#697260","#42473c","#272a24"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🩶"]
+      },
+      {
+        "title": "U.A. High School Uniform", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#ededed","#a4aaaf","#a02929","#0c4856"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🌈"]
+      },
+      {
+        "title": "Ultra Instinct Sign", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#5a686f","#485358","#2d3437","#1b1f21"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","Dark","🩶"]
+      },
+      {
+        "title": "Urameshi Green", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#4dae88","#3d8b6c","#265744","#173428"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","💚"]
+      },
+      {
+        "title": "UTA Vision", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#f4f4f4","#f1a7b5","#e24465","#262c48"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🌈"]
+      },
+      {
+        "title": "Vegeta Armor", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#efefef","#e3c56c","#1554a9","#061932"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🌈"]
+      },
+
+
+
+
+
+      {
+        "title": "All Might Hero Palette", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#eff0f0","#f3db43","#d12023","#212f79"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🌈"]
+      },
+      {
+        "title": "Animate Vision", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#ffffff","#f9be00","#385eaa","#231815"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🌈"]
+      },
+      {
+        "title": "Animax Blue", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#3499e8","#297ab9","#1a4c74","#0f2d45"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","💙"]
+      },
+      {
+        "title": "Anime Digivice Ver.", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#5b7b63","#48524f","#2d3d31","#1b241d"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","💚"]
+      },
+      {
+        "title": "Anime Expo Red", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#ee3b33","#be2f28","#771d19","#47110f"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","❤️"]
+      },
+      {
+        "title": "Anime Expo Ver.", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#e5eaeb","#9ba3a6","#656e62","#242a2d"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🩶"]
+      },
+      {
+        "title": "Berserk Blood", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#bb1414","#951010","#5d0a0a","#380606"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","❤️"]
+      },
+      {
+        "title": "Blue Stripes Ver.", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#8bd3e1","#999b9c","#5b5d5d","#2d2e2e"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🌈"]
+      },
+      {
+        "title": "Cardcaptor Pink", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#f2f4f7","#eac3d6","#e10e82","#430427"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🩷"]
+      },
+      {
+        "title": "Colorful Horizons", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#f6cf72","#60bdc7","#d15252","#373939"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🌈"]
+      },
+      {
+        "title": "Deku Alpha Emerald", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#39ad9e","#2d8a7e","#1c564f","#11332f"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","MGB","🩵"]
+      },
+      {
+        "title": "Deku Epsilon Palette", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#ada89a","#878b92","#38534e","#131315"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🌈"]
+      },
+      {
+        "title": "Deku Gamma Palette", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#f0e8d6","#b6bec8","#166668","#24262b"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🌈"]
+      },
+      {
+        "title": "Demon Slayer Gold", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#baaf56","#948c44","#5d572b","#373419"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","💛","🤎"]
+      },
+      {
+        "title": "Doraemon Tricolor", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#ffe800","#00a8f4","#e60000","#450000"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🌈"]
+      },
+      {
+        "title": "Dragon Ball Orange", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#f0831d","#c06817","#78410e","#482708"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🧡","🤎"]
+      },
+      {
+        "title": "Dynamight Hero Palette", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#d1d0cc","#c84a31","#29463d","#161616"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🌈"]
+      },
+      {
+        "title": "Eden Academy Uniform", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#f7f8f5","#dcbc76","#cc4c47","#483e39"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🌈"]
+      },
+      {
+        "title": "EVA-01", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#54c454","#f99b22","#765898","#303345"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🌈"]
+      },
+      {
+        "title": "Forger Pretense Palette", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#8ea99b","#697d73","#8d0000","#000000"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🌈"]
+      },
+      {
+        "title": "Gear 5 Fever", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#f7f7f7","#c5cedf","#a662cd","#311d3d"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","💜"]
+      },
+      {
+        "title": "Goku Gi", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#f9f0e1","#e7612c","#173f72","#061222"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🌈"]
+      },
+      {
+        "title": "Goku GT Gi", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#dbe3e6","#f0ac18","#3d6ea5","#122131"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🌈"]
+      },
+      {
+        "title": "Good Smile Vision", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#9fa0a0","#ee7700","#8e4700","#472300"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🌈"]
+      },
+      {
+        "title": "Grand Ivory", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#d9d6be","#adab98","#6c6b5f","#414039"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🩶"]
+      },
+      {
+        "title": "Grand Zeno Coat", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#fbfbfa","#fce72d","#ce26a9","#3d0b32"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🌈"]
+      },
+      {
+        "title": "Hokage Orange", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#ea8352","#bb6841","#754129","#462718"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🧡","🤎"]
+      },
+      {
+        "title": "holoblue", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#b0defa","#49c4f2","#3368d3","#063f5c"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","💙","🩵"]
+      },
+      {
+        "title": "KonoSuba Sherbet", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#f08200","#e5006e","#890042","#440021"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","🌈"]
+      },
+      {
+        "title": "Kuwabara Blue", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#0088c5","#006c9d","#004462","#00283b"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","💙"]
+      },
+      {
+        "title": "Legendary Super Saiyan", "origin": "TheWolfBunny64",
+        "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+        "colors": ["#a6da5b","#84ae48","#536d2d","#31411b"],
+        "tags": ["@TheWolfBunny64","Anime-Manga","DMG","💚"]
+      },
+
+
+
+
+
+
+
+      {
+        "title": "There's Always Money /banana", "origin": "HerrZatacke",
+        "source": "https://github.com/HerrZatacke/gb-palettes",
+        "colors": ["#fdfe0a","#fed638","#977b25","#221a09"],
+        "tags": ["@HerrZatacke","💛","🤎"]
+      },
+      {
+        "title": "GrafxKid GameBoy Pocket Gray", "origin": "GrafxKid",
+        "source": "https://lospec.com/palette-list/grafxkid-gameboy-pocket-gray",
+        "colors": ["#e0dbcd","#a89f94","#706b66","#2b2b26"],
+        "tags": ["Lospec","🩶"]
+      },
+      {
+        "title": "GrafxKid GameBoy Pocket Green", "origin": "GrafxKid",
+        "source": "https://lospec.com/palette-list/grafxkid-gameboy-pocket-green",
+        "colors": ["#dbf4b4","#abc396","#7b9278","#4c625a"],
+        "tags": ["Lospec","MGB","💚"]
+      },
+      {
+        "title": "GB Easy Greens", "origin": "GrafxKid",
+        "source": "https://lospec.com/palette-list/gb-easy-greens",
+        "colors": ["#ebdd77","#a1bc00","#0d8833","#004333"],
+        "tags": ["Lospec","DMG","💚"]
+      },
+      {
+        "title": "GB Chocolate", "origin": "GrafxKid",
+        "source": "https://lospec.com/palette-list/gb-chocolate",
+        "colors": ["#ffe4c2","#dca456","#a9604c","#422936"],
+        "tags": ["Lospec","🤎"]
+      },
+      {
+        "title": "Grapefruit", "origin": "GrafxKid",
+        "source": "https://lospec.com/palette-list/grapefruit",
+        "colors": ["#ffe4c2","#dca456","#b76591","#65296c"],
+        "tags": ["Lospec","🌈"]
+      },
+      {
+        "title": "Blog of Dreams 4", "origin": "StellarBee",
+        "source": "https://lospec.com/palette-list/blog-of-dreams-4",
+        "colors": ["#f8e6c8","#f8c8d7","#bccce6","#db4574"],
+        "tags": ["Lospec","Pastel","🌈"]
+      },
+      {
+        "title": "Monitor Glow", "origin": "Polyducks",
+        "source": "https://lospec.com/palette-list/1bit-monitor-glow",
+        "colors": ["#f0f6f0","#f0f6f0","#222323","#222323"],
+        "tags": ["Lospec","1bit","🩶"]
+      }
+  ]
