@@ -540,9 +540,19 @@
     "source": "https://github.com/HerrZatacke/gb-palettes",
     "colors": ["#fdfe0a","#fed638","#977b25","#221a09"],
     "tags": ["@HerrZatacke","💛","🤎"]
-    },
-
-
+  },
+  {
+    "title": "Absorbent and Yellow", "origin": "TheWolfBunny64",
+    "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+    "colors": ["#fff752","#aec600","#687600","#343b00"],
+    "tags": ["@TheWolfBunny64","Am-Pop-Culture","🌈"]
+  },
+  {
+    "title": "Absorbent and Yellow", "origin": "TheWolfBunny64",
+    "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
+    "colors": ["#fff752","#aec600","#687600","#343b00"],
+    "tags": ["@TheWolfBunny64","Am-Pop-Culture","🌈"]
+  },
 
 
 
@@ -654,7 +664,7 @@
     "title": "Weekly Release!", "origin": "Doph",
     "source": "https://lospec.com/palette-list/weekly-release",
     "colors": ["#cccec7","#a09f97","#77746f","#2e2622"],
-    "tags": ["Lospec","LCD","🩶"]
+    "tags": ["Lospec","LCD","Lo-Chroma","🩶"]
   },
   {
     "title": "Workbench", "origin": "Michael Connor",
@@ -668,23 +678,106 @@
 
 
   {
-      "title": "Paperback-2", "origin": "Doph",
-      "source": "https://lospec.com/palette-list/paperback-2",
-      "colors": ["#b8c2b9","#b8c2b9","#382b26","#382b26"],
-      "tags": ["Lospec","Binary","🤎"]
+    "title": "Ancient Animation", "origin": "Anderson Duarte",
+    "source": "https://lospec.com/palette-list/ancient-animation",
+    "colors": ["#eff7da","#eff7da","#232420","#232420"],
+    "tags": ["Lospec","Binary","LCD","💚"]
   },
   {
-    "title": "Pixel Ink", "origin": "Polyducks",
-    "source": "https://lospec.com/palette-list/pixel-ink",
-    "colors": ["#edf6d6","#edf6d6","#3e232c","#3e232c"],
+    "title": "Apple Green", "origin": "gabs",
+    "source": "https://lospec.com/palette-list/1-bit-apple-green",
+    "colors": ["#26c30f","#26c30f","#000000","#000000"],
+    "tags": ["Lospec","Binary","💚"]
+  },
+  {
+    "title": "Bit-zantine", "origin": "Coskun",
+    "source": "https://lospec.com/palette-list/bit-zantine",
+    "colors": ["#ffbf00","#ffbf00","#702963","#702963"],
+    "tags": ["Lospec","Binary","🌈"]
+  },
+  {
+    "title": "Bitball", "origin": "JamesTDG",
+    "source": "https://lospec.com/palette-list/bitball",
+    "colors": ["#eef066","#eef066","#70918","#70918"],
+    "tags": ["Lospec","Binary","DMG","💚"]
+  },
+  {
+    "title": "Bitbee", "origin": "Poltergasm",
+    "source": "https://lospec.com/palette-list/bitbee",
+    "colors": ["#cfab4a","#cfab4a","#292b30","#292b30"],
+    "tags": ["Lospec","Binary","💛"]
+  },
+  {
+    "title": "Blue", "origin": "Michael Matlock",
+    "source": "https://lospec.com/palette-list/1bit-blue",
+    "colors": ["#adc3e8","#adc3e8","#0d132a","#0d132a"],
+    "tags": ["Lospec","Binary","💙"]
+  },
+  {
+    "title": "Blue Monochrome LCD", "origin": "geXP",
+    "source": "https://lospec.com/palette-list/blue-monochrome-lcd",
+    "colors": ["#afa7d4","#afa7d4","#302a52","#302a52"],
+    "tags": ["Lospec","Binary","💜"]
+  },
+  {
+    "title": "Chill", "origin": "anon",
+    "source": "https://lospec.com/palette-list/1-bit-chill",
+    "colors": ["#c3dce5","#c3dce5","#110c22","#110c22"],
+    "tags": ["Lospec","Binary","🩵"]
+  },
+  {
+    "title": "Desolation", "origin": "cheepling",
+    "source": "https://lospec.com/palette-list/1-bit-desolation",
+    "colors": ["#f5f2e4","#f5f2e4","#2a3630","#2a3630"],
+    "tags": ["Lospec","Binary","LCD","🩶"]
+  },
+  {
+    "title": "Four AM", "origin": "Qirlfriend",
+    "source": "https://lospec.com/palette-list/4am",
+    "colors": ["#e6d4be","#e6d4be","#352b30","#352b30"],
     "tags": ["Lospec","Binary","🤎"]
+  },
+  {
+    "title": "GB", "origin": "Umbl",
+    "source": "https://lospec.com/palette-list/1-bit-gb",
+    "colors": ["#97bfa4","#97bfa4","#18232e","#18232e"],
+    "tags": ["Lospec","Binary","MGB","💚"]
   },
   {
     "title": "Monitor Glow", "origin": "Polyducks",
     "source": "https://lospec.com/palette-list/1bit-monitor-glow",
     "colors": ["#f0f6f0","#f0f6f0","#222323","#222323"],
-    "tags": ["Lospec","Binary","🩶"]
+    "tags": ["Lospec","Binary","LCD","🩶"]
+  },
+  {
+    "title": "Night", "origin": "Joker / Adem",
+    "source": "https://lospec.com/palette-list/1-bit-night",
+    "colors": ["#7495ff","#7495ff","#1f2021","#1f2021"],
+    "tags": ["Lospec","Binary","💙"]
+  },
+  {
+    "title": "One-Bit", "origin": "Thefunguy",
+    "source": "https://lospec.com/palette-list/1-bit",
+    "colors": ["#ffffff","#ffffff","#232134","#232134"],
+    "tags": ["Lospec","Binary","LCD","🩶"]
+  },
+  {
+    "title": "Paperback-2", "origin": "Doph",
+    "source": "https://lospec.com/palette-list/paperback-2",
+    "colors": ["#b8c2b9","#b8c2b9","#382b26","#382b26"],
+    "tags": ["Lospec","Binary","Camo","🌈"]
+  },
+  {
+    "title": "Pepper", "origin": "Waldo San",
+    "source": "https://lospec.com/palette-list/1-bit-pepper",
+    "colors": ["#ebb5b5","#ebb5b5","#100101","#100101"],
+    "tags": ["Lospec","Binary","🩷"]
+  },
+  {
+    "title": "Pixel Ink", "origin": "Polyducks",
+    "source": "https://lospec.com/palette-list/pixel-ink",
+    "colors": ["#edf6d6","#edf6d6","#3e232c","#3e232c"],
+    "tags": ["Lospec","Binary","Camo","🌈"]
   }
-
 
 ]
