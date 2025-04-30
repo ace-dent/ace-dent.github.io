@@ -698,8 +698,8 @@
   {
     "title": "Bitball", "origin": "JamesTDG",
     "source": "https://lospec.com/palette-list/bitball",
-    "colors": ["#eef066","#eef066","#70918","#70918"],
-    "tags": ["Lospec","Binary","DMG","💚"]
+    "colors": ["#eef066","#eef066","#070918","#070918"],
+    "tags": ["Lospec","Binary","💛"]
   },
   {
     "title": "Bitbee", "origin": "Poltergasm",
@@ -747,7 +747,7 @@
     "title": "Monitor Glow", "origin": "Polyducks",
     "source": "https://lospec.com/palette-list/1bit-monitor-glow",
     "colors": ["#f0f6f0","#f0f6f0","#222323","#222323"],
-    "tags": ["Lospec","Binary","LCD","🩶"]
+    "tags": ["Lospec","Binary","LCD","Lo-Chroma","🩶"]
   },
   {
     "title": "Night", "origin": "Joker / Adem",
@@ -759,7 +759,7 @@
     "title": "One-Bit", "origin": "Thefunguy",
     "source": "https://lospec.com/palette-list/1-bit",
     "colors": ["#ffffff","#ffffff","#232134","#232134"],
-    "tags": ["Lospec","Binary","LCD","🩶"]
+    "tags": ["Lospec","Binary","🩶"]
   },
   {
     "title": "Paperback-2", "origin": "Doph",

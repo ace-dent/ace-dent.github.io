@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>4shades – Super luminous gb palettes</title>
+  <title>4shades - Super luminous gb palettes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     /* Toast notification */
@@ -21,7 +21,6 @@
     .toast.visible { opacity: 1; }
 
     /* Neutral grey UI */
-    /* Ensure preview canvases use nearest-neighbor rendering when upscaled */
     .preview-area canvas {
       /* Nearest-neighbor scaling for crisp pixel art */
       image-rendering: pixelated;
@@ -36,7 +35,6 @@
       max-height: 0;
       overflow: hidden;
       padding: 0;
-      /* snappier ease-in/out */
       transition: opacity 0.25s ease-in-out,
                   max-height 0.25s ease-in-out,
                   padding 0.25s ease-in-out;
@@ -44,23 +42,9 @@
 
     .preview-area.show {
       opacity: 1;
-      max-height: 400px;  /* vertical padding around preview */
-      padding: 10px 0; /* enough to contain the scaled canvas */
+      max-height: 400px;
+      padding: 10px 0;
     }
-    /* Upload icon overlay on preview */
-    .preview-area { position: relative; }
-    .preview-area .upload-icon {
-      position: absolute;
-      left: 8px;
-      bottom: 8px;
-      width: 1.2em;
-      height: 1.2em;
-      fill: currentColor;
-      opacity: 0;
-      transition: opacity 0.2s;
-      color: inherit;
-    }
-    .preview-area:hover .upload-icon { opacity: 1; }
     /* Rest of styles */
     body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: #eee; color: #333; margin: 20px; padding: 0; transition: background 0.3s, color 0.3s; }
     .container { max-width: 800px; margin: 0 auto; }
@@ -80,12 +64,13 @@
       transition: background 0.3s, border 0.3s, color 0.3s;
     }
     .palette-container { position: relative; background: #ccc; border: 1px solid #888; border-radius: 4px; padding: 40px 20px 20px; margin-bottom: 60px; }
-    .palette-reset, .palette-copy, .palette-preview {
-      /* default: 25% transparent, fully grayscale */
+    /* Common styling for palette buttons */
+    .palette-reset,
+    .palette-copy,
+    .palette-preview {
       opacity: 0.25;
       filter: grayscale(100%);
       position: absolute;
-      right: 10px;
       width: 40px;
       height: 32px;
       text-align: center;
@@ -97,27 +82,36 @@
       cursor: pointer;
       transition: opacity 0.2s, filter 0.2s, transform 0.1s;
       z-index: 10;
-     }
-    /* Preview button positioned bottom-left */
-    .palette-preview {
-      left: 10px;
-      right: auto;
-      bottom: 10px;
     }
-    .palette-reset { top: 10px; }
+    /* Position modifiers */
+    .palette-reset {
+      top: 10px;
+      right: 10px;
+    }
     .palette-copy {
       bottom: 10px;
-      top: auto;
+      right: 10px;
     }
-    .palette-reset:hover, .palette-copy:hover, .palette-preview:hover {
-      /* on-hover: full opacity, reduced grayscale */
+    .palette-preview {
+      bottom: 10px;
+      left: 10px;
+      right: auto;
+    }
+    /* Hover and active states */
+    .palette-reset:hover,
+    .palette-copy:hover,
+    .palette-preview:hover {
       opacity: 1;
-      filter: grayscale(50%);
     }
+    .palette-reset:active,
+    .palette-copy:active,
+    .palette-preview:active {
+      transform: translate(2px, 2px);
+    }
+
     .visual-line-container { position: relative; width: 50%; height: 10px; margin: 20px auto; background: linear-gradient(90deg, #fff, #000); border-radius: 5px; box-shadow: inset 0 0 0 1px #888; overflow: visible; }
     .visual-line-label { position: absolute; top:50%; transform: translateY(-50%); font-size:0.8em; font-weight:bold; color:#555; }
     .visual-line-label.left { left:0; transform: translate(calc(-100% - 5px), -50%); }
-    .visual-line-label.right { left:100%; transform: translate(5px, -50%); }
     .marker { position:absolute; bottom:5px; transform:translateX(-50%); cursor:grab; overflow:visible; }
     .marker:active { cursor:grabbing; }
     .marker-path { fill-rule:evenodd; stroke:#888; stroke-width:1px; }
@@ -131,23 +125,20 @@
       font-size: 1.2em;
       font-weight: bold;
       color: #333;
+      text-decoration: none;
     }
-    /* Palette name links: inherit color and remove underline */
     .palette-name a {
       text-decoration: none;
       color: inherit;
     }
-    /* Author by-line smaller */
     .palette-author {
       font-size: 12px;
       margin-top: 2px;
       color: inherit;
     }
-    .link-icon { margin-left:8px; text-decoration:none; font-size:1.1em; color:#333; }
     .palette-tags { margin-top:10px; font-style:italic; color:#555; }
     /* Dark mode overrides via class */
     body.dark-mode { background: #1e1e1e; color: #e0e0e0; }
-    body.dark-mode .container { max-width: 800px; margin: 0 auto; }
     body.dark-mode #tag-filter-container { background: #2e2e2e; border-color: #555; }
     body.dark-mode #tag-filter-container label { color: #e0e0e0; }
     body.dark-mode #tag-filter, body.dark-mode #primary-sort, body.dark-mode #secondary-sort, body.dark-mode #sort-direction { background: #3a3a3a; border-color: #555; color: #e0e0e0; }
@@ -165,7 +156,6 @@
     body.dark-mode .visual-line-label, body.dark-mode .palette-tags { color: #ccc; }
     body.dark-mode .l-value { color: #fff; }
     body.dark-mode .palette-name { color: #bbb; }
-    body.dark-mode .link-icon { color: #e0e0e0; }
     /* Grayscale filter applied purely by CSS */
     body.no-chroma .visual-line-container,
     body.no-chroma .marker,
@@ -173,21 +163,8 @@
       filter: grayscale(100%);
     }
     @media (max-width:600px) { .visual-line-container { width:90%; } }
-    /* Override link underline removal */
-    .palette-name { text-decoration: none; }
-    /* Reduce author font size */    /* Light mode button overrides (transparent) */
-    body.light-mode .palette-reset, body.light-mode .palette-copy {
-      background: none;
-      border: none;
-    }
-    body.light-mode .palette-reset:hover, body.light-mode .palette-copy:hover {
-      background: none;
-    }
-      /* Press feedback: depress buttons by moving 5px */
-    .palette-reset:active, .palette-copy:active, .palette-preview:active {
-      transform: translate(2px, 2px);
-    }
-  </style>
+
+      </style>
 </head>
 <body class="system-mode">
   <div id="dark-mode-toggle" title="Toggle theme" style="position:fixed;top:20px;right:20px;cursor:pointer;font-size:1.5em;z-index:1000;">🖥️</div>
@@ -195,7 +172,7 @@
   <div class="container">
     <div class="page-header">
       <h1>4shades</h1>
-      <div class="subtitle">Super luminous gb palettes – by aced</div>
+      <div class="subtitle">Super luminous gb palettes - by aced</div>
       <p class="description">Visualize the perceptual luminance (L*) of 4‑tone Game Boy palettes. Tweak color values by dragging the markers.</p>
     </div>
     <div id="tag-filter-container">
@@ -204,10 +181,10 @@
       <label for="primary-sort">Sort by:</label>
       <select id="primary-sort">
         <option value="title">Name</option>
-        <option value="0">Col 0</option>
-        <option value="1">Col 1</option>
-        <option value="2">Col 2</option>
-        <option value="3">Col 3</option>
+        <option value="0">Color 0</option>
+        <option value="1">Color 1</option>
+        <option value="2">Color 2</option>
+        <option value="3">Color 3</option>
       </select>
       <label for="secondary-sort">Then by:</label>
       <select id="secondary-sort">
@@ -256,9 +233,6 @@
     }
     toggle.onclick = () => { mi = (mi + 1) % 3; applyTheme(); };
     applyTheme();
-    // Chroma display toggle via emoji
-    // Will initialize in DOMContentLoaded
-    // Remove global chromaToggle initialization to avoid duplication
 
     // State
     let selectedTag='all', dragData=null;
@@ -324,7 +298,7 @@
       const data = JSON.parse(document.getElementById('palettes-data').textContent);
       const tags = new Set();
       // emoji order for sorting and display
-      const emojiOrder = ['💛','💚','🩵','💙','💜','🩷','❤️','🧡','🤎','🖤','🩶','🤍','🌈'];
+      const emojiOrder = ['💛','💚','🩵','💙','💜','🩷','❤️','🧡','🤎','🩶','🌈'];
       data.forEach(p => p.tags && p.tags.forEach(t => tags.add(t.toLowerCase())));
       // Populate filter, '@'-tags without hash
       [...tags].sort((a, b) => {
@@ -376,30 +350,6 @@ hsb(${hsv.h}°, ${hsv.s}%, ${hsv.v}% )
 L*C*h_ab(${origL.toFixed(1)}, ${Cval}, ${hDeg}°)`;
           }
         });
-        // If a preview canvas exists but no image loaded, redraw placeholder
-        const area = box.querySelector('.preview-area');
-        if (area && !imgSelected.src) {
-          const cv = area.querySelector('canvas');
-          if (cv) {
-            const ctx = cv.getContext('2d');
-            const w = cv.width, h = cv.height;
-            ctx.fillStyle = '#999'; ctx.fillRect(0, 0, w, h);
-            ctx.fillStyle = '#666'; ctx.font = '14px sans-serif'; ctx.textAlign = 'center';
-            ctx.fillText('Select image', w / 2, h / 2);
-            // Draw 4 grayscale swatches below the text
-            const sq = Math.min(20, w / 8);
-            const gap = sq / 2;
-            const total = sq * 4 + gap * 3;
-            const startX = (w - total) / 2;
-            const y = h / 2 + sq;
-            const grays = ['#fff', '#999', '#666', '#333'];
-            grays.forEach((g, i) => {
-              ctx.fillStyle = g;
-              ctx.fillRect(startX + i * (sq + gap), y, sq, sq);
-            });
-          }
-        }
-
         // Update any open previews with the reset palette
         remapAllPreviews();
     }; // close onclick callback
@@ -428,16 +378,13 @@ L*C*h_ab(${origL.toFixed(1)}, ${Cval}, ${hDeg}°)`;
         const lines = [];
         lines.push('GIMP Palette');
         lines.push(`Name: ${name}`);
-        // Add origin as comment
         if (p.origin) lines.push(`# Origin: ${p.origin.trim()}`);
         if (p.source) lines.push(`# Source: ${p.source}`);
         markers.forEach((m, i) => {
-          // export hex without '#' and in lowercase
           const hex = m.__hex.replace('#', '').toLowerCase();
           const { r, g, b } = hexToRgb(hex);
-            lines.push(`${r}\t${g}\t${b}\tCol${i}-${hex}`);
+            lines.push(`${r}\t${g}\t${b}\tColor${i}-${hex}`);
         });
-                  // Append ImageMagick export snippet for bash
         const cols = Array.from(markers).map(m => m.__hex.toLowerCase());
         lines.push('\n# magick in.png \\');
         lines.push(
@@ -501,12 +448,11 @@ L*C*h_ab(${origL.toFixed(1)}, ${Cval}, ${hDeg}°)`;
         }
         cv.width = w;
         cv.height = h;
-        cv.height = h;
         cv.style.width = w + 'px';
         cv.style.height = h + 'px';
         cv.style.display = 'block';
         cv.style.margin = '10px auto';
-        const ctx = cv.getContext('2d');
+        const ctx = cv.getContext('2d', { willReadFrequently: true });
         ctx.imageSmoothingEnabled = false;
         if (imgBuffer && (imgBuffer.src || imgBuffer.getContext)) {
           // Draw and remap
@@ -750,7 +696,7 @@ L*C*h_ab(${newL.toFixed(1)}, ${Cval}, ${hDeg}°)`;
       globalFileInput.type = 'file';
       globalFileInput.accept = 'image/*';
       globalFileInput.style.display = 'none';
-        imgSelected = new Image();
+
       globalFileInput.onchange = () => {
         const file = globalFileInput.files[0];
         if (!file) return;
