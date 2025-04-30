@@ -5,6 +5,16 @@
   <title>4shades - Super luminous gb palettes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    /* Toggle buttons positioning */
+    #dark-mode-toggle, #chroma-toggle {
+      position: fixed;
+      top: 20px;
+      cursor: pointer;
+      font-size: 1.5em;
+      z-index: 1000;
+    }
+    #dark-mode-toggle { right: 20px; }
+    #chroma-toggle { right: 60px; }
     /* Toast notification */
     .toast {
       position: fixed;
@@ -68,8 +78,7 @@
     .palette-reset,
     .palette-copy,
     .palette-preview {
-      opacity: 0.25;
-      filter: grayscale(100%);
+      opacity: 0.1;
       position: absolute;
       width: 40px;
       height: 32px;
@@ -162,13 +171,28 @@
     body.no-chroma .preview-area canvas {
       filter: grayscale(100%);
     }
-    @media (max-width:600px) { .visual-line-container { width:90%; } }
+    @media (max-width:800px) {
+      /* shrink visual line container on small screens */
+      .visual-line-container { width: 90%; }
+      /* smaller tags font */
+      .palette-tags { font-size: 0.8em; }
+      /* stack filter/sort controls vertically */
+      #tag-filter-container {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      #tag-filter-container label,
+      #tag-filter-container select {
+        width: 100%;
+        margin: 4px 0;
+      }
+    }
 
       </style>
 </head>
 <body class="system-mode">
-  <div id="dark-mode-toggle" title="Toggle theme" style="position:fixed;top:20px;right:20px;cursor:pointer;font-size:1.5em;z-index:1000;">🖥️</div>
-  <div id="chroma-toggle" title="Switch to greyscale" style="position:fixed;top:20px;right:60px;cursor:pointer;font-size:1.5em;z-index:1000;">🎨</div>
+  <div id="dark-mode-toggle" title="Toggle theme">🖥️</div>
+  <div id="chroma-toggle" title="Switch to greyscale">🎨</div>
   <div class="container">
     <div class="page-header">
       <h1>4shades</h1>
@@ -233,6 +257,15 @@
     }
     toggle.onclick = () => { mi = (mi + 1) % 3; applyTheme(); };
     applyTheme();
+
+    // Utility: slugify a string for IDs and filenames
+    function slugify(text) {
+      return text
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+    }
 
     // State
     let selectedTag='all', dragData=null;
@@ -319,12 +352,8 @@
       svg.setAttribute('height','60');svg.classList.add('marker');svg.setAttribute('viewBox','0 0 40 60');svg.style.overflow='visible';const title=document.createElementNS(ns,'title');const C=Math.hypot(a,bv).toFixed(1),hDeg=Math.round((Math.atan2(bv,a)*180/Math.PI+360)%360);title.textContent=`${hex}\nrgb(${r}, ${g}, ${b})\nhsb(${hsv0.h}°, ${hsv0.s}%, ${hsv0.v}%)\nL*C*h_ab(${L.toFixed(1)}, ${C}, ${hDeg}°)`;svg.append(title);const path=document.createElementNS(ns,'path');path.setAttribute('d','M6,0 H34 A6,6 0 0 1 40,6 V26 Q40,32 28,46 L20,60 L12,46 Q0,32 0,26 V6 A6,6 0 0 1 6,0 Z');path.setAttribute('fill', hex);path.classList.add('marker-path');svg.append(path);const txt=document.createElementNS(ns,'text');txt.setAttribute('x','20');txt.setAttribute('y','14');txt.setAttribute('text-anchor','middle');txt.setAttribute('fill','#fff');txt.setAttribute('font-size','14');txt.setAttribute('dy','.35em');txt.textContent=i;svg.append(txt);// Position marker according to reversed L* axis (100→0)
       svg.style.left = (100 - L) + '%';svg.__labAB={a,b: bv};svg.__origL=L;svg.__hex = hex;
       svg.__origHex = hex;return svg;}
-    function renderPalette(p){const box=document.createElement('div');box.className='palette-container';const resetBtn=document.createElement('button');resetBtn.className='palette-reset';// Font Awesome 'arrow-rotate-left' icon
-      resetBtn.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em">
-          <path fill="currentColor" d="M125.7 160l50.3 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L48 224c-17.7 0-32-14.3-32-32L16 64c0-17.7 14.3-32 32-32s32 14.3 32 32l0 51.2L97.6 97.6c87.5-87.5 229.3-87.5 316.8 0s87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3s-163.8-62.5-226.3 0L125.7 160z"/>
-        </svg>
-      `;
+    function renderPalette(p){const box=document.createElement('div');box.className='palette-container';const resetBtn=document.createElement('button');resetBtn.className='palette-reset';// Feather `rotate-ccw`
+      resetBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13 -9.36L1 10"/></svg>`;
       resetBtn.title = 'Reset palette';
       resetBtn.onclick = () => {
         // Reset all markers to their original L* positions on reversed axis
@@ -355,36 +384,45 @@ L*C*h_ab(${origL.toFixed(1)}, ${Cval}, ${hDeg}°)`;
     }; // close onclick callback
       box.append(resetBtn);const copyBtn = document.createElement('button');
       copyBtn.className = 'palette-copy';
-      // Font Awesome 'copy' icon
+      // Feather 'copy'
       copyBtn.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="1em" height="1em">
-          <path fill="currentColor" d="M208 0L332.1 0c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9L448 336c0 26.5-21.5 48-48 48l-192 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48zM48 128l80 0 0 64-64 0 0 256 192 0 0-32 64 0 0 48c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 176c0-26.5 21.5-48 48-48z"/>
-        </svg>
+       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em" stroke="currentColor" fill="none" stroke-width="2.5" stroke-linecap="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
       `;
       copyBtn.title = 'Copy palette to clipboard';
       copyBtn.onclick = () => {
         // Build GIMP GPL snippet
         let name = p.title.trim();
-        let modified = false;
-        const markers = box.querySelectorAll('.marker');
-        markers.forEach((m, i) => {
-          if (m.__hex.toUpperCase() !== p.colors[i].toUpperCase()) modified = true;
-        });
-        if (modified) {
-          // ISO date YYYY-MM-DD
-          const today = new Date().toISOString().split('T')[0];
-          name += ` (modified ${today})`;
-        }
+        let isModified = false;
+        // Prepare lines array before use
         const lines = [];
         lines.push('GIMP Palette');
         lines.push(`Name: ${name}`);
         if (p.origin) lines.push(`# Origin: ${p.origin.trim()}`);
         if (p.source) lines.push(`# Source: ${p.source}`);
+
+        // Check markers for modifications and build color lines
+        const markers = box.querySelectorAll('.marker');
         markers.forEach((m, i) => {
+          // Detect if any marker differs from original JSON
+          if (m.__hex.toUpperCase() !== p.colors[i].toUpperCase()) {
+            isModified = true;
+          }
+          // Determine suffix for this color
+          const suffix = m.__hex.toLowerCase() !== m.__origHex.toLowerCase() ? '*' : '';
+          // Build color line
           const hex = m.__hex.replace('#', '').toLowerCase();
           const { r, g, b } = hexToRgb(hex);
-            lines.push(`${r}\t${g}\t${b}\tColor${i}-${hex}`);
+          lines.push(`${r}\t${g}\t${b}\tColor${i}-${hex}${suffix}`);
         });
+
+        // Append modified flag to name if needed
+        if (isModified) {
+          const today = new Date().toISOString().split('T')[0];
+          // Update the Name line
+          lines[1] = `Name: ${name} (* modified ${today})`;
+        }
+
+        // Append ImageMagick export snippet for bash
         const cols = Array.from(markers).map(m => m.__hex.toLowerCase());
         lines.push('\n# magick in.png \\');
         lines.push(
@@ -393,22 +431,20 @@ L*C*h_ab(${origL.toFixed(1)}, ${Cval}, ${hDeg}°)`;
           `-fill '${cols[2]}' -opaque gray20 -fill '${cols[3]}' -opaque black \\`
         );
         lines.push('#   out.png');
+
         // finalize and copy all lines
         const text = lines.join('\n');
-        console.log('Copying palette text to clipboard:', text);
+        // console.log('Copying palette text to clipboard:', text);
         navigator.clipboard.writeText(text);
-            showToast('Copied!');
-
+        showToast('Copied!');
       };
       box.append(copyBtn);
       // preview button for image mapping
       const previewBtn = document.createElement('button');
       previewBtn.className = 'palette-preview';
-      // Font Awesome 'image' icon
+      // Feather 'image'
       previewBtn.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em">
-          <path fill="currentColor" d="M0 96C0 60.7 28.7 32 64 32l384 0c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96zM323.8 202.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6L170.7 297c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4s12.4 13.6 21.6 13.6l96 0 32 0 208 0c8.9 0 17.1-4.9 21.2-12.8s3.6-17.4-1.4-24.7l-120-176zM112 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z"/>
-        </svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em" stroke="currentColor" fill="none" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
       `;
       previewBtn.title = 'Preview image';
       previewBtn.onclick = () => {
@@ -505,7 +541,7 @@ L*C*h_ab(${origL.toFixed(1)}, ${Cval}, ${hDeg}°)`;
       const nm = document.createElement('h2');
       nm.className = 'palette-name';
       // generate slug id from paletteName
-      const slug = p.title.trim().toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+      const slug = slugify(p.title);
       nm.id = slug;
       if (p.source) {
         const link = document.createElement('a');
@@ -600,14 +636,27 @@ L*C*h_ab(${origL.toFixed(1)}, ${Cval}, ${hDeg}°)`;
         .forEach(p => container.appendChild(renderPalette(p)));
 
       bindDrag();}
-    function bindDrag(){document.querySelectorAll('.marker').forEach(m=>{m.onmousedown = e => {
-        e.preventDefault();
-        const startX = e.clientX;
-        const startCoord = parseFloat(m.style.left);
-        const startL = 100 - startCoord;  // convert to actual L* value
-        const rect = m.parentElement.getBoundingClientRect();
-        const lv = document.createElement('div');lv.className='l-value';m.parentElement.append(lv);dragData={m,startX,startL,rect,lv};document.onmousemove=doDrag;document.onmouseup=endDrag;};});}
-    function doDrag(e) {
+    function bindDrag() {
+      // Use Pointer Events for cross-device dragging
+      document.querySelectorAll('.marker').forEach(m => {
+        m.style.touchAction = 'none'; // disable default gestures
+        m.addEventListener('pointerdown', e => {
+          e.preventDefault();
+          const startX = e.clientX;
+          const startCoord = parseFloat(m.style.left);
+          const startL = 100 - startCoord;
+          const rect = m.parentElement.getBoundingClientRect();
+          const lv = document.createElement('div');
+          lv.className = 'l-value';
+          m.parentElement.append(lv);
+          dragData = { m, startX, startL, rect, lv };
+          m.setPointerCapture(e.pointerId);
+          document.addEventListener('pointermove', doDrag);
+          document.addEventListener('pointerup', endDrag, { once: true });
+        });
+      });
+    }
+function doDrag(e) {
       if (!dragData) return;
       e.preventDefault();
       const { m, startX, startL, rect, lv } = dragData;
@@ -644,12 +693,18 @@ L*C*h_ab(${newL.toFixed(1)}, ${Cval}, ${hDeg}°)`;
       remapAllPreviews();
     }
 
-    function endDrag() {
+    function endDrag(e) {
+      // Remove live L* label
       if (dragData && dragData.lv) {
         dragData.lv.remove();
       }
-      document.onmousemove = null;
-      document.onmouseup = null;
+      // Clean up event listeners for pointer drag
+      document.removeEventListener('pointermove', doDrag);
+      document.removeEventListener('pointerup', endDrag);
+      // Release pointer capture if set
+      if (dragData && dragData.m && e && e.pointerId) {
+        dragData.m.releasePointerCapture(e.pointerId);
+      }
       dragData = null;
     }
 
@@ -671,6 +726,8 @@ L*C*h_ab(${newL.toFixed(1)}, ${Cval}, ${hDeg}°)`;
             if (!seen.has(key)) {
               seen.add(key);
               merged.push(p);
+            } else {
+              console.warn('Duplicate palette in palettes.json (ignored):', p.title);
             }
           });
           // Add core entries not present in extra
@@ -678,6 +735,8 @@ L*C*h_ab(${newL.toFixed(1)}, ${Cval}, ${hDeg}°)`;
             const key = makeKey(p);
             if (!seen.has(key)) {
               merged.push(p);
+            } else {
+              console.warn('Duplicate palette dropped in favor of palettes.json:', p.title);
             }
           });
           document.getElementById('palettes-data').textContent = JSON.stringify(merged);
