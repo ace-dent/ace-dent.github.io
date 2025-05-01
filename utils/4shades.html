@@ -5,6 +5,13 @@
   <title>4shades - Super luminous gb palettes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    /* Reset mobile button styling */
+    button {
+      -webkit-appearance:none;-webkit-tap-highlight-color:transparent;
+      -moz-appearance:none;
+      appearance:none;background:none;border:none;outline:none;
+      color:inherit;
+    }
     /* Toggle buttons positioning */
     #dark-mode-toggle, #chroma-toggle {
       position: fixed;
@@ -78,7 +85,7 @@
     .palette-reset,
     .palette-copy,
     .palette-preview {
-      opacity: 0.1;
+      opacity: 0.2;
       position: absolute;
       width: 40px;
       height: 32px;
@@ -117,8 +124,15 @@
     .palette-preview:active {
       transform: translate(2px, 2px);
     }
+    /* Touch support: ensure active state */
+    .palette-reset.pressed,
+    .palette-copy.pressed,
+    .palette-preview.pressed {
+      opacity: 1 !important;
+      transform: translate(2px, 2px) !important;
+    }
 
-    .visual-line-container { position: relative; width: 50%; height: 10px; margin: 20px auto; background: linear-gradient(90deg, #fff, #000); border-radius: 5px; box-shadow: inset 0 0 0 1px #888; overflow: visible; }
+    .visual-line-container { position: relative; width: 60%; height: 10px; margin: 20px auto; background: linear-gradient(90deg, #fff, #000); border-radius: 5px; box-shadow: inset 0 0 0 1px #888; overflow: visible; }
     .visual-line-label { position: absolute; top:50%; transform: translateY(-50%); font-size:0.8em; font-weight:bold; color:#555; }
     .visual-line-label.left { left:0; transform: translate(calc(-100% - 5px), -50%); }
     .marker { position:absolute; bottom:5px; transform:translateX(-50%); cursor:grab; overflow:visible; }
@@ -173,7 +187,7 @@
     }
     @media (max-width:800px) {
       /* shrink visual line container on small screens */
-      .visual-line-container { width: 90%; }
+      .visual-line-container { width: 80%; }
       /* smaller tags font */
       .palette-tags { font-size: 0.8em; }
       /* stack filter/sort controls vertically */
@@ -188,7 +202,7 @@
       }
     }
 
-      </style>
+  </style>
 </head>
 <body class="system-mode">
   <div id="dark-mode-toggle" title="Toggle theme">🖥️</div>
@@ -226,6 +240,9 @@
 <div id="palette-container"></div>
   </div>
   <script>
+    // Mobile fix for buttons
+    document.body.addEventListener('touchstart', () => {}, {passive: true});
+
     // Toast helper
     function showToast(msg) {
       const t = document.createElement('div');
@@ -268,10 +285,7 @@
     }
 
     // State
-    let selectedTag='all', dragData=null;
-    // throttle flag for live preview
-    let needsRemap = false;
-    // Shared image preview variables
+    let selectedTag='all', dragData=null;// Shared image preview variables
     let globalFileInput;
     let imgSelected = new Image();
     let imgBuffer = imgSelected;
@@ -323,6 +337,20 @@
       });
     }
 
+    // Button press state handling for pointer devices
+    function bindButtonPressStates() {
+      document.querySelectorAll('.palette-reset, .palette-copy, .palette-preview').forEach(btn => {
+        // Pointer events
+        btn.addEventListener('pointerdown', () => btn.classList.add('pressed'));
+        btn.addEventListener('pointerup',   () => btn.classList.remove('pressed'));
+        btn.addEventListener('pointercancel', () => btn.classList.remove('pressed'));
+        // Touch events fallback for iOS
+        btn.addEventListener('touchstart', () => btn.classList.add('pressed'));
+        btn.addEventListener('touchend',   () => btn.classList.remove('pressed'));
+        btn.addEventListener('touchcancel',() => btn.classList.remove('pressed'));
+      });
+    }
+
     // Render functions
     function renderTagFilter() {
       const sel = document.getElementById('tag-filter');
@@ -345,7 +373,9 @@
         const label = (emojiOrder.includes(t) || t.startsWith('@')) ? t : '#' + t;
         sel.append(new Option(label, t));
       });
-      sel.onchange = () => { selectedTag = sel.value; renderPalettes(); };
+      sel.onchange = () => { selectedTag = sel.value; renderPalettes();
+      // Handle button press visual feedback
+      bindButtonPressStates(); };
     }
     function createMarkerSvg(hex,i){const{r,g,b}=hexToRgb(hex);const[L,a,bv]=xyzToLab(...rgbToXyz(r,g,b));const hsv0=rgbToHsv(r,g,b);const ns='http://www.w3.org/2000/svg';const svg=document.createElementNS(ns,'svg');
       svg.setAttribute('width','40');
@@ -381,7 +411,10 @@ L*C*h_ab(${origL.toFixed(1)}, ${Cval}, ${hDeg}°)`;
         });
         // Update any open previews with the reset palette
         remapAllPreviews();
-    }; // close onclick callback
+
+        // Safari active-state workaround
+        resetBtn.disabled = true; resetBtn.blur(); resetBtn.disabled = false;
+      }; // close onclick callback
       box.append(resetBtn);const copyBtn = document.createElement('button');
       copyBtn.className = 'palette-copy';
       // Feather 'copy'
@@ -437,6 +470,9 @@ L*C*h_ab(${origL.toFixed(1)}, ${Cval}, ${hDeg}°)`;
         // console.log('Copying palette text to clipboard:', text);
         navigator.clipboard.writeText(text);
         showToast('Copied!');
+
+        // Safari active-state workaround
+        copyBtn.disabled = true; copyBtn.blur(); copyBtn.disabled = false;
       };
       box.append(copyBtn);
       // preview button for image mapping
@@ -507,6 +543,9 @@ L*C*h_ab(${origL.toFixed(1)}, ${Cval}, ${hDeg}°)`;
         area.append(cv);
         box.append(area);
         requestAnimationFrame(() => area.classList.add('show'));
+
+        // Safari active-state workaround
+        previewBtn.disabled = true; previewBtn.blur(); previewBtn.disabled = false;
       };
       box.append(previewBtn);const line=document.createElement('div');line.className='visual-line-container';const l0 = document.createElement('div');
       l0.className = 'visual-line-label left';
@@ -687,9 +726,7 @@ rgb(${rgb.r}, ${rgb.g}, ${rgb.b})
 hsb(${hsv.h}°, ${hsv.s}%, ${hsv.v}%)
 L*C*h_ab(${newL.toFixed(1)}, ${Cval}, ${hDeg}°)`;
       }
-      // Schedule live preview update
-      needsRemap = true;
-      // immediate fallback to ensure preview updates
+      // Schedule live preview update// immediate fallback to ensure preview updates
       remapAllPreviews();
     }
 
