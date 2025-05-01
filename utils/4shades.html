@@ -467,7 +467,6 @@ L*C*h_ab(${origL.toFixed(1)}, ${Cval}, ${hDeg}°)`;
 
         // finalize and copy all lines
         const text = lines.join('\n');
-        // console.log('Copying palette text to clipboard:', text);
         navigator.clipboard.writeText(text);
         showToast('Copied!');
 
@@ -773,7 +772,7 @@ L*C*h_ab(${newL.toFixed(1)}, ${Cval}, ${hDeg}°)`;
             if (!seen.has(key)) {
               merged.push(p);
             } else {
-              console.warn('Duplicate palette dropped in favor of palettes.json:', p.title);
+              console.info('Duplicate palette dropped in favor of palettes.json:', p.title);
             }
           });
           document.getElementById('palettes-data').textContent = JSON.stringify(merged);

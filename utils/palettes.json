@@ -541,23 +541,16 @@
     "colors": ["#fdfe0a","#fed638","#977b25","#221a09"],
     "tags": ["@HerrZatacke","💛","🤎"]
   },
+
+
+
+
   {
-    "title": "Absorbent and Yellow", "origin": "TheWolfBunny64",
-    "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
-    "colors": ["#fff752","#aec600","#687600","#343b00"],
-    "tags": ["@TheWolfBunny64","Am-Pop-Culture","🌈"]
+    "title": "Americana", "origin": "Braquen",
+    "source": "https://lospec.com/palette-list/americana",
+    "colors": ["#fce4a8","#71969f","#d71a21","#01334e"],
+    "tags": ["Lospec","🌈"]
   },
-  {
-    "title": "Absorbent and Yellow", "origin": "TheWolfBunny64",
-    "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
-    "colors": ["#fff752","#aec600","#687600","#343b00"],
-    "tags": ["@TheWolfBunny64","Am-Pop-Culture","🌈"]
-  },
-
-
-
-
-
   {
     "title": "Andrade Gameboy", "origin": "Andrade",
     "source": "https://lospec.com/palette-list/andrade-gameboy",
@@ -568,6 +561,12 @@
     "title": "AYY4", "origin": "Polyducks",
     "source": "https://lospec.com/palette-list/ayy4",
     "colors": ["#f1f2da","#ffce96","#ff7777","#00303b"],
+    "tags": ["Lospec","🌈"]
+  },
+  {
+    "title": "Bicycle", "origin": "Braquen",
+    "source": "https://lospec.com/palette-list/bicycle",
+    "colors": ["#f0f0f0","#8f9bf6","#ab4646","#161616"],
     "tags": ["Lospec","🌈"]
   },
   {
@@ -631,6 +630,12 @@
     "tags": ["Lospec","🌈"]
   },
   {
+    "title": "Lost Woods", "origin": "Braquen",
+    "source": "https://lospec.com/palette-list/lost-woods",
+    "colors": ["#8da343","#6b641b","#652626","#250e38"],
+    "tags": ["Lospec","🌈"]
+  },
+  {
     "title": "Moon Crystal", "origin": "Doph",
     "source": "https://lospec.com/palette-list/moon-crystal",
     "colors": ["#ffe2db","#d9a7c6","#8d89c7","#755f9c"],
@@ -643,10 +648,22 @@
     "tags": ["Lospec","🌈"]
   },
   {
+    "title": "Novocaine GB", "origin": "Braquen",
+    "source": "https://lospec.com/palette-list/novocaine-gb",
+    "colors": ["#a1ffe1","#6fb8ad","#1d6763","#052227"],
+    "tags": ["Lospec","MGB","🩵"]
+  },
+  {
     "title": "Optimized Grayscale 4", "origin": "Yousurname",
     "source": "https://lospec.com/palette-list/optimized-grayscale-4",
     "colors": ["#dfdfdf","#9f9f9f","#606060","#202020"],
     "tags": ["Lospec","Lo-Chroma","🩶"]
+  },
+  {
+    "title": "Slurry GB", "origin": "Braquen",
+    "source": "https://lospec.com/palette-list/slurry-gb",
+    "colors": ["#ffffc7","#d4984a","#4e494c","#00303b"],
+    "tags": ["Lospec","🌈"]
   },
   {
     "title": "Velvet Cherry GB", "origin": "Klafooty",
@@ -720,6 +737,12 @@
     "tags": ["Lospec","Binary","💜"]
   },
   {
+    "title": "Camo2", "origin": "CorniferSleeps",
+    "source": "https://lospec.com/palette-list/camo2",
+    "colors": ["#d7d186","#d7d186","#4c5945","#4c5945"],
+    "tags": ["Lospec","Binary","Camo","DMG","💚"]
+  },
+  {
     "title": "Chill", "origin": "anon",
     "source": "https://lospec.com/palette-list/1-bit-chill",
     "colors": ["#c3dce5","#c3dce5","#110c22","#110c22"],
@@ -777,7 +800,7 @@
     "title": "Pixel Ink", "origin": "Polyducks",
     "source": "https://lospec.com/palette-list/pixel-ink",
     "colors": ["#edf6d6","#edf6d6","#3e232c","#3e232c"],
-    "tags": ["Lospec","Binary","Camo","🌈"]
+    "tags": ["Lospec","Binary","🌈"]
   }
 
 ]
