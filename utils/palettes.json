@@ -159,13 +159,13 @@
     "title": "Timmy Turner Pink", "origin": "TheWolfBunny64",
     "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
     "colors": ["#bc486d","#963957","#5e2436","#381520"],
-    "tags": ["@TheWolfBunny64","Am-Pop-Culture","🩷","❤️"]
+    "tags": ["@TheWolfBunny64","Am-Pop-Culture","Dark","🩷"]
   },
   {
     "title": "Universal Studios Blue", "origin": "TheWolfBunny64",
     "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
     "colors": ["#036ce2","#0256b4","#013671","#002043"],
-    "tags": ["@TheWolfBunny64","Am-Pop-Culture","💙"]
+    "tags": ["@TheWolfBunny64","Am-Pop-Culture","Dark","💙"]
   },
 
 
@@ -197,7 +197,7 @@
     "title": "Anime Digivice", "origin": "TheWolfBunny64",
     "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
     "colors": ["#5b7b63","#48524f","#2d3d31","#1b241d"],
-    "tags": ["@TheWolfBunny64","Anime-Manga","💚"]
+    "tags": ["@TheWolfBunny64","Anime-Manga","Dark","💚"]
   },
   {
     "title": "Anime Expo Red", "origin": "TheWolfBunny64",
@@ -215,7 +215,7 @@
     "title": "Berserk Blood", "origin": "TheWolfBunny64",
     "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
     "colors": ["#bb1414","#951010","#5d0a0a","#380606"],
-    "tags": ["@TheWolfBunny64","Anime-Manga","❤️"]
+    "tags": ["@TheWolfBunny64","Anime-Manga","Dark","❤️"]
   },
   {
     "title": "Blue Stripes", "origin": "TheWolfBunny64",
@@ -389,7 +389,7 @@
     "title": "Precure Marble Raspberry", "origin": "TheWolfBunny64",
     "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
     "colors": ["#d6225c","#ab1b49","#6b112e","#400a1b"],
-    "tags": ["@TheWolfBunny64","Anime-Manga","❤️"]
+    "tags": ["@TheWolfBunny64","Anime-Manga","Dark","❤️"]
   },
   {
     "title": "Pretty Guardian Gold", "origin": "TheWolfBunny64",
@@ -437,7 +437,7 @@
     "title": "Super Saiyan God", "origin": "TheWolfBunny64",
     "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
     "colors": ["#d70362","#ac024e","#6b0131","#40001d"],
-    "tags": ["@TheWolfBunny64","Anime-Manga","❤️"]
+    "tags": ["@TheWolfBunny64","Anime-Manga","Dark","❤️"]
   },
   {
     "title": "Super Saiyan Rose", "origin": "TheWolfBunny64",
@@ -630,6 +630,12 @@
     "tags": ["Lospec","🌈"]
   },
   {
+    "title": "Kadabura4", "origin": "Kadabura / PureAsbestos",
+    "source": "https://lospec.com/palette-list/kadabura4",
+    "colors": ["#ffffff","#db000c","#575757","#000000"],
+    "tags": ["Lospec","🌈"]
+  },
+  {
     "title": "Lost Woods", "origin": "Braquen",
     "source": "https://lospec.com/palette-list/lost-woods",
     "colors": ["#8da343","#6b641b","#652626","#250e38"],
@@ -707,6 +713,12 @@
     "tags": ["Lospec","Binary","💚"]
   },
   {
+    "title": "Bark", "origin": "PureAsbestos / Gato Roboto",
+    "source": "https://lospec.com/palette-list/gato-roboto-bark",
+    "colors": ["#eacda8","#eacda8","#2d2020","#2d2020"],
+    "tags": ["Lospec","Binary","Gato-Roboto","🤎"]
+  },
+  {
     "title": "Bit-zantine", "origin": "Coskun",
     "source": "https://lospec.com/palette-list/bit-zantine",
     "colors": ["#ffbf00","#ffbf00","#702963","#702963"],
@@ -743,10 +755,52 @@
     "tags": ["Lospec","Binary","Camo","DMG","💚"]
   },
   {
+    "title": "Casio Basic", "origin": "graph100",
+    "source": "https://lospec.com/palette-list/casio-basic",
+    "colors": ["#83b07e","#83b07e","#000000","#000000"],
+    "tags": ["Lospec","Binary","💚"]
+  },
+  {
+    "title": "CGA Pastel 640x200 Mode", "origin": "merlinhacker yt",
+    "source": "https://lospec.com/palette-list/cga-pastel-640x200-mode",
+    "colors": ["#ffbf83","#ffbf83","#360072","#360072"],
+    "tags": ["Lospec","Binary","🌈"]
+  },
+  {
+    "title": "Chewed Gum", "origin": "PureAsbestos / Gato Roboto",
+    "source": "https://lospec.com/palette-list/gato-roboto-chewed-gum",
+    "colors": ["#fa9495","#fa9495","#29161d","#29161d"],
+    "tags": ["Lospec","Binary","Gato-Roboto","🩷"]
+  },
+  {
     "title": "Chill", "origin": "anon",
     "source": "https://lospec.com/palette-list/1-bit-chill",
     "colors": ["#c3dce5","#c3dce5","#110c22","#110c22"],
     "tags": ["Lospec","Binary","🩵"]
+  },
+  {
+    "title": "Choconana-2", "origin": "Noctfrej",
+    "source": "https://lospec.com/palette-list/choconana-2",
+    "colors": ["#ffffa1","#ffffa1","#250c02","#250c02"],
+    "tags": ["Lospec","Binary","💛","🤎"]
+  },
+  {
+    "title": "Coffee Stain", "origin": "PureAsbestos / Gato Roboto",
+    "source": "https://lospec.com/palette-list/gato-roboto-coffee-stain",
+    "colors": ["#ffecc9","#ffecc9","#280e0b","#280e0b"],
+    "tags": ["Lospec","Binary","Gato-Roboto","🤎"]
+  },
+  {
+    "title": "Commodore 1084", "origin": "PureAsbestos / Obra Dinn",
+    "source": "https://lospec.com/palette-list/obra-dinn-commodore-1084",
+    "colors": ["#88d7de","#88d7de","#40318e","#40318e"],
+    "tags": ["Lospec","Binary","Obra-Dinn","💙","🩵"]
+  },
+  {
+    "title": "Cornsole2", "origin": "sudo_whoami",
+    "source": "https://lospec.com/palette-list/cornsole2",
+    "colors": ["#fff8dc","#fff8dc","#6495ed","#6495ed"],
+    "tags": ["Lospec","Binary","💙","🩵"]
   },
   {
     "title": "Desolation", "origin": "cheepling",
@@ -767,10 +821,58 @@
     "tags": ["Lospec","Binary","MGB","💚"]
   },
   {
+    "title": "Goop", "origin": "PureAsbestos / Gato Roboto",
+    "source": "https://lospec.com/palette-list/gato-roboto-goop",
+    "colors": ["#00ffae","#00ffae","#210009","#210009"],
+    "tags": ["Lospec","Binary","Gato-Roboto","💚"]
+  },
+  {
+    "title": "Grape", "origin": "PureAsbestos / Gato Roboto",
+    "source": "https://lospec.com/palette-list/gato-roboto-grape",
+    "colors": ["#d400ff","#d400ff","#040612","#040612"],
+    "tags": ["Lospec","Binary","Gato-Roboto","🩷","💜"]
+  },
+  {
+    "title": "Gris", "origin": "PureAsbestos / Gato Roboto",
+    "source": "https://lospec.com/palette-list/gato-roboto-gris",
+    "colors": ["#a9a9a9","#a9a9a9","#282828","#282828"],
+    "tags": ["Lospec","Binary","Gato-Roboto","Lo-Chroma","🩶"]
+  },
+  {
+    "title": "IBM 5151", "origin": "PureAsbestos / Obra Dinn",
+    "source": "https://lospec.com/palette-list/obra-dinn-ibm-5151",
+    "colors": ["#01eb5f","#01eb5f","#25342f","#25342f"],
+    "tags": ["Lospec","Binary","Obra-Dinn","💚"]
+  },
+  {
+    "title": "IBM 8503", "origin": "PureAsbestos / Obra Dinn",
+    "source": "https://lospec.com/palette-list/obra-dinn-ibm-8503",
+    "colors": ["#ebe5ce","#ebe5ce","#2e3037","#2e3037"],
+    "tags": ["Lospec","Binary","Obra-Dinn","LCD","🩶"]
+  },
+  {
+    "title": "Macintosh", "origin": "PureAsbestos / Obra Dinn",
+    "source": "https://lospec.com/palette-list/obra-dinn-macintosh",
+    "colors": ["#e5ffff","#e5ffff","#333319","#333319"],
+    "tags": ["Lospec","Binary","Obra-Dinn","🌈"]
+  },
+  {
+    "title": "Meowtrix", "origin": "PureAsbestos / Gato Roboto",
+    "source": "https://lospec.com/palette-list/gato-roboto-meowtrix",
+    "colors": ["#86ea16","#86ea16","#080808","#080808"],
+    "tags": ["Lospec","Binary","Gato-Roboto","💚"]
+  },
+  {
     "title": "Monitor Glow", "origin": "Polyducks",
     "source": "https://lospec.com/palette-list/1bit-monitor-glow",
     "colors": ["#f0f6f0","#f0f6f0","#222323","#222323"],
     "tags": ["Lospec","Binary","LCD","Lo-Chroma","🩶"]
+  },
+  {
+    "title": "Nicotine", "origin": "PureAsbestos / Gato Roboto",
+    "source": "https://lospec.com/palette-list/gato-roboto-nicotine",
+    "colors": ["#f0ba54","#f0ba54","#0b1000","#0b1000"],
+    "tags": ["Lospec","Binary","Gato-Roboto","💛","🧡"]
   },
   {
     "title": "Night", "origin": "Joker / Adem",
@@ -801,6 +903,54 @@
     "source": "https://lospec.com/palette-list/pixel-ink",
     "colors": ["#edf6d6","#edf6d6","#3e232c","#3e232c"],
     "tags": ["Lospec","Binary","🌈"]
+  },
+  {
+    "title": "Port", "origin": "PureAsbestos / Gato Roboto",
+    "source": "https://lospec.com/palette-list/gato-roboto-port",
+    "colors": ["#ff8e42","#ff8e42","#10368f","#10368f"],
+    "tags": ["Lospec","Binary","Gato-Roboto","🌈"]
+  },
+  {
+    "title": "Soft", "origin": "PureAsbestos / Gato Roboto",
+    "source": "https://lospec.com/palette-list/gato-roboto-soft",
+    "colors": ["#ececec","#ececec","#363636","#363636"],
+    "tags": ["Lospec","Binary","Gato-Roboto","LCD","Lo-Chroma","🩶"]
+  },
+  {
+    "title": "Starboard", "origin": "PureAsbestos / Gato Roboto",
+    "source": "https://lospec.com/palette-list/gato-roboto-starboard",
+    "colors": ["#fcffcc","#fcffcc","#0a2e44","#0a2e44"],
+    "tags": ["Lospec","Binary","Gato-Roboto","Playdate","🌈"]
+  },
+  {
+    "title": "Swamp Matcha", "origin": "PureAsbestos / Gato Roboto",
+    "source": "https://lospec.com/palette-list/gato-roboto-swamp-matcha",
+    "colors": ["#ccdca2","#ccdca2","#10370e","#10370e"],
+    "tags": ["Lospec","Binary","Gato-Roboto","DMG","💚"]
+  },
+  {
+    "title": "Tamagato", "origin": "PureAsbestos / Gato Roboto",
+    "source": "https://lospec.com/palette-list/gato-roboto-tamagato",
+    "colors": ["#a4b26f","#a4b26f","#0b1000","#0b1000"],
+    "tags": ["Lospec","Binary","Gato-Roboto","LCD","💚"]
+  },
+  {
+    "title": "Urine", "origin": "PureAsbestos / Gato Roboto",
+    "source": "https://lospec.com/palette-list/gato-roboto-urine",
+    "colors": ["#ffd500","#ffd500","#002f40","#002f40"],
+    "tags": ["Lospec","Binary","Gato-Roboto","🌈"]
+  },
+  {
+    "title": "Virtual Cat", "origin": "PureAsbestos / Gato Roboto",
+    "source": "https://lospec.com/palette-list/gato-roboto-virtual-cat",
+    "colors": ["#cc0e13","#cc0e13","#2b0000","#2b0000"],
+    "tags": ["Lospec","Binary","Gato-Roboto","❤️"]
+  },
+  {
+    "title": "Zenith ZVM 1240", "origin": "PureAsbestos / Obra Dinn",
+    "source": "https://lospec.com/palette-list/obra-dinn-zenith-zvm-1240",
+    "colors": ["#fdca55","#fdca55","#3f291e","#3f291e"],
+    "tags": ["Lospec","Binary","Obra-Dinn","🤎","🧡"]
   }
 
 ]
