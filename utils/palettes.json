@@ -582,10 +582,22 @@
     "tags": ["Lospec","🌈"]
   },
   {
+    "title": "Coldfire GB", "origin": "Kerrie Lake",
+    "source": "https://lospec.com/palette-list/coldfire-gb",
+    "colors": ["#f6c6a8","#d17c7c","#5b768d","#46425e"],
+    "tags": ["Lospec","Pastel","🌈"]
+  },
+  {
     "title": "Dotpict GB Remix'd", "origin": "Springy",
     "source": "https://lospec.com/palette-list/dotpict-gb-remixd",
     "colors": ["#f1f3c0","#a6b63d","#53702f","#263423"],
     "tags": ["Lospec","DMG","💚"]
+  },
+  {
+    "title": "Earth GB", "origin": "Kerrie Lake",
+    "source": "https://lospec.com/palette-list/earth-gb",
+    "colors": ["#f5f29e","#acb965","#b87652","#774346"],
+    "tags": ["Lospec","Camo","Pastel","🌈"]
   },
   {
     "title": "Fiery Plague GB", "origin": "Klafooty",
@@ -624,6 +636,12 @@
     "tags": ["Lospec","🌈"]
   },
   {
+    "title": "Ice Cream GB", "origin": "Kerrie Lake",
+    "source": "https://lospec.com/palette-list/ice-cream-gb",
+    "colors": ["#fff6d3","#f9a875","#eb6b6f","#7c3f58"],
+    "tags": ["Lospec","Pastel","🌈"]
+  },
+  {
     "title": "Italy-4", "origin": "Nayz",
     "source": "https://lospec.com/palette-list/italy-4",
     "colors": ["#edeada","#5d8d60","#c74634","#100f24"],
@@ -640,6 +658,12 @@
     "source": "https://lospec.com/palette-list/lost-woods",
     "colors": ["#8da343","#6b641b","#652626","#250e38"],
     "tags": ["Lospec","🌈"]
+  },
+  {
+    "title": "Mist GB", "origin": "Kerrie Lake",
+    "source": "https://lospec.com/palette-list/mist-gb",
+    "colors": ["#c4f0c2","#5ab9a8","#1e606e","#2d1b00"],
+    "tags": ["Lospec","🩵"]
   },
   {
     "title": "Moon Crystal", "origin": "Doph",
@@ -660,10 +684,22 @@
     "tags": ["Lospec","MGB","🩵"]
   },
   {
+    "title": "Nymph GB", "origin": "Kerrie Lake",
+    "source": "https://lospec.com/palette-list/nymph-gb",
+    "colors": ["#a1ef8c","#3fac95","#446176","#2c2137"],
+    "tags": ["Lospec","MGB","🌈"]
+  },
+  {
     "title": "Optimized Grayscale 4", "origin": "Yousurname",
     "source": "https://lospec.com/palette-list/optimized-grayscale-4",
     "colors": ["#dfdfdf","#9f9f9f","#606060","#202020"],
     "tags": ["Lospec","Lo-Chroma","🩶"]
+  },
+  {
+    "title": "Rustic GB", "origin": "Kerrie Lake",
+    "source": "https://lospec.com/palette-list/rustic-gb",
+    "colors": ["#edb4a1","#a96868","#764462","#2c2137"],
+    "tags": ["Lospec","🌈"]
   },
   {
     "title": "Slurry GB", "origin": "Braquen",
@@ -675,7 +711,7 @@
     "title": "Velvet Cherry GB", "origin": "Klafooty",
     "source": "https://lospec.com/palette-list/velvet-cherry-gb",
     "colors": ["#9775a6","#683a68","#412752","#2d162c"],
-    "tags": ["Lospec","💜"]
+    "tags": ["Lospec","Dark","💜"]
   },
   {
     "title": "Vivid 2bit Scream", "origin": "Polyducks",
@@ -688,6 +724,12 @@
     "source": "https://lospec.com/palette-list/weekly-release",
     "colors": ["#cccec7","#a09f97","#77746f","#2e2622"],
     "tags": ["Lospec","LCD","Lo-Chroma","🩶"]
+  },
+  {
+    "title": "Wish GB", "origin": "Kerrie Lake",
+    "source": "https://lospec.com/palette-list/wish-gb",
+    "colors": ["#8be5ff","#608fcf","#7550e8","#622e4c"],
+    "tags": ["Lospec","🌈"]
   },
   {
     "title": "Workbench", "origin": "Michael Connor",
@@ -794,7 +836,7 @@
     "title": "Commodore 1084", "origin": "PureAsbestos / Obra Dinn",
     "source": "https://lospec.com/palette-list/obra-dinn-commodore-1084",
     "colors": ["#88d7de","#88d7de","#40318e","#40318e"],
-    "tags": ["Lospec","Binary","Obra-Dinn","💙","🩵"]
+    "tags": ["Lospec","Binary","Obra-Dinn","🩵","💜"]
   },
   {
     "title": "Cornsole2", "origin": "sudo_whoami",
@@ -830,7 +872,7 @@
     "title": "Grape", "origin": "PureAsbestos / Gato Roboto",
     "source": "https://lospec.com/palette-list/gato-roboto-grape",
     "colors": ["#d400ff","#d400ff","#040612","#040612"],
-    "tags": ["Lospec","Binary","Gato-Roboto","🩷","💜"]
+    "tags": ["Lospec","Binary","Gato-Roboto","Dark","🩷","💜"]
   },
   {
     "title": "Gris", "origin": "PureAsbestos / Gato Roboto",
@@ -944,7 +986,7 @@
     "title": "Virtual Cat", "origin": "PureAsbestos / Gato Roboto",
     "source": "https://lospec.com/palette-list/gato-roboto-virtual-cat",
     "colors": ["#cc0e13","#cc0e13","#2b0000","#2b0000"],
-    "tags": ["Lospec","Binary","Gato-Roboto","❤️"]
+    "tags": ["Lospec","Binary","Gato-Roboto","Dark","❤️"]
   },
   {
     "title": "Zenith ZVM 1240", "origin": "PureAsbestos / Obra Dinn",
