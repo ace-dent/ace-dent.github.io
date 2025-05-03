@@ -5,202 +5,355 @@
   <title>4shades - Super luminous gb palettes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* Reset mobile button styling */
-    button {
-      -webkit-appearance:none;-webkit-tap-highlight-color:transparent;
-      -moz-appearance:none;
-      appearance:none;background:none;border:none;outline:none;
-      color:inherit;
-    }
-    /* Toggle buttons positioning */
-    #dark-mode-toggle, #chroma-toggle {
-      position: fixed;
-      top: 20px;
-      cursor: pointer;
-      font-size: 1.5em;
-      z-index: 1000;
-    }
-    #dark-mode-toggle { right: 20px; }
-    #chroma-toggle { right: 60px; }
-    /* Toast notification */
-    .toast {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: rgba(0,0,0,0.7);
-      color: #fff;
-      padding: 8px 12px;
-      border-radius: 4px;
-      opacity: 0;
-      transition: opacity 0.3s ease-in-out;
-      z-index: 10000;
-    }
-    .toast.visible { opacity: 1; }
+/* styles.css - reorganized for clarity, maintainability, and conciseness */
 
-    /* Neutral grey UI */
-    .preview-area canvas {
-      /* Nearest-neighbor scaling for crisp pixel art */
-      image-rendering: pixelated;
-      image-rendering: -moz-crisp-edges;
-      image-rendering: crisp-edges;
-      image-rendering: -o-pixelated;
-      -ms-interpolation-mode: nearest-neighbor;
-    }
-    /* Fade transition for palette previews */
-    .preview-area {
-      opacity: 0;
-      max-height: 0;
-      overflow: hidden;
-      padding: 0;
-      transition: opacity 0.25s ease-in-out,
-                  max-height 0.25s ease-in-out,
-                  padding 0.25s ease-in-out;
-    }
+/* ========================================================================== */
+/* Variables */
+/* ========================================================================== */
+:root {
+  /* Colors */
+  --bg-light:   #eee;
+  --bg-dark:    #1e1e1e;
+  --text-light: #333;
+  --text-dark:  #e0e0e0;
 
-    .preview-area.show {
-      opacity: 1;
-      max-height: 400px;
-      padding: 10px 0;
-    }
-    /* Rest of styles */
-    body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: #eee; color: #333; margin: 20px; padding: 0; transition: background 0.3s, color 0.3s; }
-    .container { max-width: 800px; margin: 0 auto; }
-    .page-header { text-align: center; margin-bottom: 20px; }
-    .page-header h1 { font-size: 4em; margin: 0; }
-    .page-header .subtitle { font-size: 1em; color: #666; margin: 4px 0 40px 0; }
+  /* UI */
+  --ui-bg:      #ccc;
+  --ui-border:  #888;
+  --ui-bg-dark: #3a3a3a;
 
-    #tag-filter-container { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; margin-bottom: 20px; padding: 10px; background: #ccc; border: 1px solid #888; border-radius: 4px; }
-    #tag-filter, #primary-sort, #secondary-sort, #sort-direction {
-      margin: 4px 8px;
-      padding: 6px 8px;
-      font-size: 1em;
-      background: #bbb;
-      border: 1px solid #888;
-      border-radius: 4px;
-      color: #333;
-      transition: background 0.3s, border 0.3s, color 0.3s;
-    }
-    .palette-container { position: relative; background: #ccc; border: 1px solid #888; border-radius: 4px; padding: 40px 20px 20px; margin-bottom: 60px; }
-    /* Common styling for palette buttons */
-    .palette-reset,
-    .palette-copy,
-    .palette-preview {
-      opacity: 0.2;
-      position: absolute;
-      width: 40px;
-      height: 32px;
-      text-align: center;
-      background: none;
-      border: none;
-      padding: 0;
-      font-size: 1.5em;
-      line-height: 32px;
-      cursor: pointer;
-      transition: opacity 0.2s, filter 0.2s, transform 0.1s;
-      z-index: 10;
-    }
-    /* Position modifiers */
-    .palette-reset {
-      top: 10px;
-      right: 10px;
-    }
-    .palette-copy {
-      bottom: 10px;
-      right: 10px;
-    }
-    .palette-preview {
-      bottom: 10px;
-      left: 10px;
-      right: auto;
-    }
-    /* Hover and active states */
-    .palette-reset:hover,
-    .palette-copy:hover,
-    .palette-preview:hover {
-      opacity: 1;
-    }
-    .palette-reset:active,
-    .palette-copy:active,
-    .palette-preview:active {
-      transform: translate(2px, 2px);
-    }
-    /* Touch support: ensure active state */
-    .palette-reset.pressed,
-    .palette-copy.pressed,
-    .palette-preview.pressed {
-      opacity: 1 !important;
-      transform: translate(2px, 2px) !important;
-    }
+  /* Layout */
+  --max-width:      800px;
+  --gutter:         20px;
+  --gradient-width: 600px; /* Preferred max width for gradient */
 
-    .visual-line-container { position: relative; width: 60%; height: 10px; margin: 20px auto; background: linear-gradient(90deg, #fff, #000); border-radius: 5px; box-shadow: inset 0 0 0 1px #888; overflow: visible; }
-    .visual-line-label { position: absolute; top:50%; transform: translateY(-50%); font-size:0.8em; font-weight:bold; color:#555; }
-    .visual-line-label.left { left:0; transform: translate(calc(-100% - 5px), -50%); }
-    .marker { position:absolute; bottom:5px; transform:translateX(-50%); cursor:grab; overflow:visible; }
-    .marker:active { cursor:grabbing; }
-    .marker-path { fill-rule:evenodd; stroke:#888; stroke-width:1px; }
-    .l-value { position:absolute; bottom:-20px; transform:translateX(-50%); font-size:0.8em; color:#333; pointer-events:none; }
-    .palette-details {
-      text-align: center;
-      margin-top: 30px; /* original spacing */
-    }
-    .palette-name {
-      margin: 0; /* remove default h2 spacing */
-      font-size: 1.2em;
-      font-weight: bold;
-      color: #333;
-      text-decoration: none;
-    }
-    .palette-name a {
-      text-decoration: none;
-      color: inherit;
-    }
-    .palette-author {
-      font-size: 12px;
-      margin-top: 2px;
-      color: inherit;
-    }
-    .palette-tags { margin-top:10px; font-style:italic; color:#555; }
-    /* Dark mode overrides via class */
-    body.dark-mode { background: #1e1e1e; color: #e0e0e0; }
-    body.dark-mode #tag-filter-container { background: #2e2e2e; border-color: #555; }
-    body.dark-mode #tag-filter-container label { color: #e0e0e0; }
-    body.dark-mode #tag-filter, body.dark-mode #primary-sort, body.dark-mode #secondary-sort, body.dark-mode #sort-direction { background: #3a3a3a; border-color: #555; color: #e0e0e0; }
-    body.dark-mode .palette-container { background: #2e2e2e; border-color: #555; }
-    body.dark-mode .palette-reset, body.dark-mode .palette-copy, body.dark-mode .palette-preview {
-      background: none;
-      border: none;
-      color: #e0e0e0;
-    }
-    body.dark-mode .palette-reset:hover, body.dark-mode .palette-copy:hover, body.dark-mode .palette-preview:hover {
-      background: none;
-    }
-    body.dark-mode .visual-line-container { box-shadow: inset 0 0 0 1px #555; }
-    body.dark-mode .marker-path { stroke: #888; }
-    body.dark-mode .visual-line-label, body.dark-mode .palette-tags { color: #ccc; }
-    body.dark-mode .l-value { color: #fff; }
-    body.dark-mode .palette-name { color: #bbb; }
-    /* Grayscale filter applied purely by CSS */
-    body.no-chroma .visual-line-container,
-    body.no-chroma .marker,
-    body.no-chroma .preview-area canvas {
-      filter: grayscale(100%);
-    }
-    @media (max-width:800px) {
-      /* shrink visual line container on small screens */
-      .visual-line-container { width: 80%; }
-      /* smaller tags font */
-      .palette-tags { font-size: 0.8em; }
-      /* stack filter/sort controls vertically */
-      #tag-filter-container {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      #tag-filter-container label,
-      #tag-filter-container select {
-        width: 100%;
-        margin: 4px 0;
-      }
-    }
+  /* Timing */
+  --trans:      0.3s ease-in-out;
+  --trans-fast: 0.2s ease-in;
+}
+
+/* ========================================================================== */
+/* Global Reset */
+/* ========================================================================== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  background: none;
+  border: none;
+  color: inherit;
+  outline: none;
+}
+
+/* ========================================================================== */
+/* Toggle Buttons */
+/* ========================================================================== */
+#dark-mode-toggle, #chroma-toggle {
+  position: fixed;
+  top: 20px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  z-index: 1000;
+}
+#dark-mode-toggle { right: 20px; }
+#chroma-toggle     { right: 60px; }
+
+/* ========================================================================== */
+/* Toast Notifications */
+/* ========================================================================== */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 10000;
+}
+.toast.visible { opacity: 1; }
+
+/* ========================================================================== */
+/* Base Styles */
+/* ========================================================================== */
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: var(--bg-light);
+  color: var(--text-light);
+  margin: var(--gutter);
+  transition: background var(--trans), color var(--trans);
+}
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* ========================================================================== */
+/* Page Header */
+/* ========================================================================== */
+.page-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.page-header h1 {
+  font-size: 4rem;
+  margin: 0;
+}
+.page-header .subtitle {
+  font-size: 1rem;
+  color: #666;
+  margin: 4px 0 40px;
+}
+.page-header .description {
+  margin: 0;
+}
+
+/* ========================================================================== */
+/* Filter & Sort Controls */
+/* ========================================================================== */
+#tag-filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center; /* vertically center labels and selects */
+  padding: 10px;
+  gap: 4px;
+  background: var(--ui-bg);
+  border: 1px solid var(--ui-border);
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+#tag-filter-container label {
+  font-size: 1rem;
+  margin: 0 2px;
+  color: inherit;
+}
+#tag-filter-container select {
+  margin: 0 2px;
+  padding: 6px 8px;
+  font-size: 1rem;
+  background: #bbb;
+  border: 1px solid var(--ui-border);
+  border-radius: 4px;
+  color: var(--text-light);
+  transition: background var(--trans), border var(--trans), color var(--trans);
+}
+
+/* ========================================================================== */
+/* Palette Cards */
+/* ========================================================================== */
+.palette-container {
+  position: relative;
+  background: var(--ui-bg);
+  border: 1px solid var(--ui-border);
+  border-radius: 4px;
+  padding: 3rem 1rem 1rem; /* increased top padding for extra space */
+  margin-bottom: 3.75rem;
+}
+.palette-container button {
+  opacity: 0.2;
+  position: absolute;
+  width: 40px;
+  height: 32px;
+  font-size: 1.5rem;
+  line-height: 32px;
+  cursor: pointer;
+  transition: opacity var(--trans-fast), transform 0.1s;
+}
+.palette-container button:hover { opacity: 1; }
+.palette-container button:active { transform: translate(2px, 2px); }
+.palette-reset   { top: 0.625rem; right: 0.625rem; }
+.palette-copy    { bottom: 0.625rem; right: 0.625rem; }
+.palette-preview { bottom: 0.625rem; left:  0.625rem; }
+
+/* Touch support: ensure active state */
+.palette-reset.pressed,
+.palette-copy.pressed,
+.palette-preview.pressed {
+  opacity: 1 !important;
+  transform: translate(2px, 2px) !important;
+}
+
+/* ========================================================================== */
+/* Preview Area */
+/* ========================================================================== */
+.preview-area {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  padding: 0;
+  transition: opacity 0.25s ease-in-out,
+              max-height 0.25s ease-in-out,
+              padding 0.25s ease-in-out;
+}
+.preview-area.show {
+  opacity: 1;
+  max-height: 400px;
+  padding: 0.625rem 0;
+}
+.preview-area canvas {
+  display: block;
+  margin: 0.625rem auto;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  image-rendering: -o-pixelated;
+  -ms-interpolation-mode: nearest-neighbor;
+}
+
+/* ========================================================================== */
+/* Visual L* Gradient & Markers */
+/* ========================================================================== */
+.visual-line-container {
+  position: relative;
+  width: 100%;
+  max-width: var(--gradient-width);
+  margin: 1.25rem auto;
+  height: 10px; /* restored original height */
+  padding-top: 8px; /* added top padding for marker overflow */
+  background: linear-gradient(90deg, #fff, #000);
+  border-radius: 5px;
+  box-shadow: inset 0 0 0 1px var(--ui-border);
+  overflow: visible;
+}
+.visual-line-label {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8em;
+  font-weight: bold;
+  color: #555;
+}
+.visual-line-label.left {
+  left: 0;
+  transform: translate(calc(-100% - 5px), -50%);
+}
+.marker {
+  position: absolute;
+  bottom: 5px;
+  transform: translateX(-50%);
+  cursor: grab;
+  overflow: visible;
+}
+.marker:active { cursor: grabbing; }
+.marker-path {
+  fill-rule: evenodd;
+  stroke: #888;
+  stroke-width: 1px;
+}
+.l-value {
+  position: absolute;
+  bottom: -20px;
+  transform: translateX(-50%);
+  font-size: 0.8em;
+  color: var(--text-light);
+  pointer-events: none;
+}
+
+/* ========================================================================== */
+/* Palette Details */
+/* ========================================================================== */
+.palette-details {
+  text-align: center;
+  margin-top: 1.875rem;
+}
+.palette-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--text-light);
+  margin: 0;
+}
+.palette-name a {
+  text-decoration: none;
+  color: inherit;
+}
+.palette-author {
+  font-size: 0.75rem;
+  margin-top: 0.125rem;
+}
+.palette-tags {
+  margin-top: 0.625rem;
+  font-style: italic;
+  color: #555;
+}
+
+/* ========================================================================== */
+/* Dark Mode */
+/* ========================================================================== */
+body.dark-mode {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+}
+body.dark-mode #tag-filter-container {
+  background: #2e2e2e;
+  border-color: #555;
+}
+body.dark-mode #tag-filter-container label {
+  color: var(--text-dark);
+}
+body.dark-mode #tag-filter-container select {
+  background: var(--ui-bg-dark);
+  border-color: #555;
+  color: var(--text-dark);
+}
+body.dark-mode .palette-container {
+  background: #2e2e2e;
+  border-color: #555;
+}
+body.dark-mode .palette-reset,
+body.dark-mode .palette-copy,
+body.dark-mode .palette-preview {
+  color: var(--text-dark);
+}
+body.dark-mode .visual-line-container {
+  box-shadow: inset 0 0 0 1px #555;
+}
+body.dark-mode .marker-path { stroke: #888; }
+body.dark-mode .visual-line-label,
+body.dark-mode .palette-tags { color: #ccc; }
+body.dark-mode .l-value { color: #fff; }
+body.dark-mode .palette-name { color: #bbb; }
+
+/* ========================================================================== */
+/* Grayscale Mode */
+/* ========================================================================== */
+body.no-chroma .visual-line-container,
+body.no-chroma .marker,
+body.no-chroma .preview-area canvas {
+  filter: grayscale(100%);
+}
+
+/* ========================================================================== */
+/* Responsive Adjustments */
+/* ========================================================================== */
+@media (max-width: 800px) {
+  .visual-line-container {
+    width: 85%;
+    max-width: var(--gradient-width);
+  }
+  .palette-tags { font-size: 0.8rem; }
+  #tag-filter-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+    #tag-filter-container label {
+    width: 100%;
+    margin: 6px 0 2px;
+  }
+  #tag-filter-container select {
+    width: 100%;
+    margin: 2px 0 10px;
+  }
+}
 
   </style>
 </head>

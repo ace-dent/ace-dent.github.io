@@ -582,10 +582,28 @@
     "tags": ["Lospec","🌈"]
   },
   {
+    "title": "Cherry Blossom GB", "origin": "Vectorial Transcooler",
+    "source": "https://lospec.com/palette-list/cherry-blossom-gb",
+    "colors": ["#ffffff","#ffeffe","#ffd3e1","#ffb7c5"],
+    "tags": ["Lospec","Pastel","🩷"]
+  },
+  {
     "title": "Coldfire GB", "origin": "Kerrie Lake",
     "source": "https://lospec.com/palette-list/coldfire-gb",
     "colors": ["#f6c6a8","#d17c7c","#5b768d","#46425e"],
     "tags": ["Lospec","Pastel","🌈"]
+  },
+  {
+    "title": "Demiboy", "origin": "Space Sandwich",
+    "source": "https://lospec.com/palette-list/2bit-demiboy",
+    "colors": ["#e0e9c4","#9aa57c","#4b564d","#252525"],
+    "tags": ["Lospec","MGB","💚"]
+  },
+  {
+    "title": "Demichrome", "origin": "Space Sandwich",
+    "source": "https://lospec.com/palette-list/2bit-demichrome",
+    "colors": ["#e9efec","#a0a08b","#555568","#211e20"],
+    "tags": ["Lospec","🩶"]
   },
   {
     "title": "Dotpict GB Remix'd", "origin": "Springy",
@@ -600,10 +618,46 @@
     "tags": ["Lospec","Camo","Pastel","🌈"]
   },
   {
+    "title": "EB GB Banana Flavour", "origin": "Space Sandwich",
+    "source": "https://lospec.com/palette-list/eb-gb-banana-flavour",
+    "colors": ["#edf2b8","#c4d23a","#876a4e","#382137"],
+    "tags": ["Lospec","🌈"]
+  },
+  {
+    "title": "EB GB Mint Flavour", "origin": "Space Sandwich",
+    "source": "https://lospec.com/palette-list/eb-gb-mint-flavour",
+    "colors": ["#f4f2af","#64d0b8","#3b7961","#291f3e"],
+    "tags": ["Lospec","🌈"]
+  },
+  {
+    "title": "EB GB Peanut Flavour", "origin": "Space Sandwich",
+    "source": "https://lospec.com/palette-list/eb-gb-peanut-flavour",
+    "colors": ["#e3e6c5","#d98d3d","#784141","#38192d"],
+    "tags": ["Lospec","🌈"]
+  },
+  {
+    "title": "EB GB Plain Flavour", "origin": "Space Sandwich",
+    "source": "https://lospec.com/palette-list/eb-gb-plain-flavour",
+    "colors": ["#d5e6cb","#9594c0","#564295","#1b1b1b"],
+    "tags": ["Lospec","🌈"]
+  },
+  {
+    "title": "EB GB Strawberry Flavour", "origin": "Space Sandwich",
+    "source": "https://lospec.com/palette-list/eb-gb-strawberry-flavour",
+    "colors": ["#f6edc1","#f890a8","#8b506d","#381a3e"],
+    "tags": ["Lospec","🩷","💜"]
+  },
+  {
     "title": "Fiery Plague GB", "origin": "Klafooty",
     "source": "https://lospec.com/palette-list/fiery-plague-gb",
     "colors": ["#713141","#512839","#312137","#1a2129"],
     "tags": ["Lospec","Dark","❤️","💜"]
+  },
+  {
+    "title": "Gameboy Yellow", "origin": "Vectorial Transcooler",
+    "source": "https://lospec.com/palette-list/gameboy-yellow",
+    "colors": ["#f2ce44","#b99d32","#72611c","#292406"],
+    "tags": ["Lospec","💛"]
   },
   {
     "title": "GB Easy Greens", "origin": "GrafxKid",
@@ -651,6 +705,18 @@
     "title": "Kadabura4", "origin": "Kadabura / PureAsbestos",
     "source": "https://lospec.com/palette-list/kadabura4",
     "colors": ["#ffffff","#db000c","#575757","#000000"],
+    "tags": ["Lospec","🌈"]
+  },
+  {
+    "title": "Kirokaze Gameboy", "origin": "Kirokaze",
+    "source": "https://lospec.com/palette-list/kirokaze-gameboy",
+    "colors": ["#e2f3e4","#94e344","#46878f","#332c50"],
+    "tags": ["Lospec","🌈"]
+  },
+  {
+    "title": "Lava-GB", "origin": "Aero",
+    "source": "https://lospec.com/palette-list/lava-gb",
+    "colors": ["#ff8e80","#c53a9d","#4a2480","#051f39"],
     "tags": ["Lospec","🌈"]
   },
   {
@@ -732,10 +798,22 @@
     "tags": ["Lospec","🌈"]
   },
   {
+    "title": "Wooden Gameboy", "origin": "Vectorial Transcooler",
+    "source": "https://lospec.com/palette-list/wooden-gameboy",
+    "colors": ["#d7ba89","#b68e65","#986b41","#56342a"],
+    "tags": ["Lospec","🤎"]
+  },
+  {
     "title": "Workbench", "origin": "Michael Connor",
     "source": "https://lospec.com/palette-list/workbench-palette",
     "colors": ["#d8f6f7","#f9a979","#065686","#270908"],
     "tags": ["Lospec","🌈"]
+  },
+  {
+    "title": "Yoghurtish", "origin": "Space Sandwich",
+    "source": "https://lospec.com/palette-list/yoghurtish",
+    "colors": ["#d5a2e2","#d765bf","#5951bb","#39254e"],
+    "tags": ["Lospec","💜"]
   },
 
 
