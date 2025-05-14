@@ -105,7 +105,7 @@
     "title": "Retro Bogeda", "origin": "TheWolfBunny64",
     "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
     "colors": ["#fbfd1b","#ff6cff","#6408ff","#000000"],
-    "tags": ["@TheWolfBunny64","Am-Pop-Culture","🌈"]
+    "tags": ["@TheWolfBunny64","Am-Pop-Culture","Retro","🌈"]
   },
   {
     "title": "Rocket Portable Power", "origin": "TheWolfBunny64",
@@ -545,6 +545,9 @@
 
 
 
+
+
+
   {
     "title": "Americana", "origin": "Braquen",
     "source": "https://lospec.com/palette-list/americana",
@@ -573,7 +576,19 @@
     "title": "Blog of Dreams 4", "origin": "StellarBee",
     "source": "https://lospec.com/palette-list/blog-of-dreams-4",
     "colors": ["#f8e6c8","#f8c8d7","#bccce6","#db4574"],
-    "tags": ["Lospec","Pastel","🌈"]
+    "tags": ["Lospec","Light","Pastel","🌈"]
+  },
+  {
+    "title": "Calm and 'Chloric", "origin": "Chicknhawk",
+    "source": "https://lospec.com/palette-list/calm-and-chloric",
+    "colors": ["#ffebd8","#ff7f00","#4f67ff","#19011a"],
+    "tags": ["Lospec","🌈"]
+  },
+  {
+    "title": "Candypop!", "origin": "Poltergasm",
+    "source": "https://lospec.com/palette-list/candypop",
+    "colors": ["#eebff5","#9e81d0","#854576","#301221"],
+    "tags": ["Lospec","💜"]
   },
   {
     "title": "Cave4", "origin": "Polyducks",
@@ -585,13 +600,19 @@
     "title": "Cherry Blossom GB", "origin": "Vectorial Transcooler",
     "source": "https://lospec.com/palette-list/cherry-blossom-gb",
     "colors": ["#ffffff","#ffeffe","#ffd3e1","#ffb7c5"],
-    "tags": ["Lospec","Pastel","🩷"]
+    "tags": ["Lospec","Light","Pastel","🩷"]
   },
   {
     "title": "Coldfire GB", "origin": "Kerrie Lake",
     "source": "https://lospec.com/palette-list/coldfire-gb",
     "colors": ["#f6c6a8","#d17c7c","#5b768d","#46425e"],
     "tags": ["Lospec","Pastel","🌈"]
+  },
+  {
+    "title": "Daybreak", "origin": "Poltergasm",
+    "source": "https://lospec.com/palette-list/daybreak",
+    "colors": ["#f8b581","#eb754d","#822d30","#08050c"],
+    "tags": ["Lospec","🧡"]
   },
   {
     "title": "Demiboy", "origin": "Space Sandwich",
@@ -648,10 +669,22 @@
     "tags": ["Lospec","🩷","💜"]
   },
   {
+    "title": "Egypt 4", "origin": "Chicknhawk",
+    "source": "https://lospec.com/palette-list/egypt-4",
+    "colors": ["#ecedeb","#cc6702","#2a6f60","#4c341c"],
+    "tags": ["Lospec","🌈"]
+  },
+  {
     "title": "Fiery Plague GB", "origin": "Klafooty",
     "source": "https://lospec.com/palette-list/fiery-plague-gb",
     "colors": ["#713141","#512839","#312137","#1a2129"],
     "tags": ["Lospec","Dark","❤️","💜"]
+  },
+  {
+    "title": "Game Boy Aesthetic 80's", "origin": "Merlinhacker yt",
+    "source": "https://lospec.com/palette-list/game-boy-aesthetic-80s",
+    "colors": ["#e5e695","#48cedf","#fe6ecd","#5c007e"],
+    "tags": ["Lospec","Retro","🌈"]
   },
   {
     "title": "Gameboy Yellow", "origin": "Vectorial Transcooler",
@@ -690,6 +723,12 @@
     "tags": ["Lospec","🌈"]
   },
   {
+    "title": "Hollow", "origin": "Poltergasm",
+    "source": "https://lospec.com/palette-list/hollow",
+    "colors": ["#fafbf6","#c6b7be","#565a75","#0f0f1b"],
+    "tags": ["Lospec","🩶"]
+  },
+  {
     "title": "Ice Cream GB", "origin": "Kerrie Lake",
     "source": "https://lospec.com/palette-list/ice-cream-gb",
     "colors": ["#fff6d3","#f9a875","#eb6b6f","#7c3f58"],
@@ -720,9 +759,21 @@
     "tags": ["Lospec","🌈"]
   },
   {
+    "title": "LCD Drab 4", "origin": "sudo_whoami",
+    "source": "https://lospec.com/palette-list/lcd-drab-4",
+    "colors": ["#a9a77f","#74783f","#3f4900","#1a1b00"],
+    "tags": ["Lospec","DMG","💚"]
+  },
+  {
     "title": "Lost Woods", "origin": "Braquen",
     "source": "https://lospec.com/palette-list/lost-woods",
     "colors": ["#8da343","#6b641b","#652626","#250e38"],
+    "tags": ["Lospec","🌈"]
+  },
+  {
+    "title": "Mangavania", "origin": "Poltergasm",
+    "source": "https://lospec.com/palette-list/mangavania",
+    "colors": ["#ffffff","#4aedff","#ff8acd","#b03e80"],
     "tags": ["Lospec","🌈"]
   },
   {
@@ -765,6 +816,18 @@
     "title": "Rustic GB", "origin": "Kerrie Lake",
     "source": "https://lospec.com/palette-list/rustic-gb",
     "colors": ["#edb4a1","#a96868","#764462","#2c2137"],
+    "tags": ["Lospec","🌈"]
+  },
+  {
+    "title": "Silverplate", "origin": "sudo_whoami",
+    "source": "https://lospec.com/palette-list/silverplate",
+    "colors": ["#c2beae","#8d8a7f","#5d5b54","#32312d"],
+    "tags": ["Lospec","Binary","LCD","MGB","🩶"]
+  },
+  {
+    "title": "Ski Resort GB", "origin": "A skeleton",
+    "source": "https://lospec.com/palette-list/ski-resort-gb",
+    "colors": ["#fff3cd","#4aa491","#d4483c","#60383f"],
     "tags": ["Lospec","🌈"]
   },
   {
@@ -920,7 +983,7 @@
     "title": "Cornsole2", "origin": "sudo_whoami",
     "source": "https://lospec.com/palette-list/cornsole2",
     "colors": ["#fff8dc","#fff8dc","#6495ed","#6495ed"],
-    "tags": ["Lospec","Binary","💙","🩵"]
+    "tags": ["Lospec","Binary","Light","💙","🩵"]
   },
   {
     "title": "Desolation", "origin": "cheepling",
@@ -987,6 +1050,12 @@
     "source": "https://lospec.com/palette-list/1bit-monitor-glow",
     "colors": ["#f0f6f0","#f0f6f0","#222323","#222323"],
     "tags": ["Lospec","Binary","LCD","Lo-Chroma","🩶"]
+  },
+  {
+    "title": "Mumblebee", "origin": "sudo_whoami",
+    "source": "https://lospec.com/palette-list/mumblebee",
+    "colors": ["#ffbb33","#ffbb33","#334455","#334455"],
+    "tags": ["Lospec","Binary","💛"]
   },
   {
     "title": "Nicotine", "origin": "PureAsbestos / Gato Roboto",
