@@ -57,7 +57,7 @@
     "title": "Fairly OddPalette", "origin": "TheWolfBunny64",
     "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
     "colors": ["#7bb850","#ce5a99","#7b365b","#3d1b2d"],
-    "tags": ["@TheWolfBunny64","Am-Pop-Culture","🌈"]
+    "tags": ["@TheWolfBunny64","Am-Pop-Culture","Fruity","🌈"]
   },
   {
     "title": "Garfield Vision", "origin": "TheWolfBunny64",
@@ -389,7 +389,7 @@
     "title": "Precure Marble Raspberry", "origin": "TheWolfBunny64",
     "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
     "colors": ["#d6225c","#ab1b49","#6b112e","#400a1b"],
-    "tags": ["@TheWolfBunny64","Anime-Manga","Dark","❤️"]
+    "tags": ["@TheWolfBunny64","Anime-Manga","Dark","Fruity","❤️"]
   },
   {
     "title": "Pretty Guardian Gold", "origin": "TheWolfBunny64",
@@ -530,6 +530,12 @@
     "tags": ["@HerrZatacke","MGB","🩵"]
   },
   {
+    "title": "Knee-Deep in the Wood /kditw", "origin": "HerrZatacke",
+    "source": "https://github.com/HerrZatacke/gb-palettes",
+    "colors": ["#fffe6e","#d5690f","#3c3ca9","#2c2410"],
+    "tags": ["@HerrZatacke","🌈"]
+  },
+  {
     "title": "Romero's Garden /roga", "origin": "HerrZatacke",
     "source": "https://github.com/HerrZatacke/gb-palettes",
     "colors": ["#ebc4ab","#649a57","#574431","#323727"],
@@ -539,8 +545,9 @@
     "title": "There's Always Money /banana", "origin": "HerrZatacke",
     "source": "https://github.com/HerrZatacke/gb-palettes",
     "colors": ["#fdfe0a","#fed638","#977b25","#221a09"],
-    "tags": ["@HerrZatacke","💛","🤎"]
+    "tags": ["@HerrZatacke","Fruity","💛","🤎"]
   },
+
 
 
 
@@ -558,7 +565,13 @@
     "title": "Andrade Gameboy", "origin": "Andrade",
     "source": "https://lospec.com/palette-list/andrade-gameboy",
     "colors": ["#e3eec0","#aeba89","#5e6745","#202020"],
-    "tags": ["Lospec","MGB","💚"]
+    "tags": ["Lospec","DMG","💚"]
+  },
+  {
+    "title": "ARQ4", "origin": "ENDESGA",
+    "source": "https://lospec.com/palette-list/en4",
+    "colors": ["#ffffff","#6772a9","#3a3277","#000000"],
+    "tags": ["Lospec","💙"]
   },
   {
     "title": "AYY4", "origin": "Polyducks",
@@ -571,6 +584,18 @@
     "source": "https://lospec.com/palette-list/bicycle",
     "colors": ["#f0f0f0","#8f9bf6","#ab4646","#161616"],
     "tags": ["Lospec","🌈"]
+  },
+  {
+    "title": "Blue Seni", "origin": "WildLeoKnight",
+    "source": "https://lospec.com/palette-list/blue-seni",
+    "colors": ["#d0f4f8","#70b0c0","#3c3468","#1c0820"],
+    "tags": ["Lospec","🩵","💙"]
+  },
+  {
+    "title": "BLK AQU4", "origin": "BurakoIRL",
+    "source": "https://lospec.com/palette-list/blk-aqu4",
+    "colors": ["#9ff4e5","#00b9be","#005f8c","#002b59"],
+    "tags": ["Lospec","🩵","💙"]
   },
   {
     "title": "Blog of Dreams 4", "origin": "StellarBee",
@@ -603,10 +628,28 @@
     "tags": ["Lospec","Light","Pastel","🩷"]
   },
   {
+    "title": "Cherrymelon", "origin": "WildLeoKnight",
+    "source": "https://lospec.com/palette-list/cherrymelon",
+    "colors": ["#fcdeea","#ff4d6d","#265935","#012824"],
+    "tags": ["Lospec","Fruity","🌈"]
+  },
+  {
     "title": "Coldfire GB", "origin": "Kerrie Lake",
     "source": "https://lospec.com/palette-list/coldfire-gb",
     "colors": ["#f6c6a8","#d17c7c","#5b768d","#46425e"],
     "tags": ["Lospec","Pastel","🌈"]
+  },
+  {
+    "title": "Computer Chip Y", "origin": "Chicknhawk",
+    "source": "https://lospec.com/palette-list/computer-chip-y",
+    "colors": ["#eae8db","#797b7a","#2c2f38","#151b26"],
+    "tags": ["Lospec","LCD","🩶"]
+  },
+  {
+    "title": "Crimson", "origin": "WildLeoKnight",
+    "source": "https://lospec.com/palette-list/crimson",
+    "colors": ["#eff9d6","#ba5044","#7a1c4b","#1b0326"],
+    "tags": ["Lospec","🌈"]
   },
   {
     "title": "Daybreak", "origin": "Poltergasm",
@@ -642,7 +685,7 @@
     "title": "EB GB Banana Flavour", "origin": "Space Sandwich",
     "source": "https://lospec.com/palette-list/eb-gb-banana-flavour",
     "colors": ["#edf2b8","#c4d23a","#876a4e","#382137"],
-    "tags": ["Lospec","🌈"]
+    "tags": ["Lospec","Fruity","🌈"]
   },
   {
     "title": "EB GB Mint Flavour", "origin": "Space Sandwich",
@@ -666,12 +709,18 @@
     "title": "EB GB Strawberry Flavour", "origin": "Space Sandwich",
     "source": "https://lospec.com/palette-list/eb-gb-strawberry-flavour",
     "colors": ["#f6edc1","#f890a8","#8b506d","#381a3e"],
-    "tags": ["Lospec","🩷","💜"]
+    "tags": ["Lospec","Fruity","🩷","💜"]
   },
   {
     "title": "Egypt 4", "origin": "Chicknhawk",
     "source": "https://lospec.com/palette-list/egypt-4",
     "colors": ["#ecedeb","#cc6702","#2a6f60","#4c341c"],
+    "tags": ["Lospec","🌈"]
+  },
+  {
+    "title": "EN4", "origin": "ENDESGA",
+    "source": "https://lospec.com/palette-list/en4",
+    "colors": ["#fbf7f3","#e5b083","#426e5d","#20283d"],
     "tags": ["Lospec","🌈"]
   },
   {
@@ -720,7 +769,19 @@
     "title": "Grapefruit", "origin": "GrafxKid",
     "source": "https://lospec.com/palette-list/grapefruit",
     "colors": ["#ffe4c2","#dca456","#b76591","#65296c"],
+    "tags": ["Lospec","Fruity","🌈"]
+  },
+  {
+    "title": "Hallowpumpkin", "origin": "WildLeoKnight",
+    "source": "https://lospec.com/palette-list/hallowpumpkin",
+    "colors": ["#f8f088","#f89020","#602878","#300030"],
     "tags": ["Lospec","🌈"]
+  },
+  {
+    "title": "Harshgreens", "origin": "WildLeoKnight",
+    "source": "https://lospec.com/palette-list/harshgreens",
+    "colors": ["#beeb71","#6ab417","#376d03","#172808"],
+    "tags": ["Lospec","💚"]
   },
   {
     "title": "Hollow", "origin": "Poltergasm",
@@ -732,7 +793,7 @@
     "title": "Ice Cream GB", "origin": "Kerrie Lake",
     "source": "https://lospec.com/palette-list/ice-cream-gb",
     "colors": ["#fff6d3","#f9a875","#eb6b6f","#7c3f58"],
-    "tags": ["Lospec","Pastel","🌈"]
+    "tags": ["Lospec","Fruity","Pastel","🌈"]
   },
   {
     "title": "Italy-4", "origin": "Nayz",
@@ -765,6 +826,12 @@
     "tags": ["Lospec","DMG","💚"]
   },
   {
+    "title": "Lightgreen", "origin": "WildLeoKnight",
+    "source": "https://lospec.com/palette-list/lightgreen",
+    "colors": ["#f4fbd0","#68cf68","#1e9178","#05241f"],
+    "tags": ["Lospec","💚"]
+  },
+  {
     "title": "Lost Woods", "origin": "Braquen",
     "source": "https://lospec.com/palette-list/lost-woods",
     "colors": ["#8da343","#6b641b","#652626","#250e38"],
@@ -789,10 +856,28 @@
     "tags": ["Lospec","Pastel","💜","🩷"]
   },
   {
+    "title": "Rustic GB", "origin": "Kerrie Lake",
+    "source": "https://lospec.com/palette-list/rustic-gb",
+    "colors": ["#edb4a1","#a96868","#764462","#2c2137"],
+    "tags": ["Lospec","🌈"]
+  },
+  {
+    "title": "Muddysand", "origin": "WildLeoKnight",
+    "source": "https://lospec.com/palette-list/muddysand",
+    "colors": ["#e6d69c","#b4a56a","#7b7162","#393829"],
+    "tags": ["Lospec","💛","🤎"]
+  },
+  {
     "title": "Mural GB", "origin": "Michael Connor",
     "source": "https://lospec.com/palette-list/mural-gb",
     "colors": ["#fafdff","#cead6b","#a25130","#0a164e"],
     "tags": ["Lospec","🌈"]
+  },
+  {
+    "title": "Nostalgia", "origin": "WildLeoKnight",
+    "source": "https://lospec.com/palette-list/nostalgia",
+    "colors": ["#d0d058","#a0a840","#708028","#405010"],
+    "tags": ["Lospec","DMG","💚"]
   },
   {
     "title": "Novocaine GB", "origin": "Braquen",
@@ -804,13 +889,25 @@
     "title": "Nymph GB", "origin": "Kerrie Lake",
     "source": "https://lospec.com/palette-list/nymph-gb",
     "colors": ["#a1ef8c","#3fac95","#446176","#2c2137"],
-    "tags": ["Lospec","MGB","🌈"]
+    "tags": ["Lospec","🌈"]
   },
   {
     "title": "Optimized Grayscale 4", "origin": "Yousurname",
     "source": "https://lospec.com/palette-list/optimized-grayscale-4",
     "colors": ["#dfdfdf","#9f9f9f","#606060","#202020"],
     "tags": ["Lospec","Lo-Chroma","🩶"]
+  },
+  {
+    "title": "Platinum", "origin": "WildLeoKnight",
+    "source": "https://lospec.com/palette-list/platinum",
+    "colors": ["#e0f0e8","#a8c0b0","#507868","#183030"],
+    "tags": ["Lospec","MGB","💚"]
+  },
+  {
+    "title": "Purpledawn", "origin": "WildLeoKnight",
+    "source": "https://lospec.com/palette-list/purpledawn",
+    "colors": ["#eefded","#9a7bbc","#2d757e","#001b2e"],
+    "tags": ["Lospec","🌈"]
   },
   {
     "title": "Rustic GB", "origin": "Kerrie Lake",
@@ -822,7 +919,7 @@
     "title": "Silverplate", "origin": "sudo_whoami",
     "source": "https://lospec.com/palette-list/silverplate",
     "colors": ["#c2beae","#8d8a7f","#5d5b54","#32312d"],
-    "tags": ["Lospec","Binary","LCD","MGB","🩶"]
+    "tags": ["Lospec","Binary","LCD","🩶"]
   },
   {
     "title": "Ski Resort GB", "origin": "A skeleton",
@@ -837,10 +934,16 @@
     "tags": ["Lospec","🌈"]
   },
   {
+    "title": "Spacehaze", "origin": "WildLeoKnight",
+    "source": "https://lospec.com/palette-list/spacehaze",
+    "colors": ["#f8e3c4","#cc3495","#6b1fb1","#0b0630"],
+    "tags": ["Lospec","🌈"]
+  },
+  {
     "title": "Velvet Cherry GB", "origin": "Klafooty",
     "source": "https://lospec.com/palette-list/velvet-cherry-gb",
     "colors": ["#9775a6","#683a68","#412752","#2d162c"],
-    "tags": ["Lospec","Dark","💜"]
+    "tags": ["Lospec","Dark","Fruity","💜"]
   },
   {
     "title": "Vivid 2bit Scream", "origin": "Polyducks",
@@ -1013,7 +1116,7 @@
     "title": "Grape", "origin": "PureAsbestos / Gato Roboto",
     "source": "https://lospec.com/palette-list/gato-roboto-grape",
     "colors": ["#d400ff","#d400ff","#040612","#040612"],
-    "tags": ["Lospec","Binary","Gato-Roboto","Dark","🩷","💜"]
+    "tags": ["Lospec","Binary","Gato-Roboto","Dark","Fruity","🩷","💜"]
   },
   {
     "title": "Gris", "origin": "PureAsbestos / Gato Roboto",
