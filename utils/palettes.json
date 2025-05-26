@@ -6,6 +6,12 @@
     "tags": ["@TheWolfBunny64","Am-Pop-Culture","DMG","💚"]
   },
   {
+    "title": "Apple Crumble", "origin": "Qirlfriend",
+    "source": "https://lospec.com/palette-list/apple-crumble",
+    "colors": ["#ffe8a8","#95cb2c","#de7f24","#984b2b"],
+    "tags": ["Lospec","🌈"]
+  },
+  {
     "title": "Barbie Pink", "origin": "TheWolfBunny64",
     "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
     "colors": ["#f200a1","#c10080","#790050","#480030"],
@@ -76,6 +82,12 @@
     "source": "https://thewolfbunny64.itch.io/game-boy-custom-palettes",
     "colors": ["#fee566","#39c9eb","#22788d","#113c46"],
     "tags": ["@TheWolfBunny64","Am-Pop-Culture","🌈"]
+  },
+  {
+    "title": "N-Brulee", "origin": "Qirlfriend",
+    "source": "https://lospec.com/palette-list/n-brulee",
+    "colors": ["#e9edff","#caa860","#8e43a1","#381a31"],
+    "tags": ["Lospec","🌈"]
   },
   {
     "title": "Nick Orange", "origin": "TheWolfBunny64",
@@ -565,6 +577,12 @@
     "tags": ["Lospec","🌈"]
   },
   {
+    "title": "Ancient Scroll", "origin": "Dr_Succubus",
+    "source": "https://lospec.com/palette-list/ancient-scroll",
+    "colors": ["#e5dab9","#bebba1","#738e85","#2e4252"],
+    "tags": ["Lospec","🌈"]
+  },
+  {
     "title": "Andrade Gameboy", "origin": "Andrade",
     "source": "https://lospec.com/palette-list/andrade-gameboy",
     "colors": ["#e3eec0","#aeba89","#5e6745","#202020"],
@@ -589,12 +607,6 @@
     "tags": ["Lospec","🌈"]
   },
   {
-    "title": "Blue Seni", "origin": "WildLeoKnight",
-    "source": "https://lospec.com/palette-list/blue-seni",
-    "colors": ["#d0f4f8","#70b0c0","#3c3468","#1c0820"],
-    "tags": ["Lospec","🩵","💙"]
-  },
-  {
     "title": "BLK AQU4", "origin": "BurakoIRL",
     "source": "https://lospec.com/palette-list/blk-aqu4",
     "colors": ["#9ff4e5","#00b9be","#005f8c","#002b59"],
@@ -605,6 +617,18 @@
     "source": "https://lospec.com/palette-list/blog-of-dreams-4",
     "colors": ["#f8e6c8","#f8c8d7","#bccce6","#db4574"],
     "tags": ["Lospec","Light","Pastel","🌈"]
+  },
+  {
+    "title": "Blue Seni", "origin": "WildLeoKnight",
+    "source": "https://lospec.com/palette-list/blue-seni",
+    "colors": ["#d0f4f8","#70b0c0","#3c3468","#1c0820"],
+    "tags": ["Lospec","🩵","💙"]
+  },
+  {
+    "title": "Blush GB", "origin": "fro",
+    "source": "https://lospec.com/palette-list/blush-gb",
+    "colors": ["#fcdebe","#fe9192","#0cc0d4","#5e5768"],
+    "tags": ["Lospec","Pastel","🌈"]
   },
   {
     "title": "Calm and 'Chloric", "origin": "Chicknhawk",
@@ -637,6 +661,12 @@
     "tags": ["Lospec","💚"]
   },
   {
+    "title": "Cereal GB", "origin": "fro",
+    "source": "https://lospec.com/palette-list/cereal-gb",
+    "colors": ["#ffeed6","#d8c86e","#875053","#2b061e"],
+    "tags": ["Lospec","Camo","🌈"]
+  },
+  {
     "title": "Cherry Blossom GB", "origin": "Vectorial Transcooler",
     "source": "https://lospec.com/palette-list/cherry-blossom-gb",
     "colors": ["#ffffff","#ffeffe","#ffd3e1","#ffb7c5"],
@@ -647,6 +677,12 @@
     "source": "https://lospec.com/palette-list/cherrymelon",
     "colors": ["#fcdeea","#ff4d6d","#265935","#012824"],
     "tags": ["Lospec","Fruity","🌈"]
+  },
+  {
+    "title": "Classic Red Sauce", "origin": "Mustard",
+    "source": "https://lospec.com/palette-list/classic-red-sauce",
+    "colors": ["#792336","#a23039","#d84444","#20181c"],
+    "tags": ["Lospec","❤️"]
   },
   {
     "title": "Coldfire GB", "origin": "Kerrie Lake",
@@ -730,13 +766,13 @@
     "title": "EB GB Peanut Flavour", "origin": "Space Sandwich",
     "source": "https://lospec.com/palette-list/eb-gb-peanut-flavour",
     "colors": ["#e3e6c5","#d98d3d","#784141","#38192d"],
-    "tags": ["Lospec","🌈"]
+    "tags": ["Lospec","Earthy","Warm","🌈"]
   },
   {
     "title": "EB GB Plain Flavour", "origin": "Space Sandwich",
     "source": "https://lospec.com/palette-list/eb-gb-plain-flavour",
     "colors": ["#d5e6cb","#9594c0","#564295","#1b1b1b"],
-    "tags": ["Lospec","Cool","Minty","🌈"]
+    "tags": ["Lospec","Cool","🌈"]
   },
   {
     "title": "EB GB Strawberry Flavour", "origin": "Space Sandwich",
@@ -755,6 +791,12 @@
     "source": "https://lospec.com/palette-list/en4",
     "colors": ["#fbf7f3","#e5b083","#426e5d","#20283d"],
     "tags": ["Lospec","🌈"]
+  },
+  {
+    "title": "Endless Warmth", "origin": "flipwix",
+    "source": "https://lospec.com/palette-list/endless-warmth",
+    "colors": ["#f0f0b3","#f4936e","#e8506f","#811d5f"],
+    "tags": ["Lospec","Fruity","Warm","🌈"]
   },
   {
     "title": "Fiery Plague GB", "origin": "Klafooty",
@@ -809,6 +851,12 @@
     "source": "https://lospec.com/palette-list/gb-remixed-2-bit",
     "colors": ["#e3e2d5","#9aad5c","#377a64","#1b253d"],
     "tags": ["Lospec","Minty","🌈"]
+  },
+  {
+    "title": "Gooseberry Thistle", "origin": "flipwix",
+    "source": "https://lospec.com/palette-list/gooseberry-thistle",
+    "colors": ["#bfdce1","#b883b9","#6c56ab","#48376c"],
+    "tags": ["Lospec","Cool","🌈"]
   },
   {
     "title": "GrafxKid GameBoy Pocket Gray", "origin": "GrafxKid",
@@ -883,6 +931,12 @@
     "tags": ["Lospec","🌈"]
   },
   {
+    "title": "Keeby", "origin": "Mustard",
+    "source": "https://lospec.com/palette-list/keeby",
+    "colors": ["#c5ccb8","#899b98","#5d6872","#333343"],
+    "tags": ["Lospec","LCD","🩶"]
+  },
+  {
     "title": "Kirokaze Gameboy", "origin": "Kirokaze",
     "source": "https://lospec.com/palette-list/kirokaze-gameboy",
     "colors": ["#e2f3e4","#94e344","#46878f","#332c50"],
@@ -907,6 +961,12 @@
     "tags": ["Lospec","LCD","💚"]
   },
   {
+    "title": "Lemon-Lime", "origin": "Qirlfriend",
+    "source": "https://lospec.com/palette-list/lemon-lime",
+    "colors": ["#fff37b","#5fcc86","#39809c","#28375b"],
+    "tags": ["Lospec","🌈"]
+  },
+  {
     "title": "Lightgreen", "origin": "WildLeoKnight",
     "source": "https://lospec.com/palette-list/lightgreen",
     "colors": ["#f4fbd0","#68cf68","#1e9178","#05241f"],
@@ -922,13 +982,19 @@
     "title": "Mangavania", "origin": "Poltergasm",
     "source": "https://lospec.com/palette-list/mangavania",
     "colors": ["#ffffff","#4aedff","#ff8acd","#b03e80"],
-    "tags": ["Lospec","🌈"]
+    "tags": ["Lospec","Pastel","🌈"]
+  },
+  {
+    "title": "Mango Cocktail", "origin": "Qirlfriend",
+    "source": "https://lospec.com/palette-list/mango-cocktail",
+    "colors": ["#f0c400","#e6711a","#ba3d37","#69263e"],
+    "tags": ["Lospec","Fruity","Warm","🌈"]
   },
   {
     "title": "M-GB", "origin": "Retronika",
     "source": "https://lospec.com/palette-list/m-gb",
     "colors": ["#dbd3c9","#a3bfa2","#788f97","#546a76"],
-    "tags": ["Lospec","Pastel","🩵"]
+    "tags": ["Lospec","Pastel","Minty","🌈"]
   },
   {
     "title": "Mist GB", "origin": "Kerrie Lake",
@@ -961,36 +1027,6 @@
     "tags": ["Lospec","Cool","Minty","🌈"]
   },
   {
-    "title": "Night Light [2-bit]", "origin": "SoundsDotZip",
-    "source": "https://lospec.com/palette-list/night-light-2-bit",
-    "colors": ["#faf0b9","#cc9a6e","#594f7d","#0b0926"],
-    "tags": ["Lospec","🌈"]
-  },
-  {
-    "title": "Nintendo Internal", "origin": "Daniel Smith / 'Critical Kate' Willaert",
-    "source": "https://lospec.com/palette-list/nintendo-internal",
-    "colors": ["#d0e040","#a0a830","#607028","#384828"],
-    "tags": ["Lospec","DMG","💚"]
-  },
-  {
-    "title": "Pickle Juice [2-BIT]", "origin": "SoundsDotZip",
-    "source": "https://lospec.com/palette-list/pickle-juice-2-bit",
-    "colors": ["#f0e5d8","#96b38f","#4d5245","#3b1c24"],
-    "tags": ["Lospec","Camo","🌈"]
-  },
-  {
-    "title": "Pink Puff GB", "origin": "MaryStrawberry",
-    "source": "https://lospec.com/palette-list/pink-puff-gb",
-    "colors": ["#f7d7db","#fc92a3","#e84b6a","#8e1438"],
-    "tags": ["Lospec","Fruity","Pastel","🩷"]
-  },
-  {
-    "title": "Rustic GB", "origin": "Kerrie Lake",
-    "source": "https://lospec.com/palette-list/rustic-gb",
-    "colors": ["#edb4a1","#a96868","#764462","#2c2137"],
-    "tags": ["Lospec","🌈"]
-  },
-  {
     "title": "Muddysand", "origin": "WildLeoKnight",
     "source": "https://lospec.com/palette-list/muddysand",
     "colors": ["#e6d69c","#b4a56a","#7b7162","#393829"],
@@ -1007,6 +1043,18 @@
     "source": "https://lospec.com/palette-list/neon-night-sky",
     "colors": ["#ffe6ea","#e6a1cf","#4d4d80","#131626"],
     "tags": ["Lospec","🌈"]
+  },
+  {
+    "title": "Night Light [2-bit]", "origin": "SoundsDotZip",
+    "source": "https://lospec.com/palette-list/night-light-2-bit",
+    "colors": ["#faf0b9","#cc9a6e","#594f7d","#0b0926"],
+    "tags": ["Lospec","🌈"]
+  },
+  {
+    "title": "Nintendo Internal", "origin": "Daniel Smith / 'Critical Kate' Willaert",
+    "source": "https://lospec.com/palette-list/nintendo-internal",
+    "colors": ["#d0e040","#a0a830","#607028","#384828"],
+    "tags": ["Lospec","DMG","💚"]
   },
   {
     "title": "Nostalgia", "origin": "WildLeoKnight",
@@ -1033,9 +1081,33 @@
     "tags": ["Lospec","Lo-Chroma","🩶"]
   },
   {
+    "title": "Peach Blizzard", "origin": "Qirlfriend",
+    "source": "https://lospec.com/palette-list/peach-blizzard",
+    "colors": ["#fbd6ad","#f19386","#a54371","#4c388a"],
+    "tags": ["Lospec","Pastel","🌈"]
+  },
+  {
+    "title": "Pickle Juice [2-BIT]", "origin": "SoundsDotZip",
+    "source": "https://lospec.com/palette-list/pickle-juice-2-bit",
+    "colors": ["#f0e5d8","#96b38f","#4d5245","#3b1c24"],
+    "tags": ["Lospec","Camo","🌈"]
+  },
+  {
+    "title": "Pink Puff GB", "origin": "MaryStrawberry",
+    "source": "https://lospec.com/palette-list/pink-puff-gb",
+    "colors": ["#f7d7db","#fc92a3","#e84b6a","#8e1438"],
+    "tags": ["Lospec","Fruity","Pastel","🩷"]
+  },
+  {
     "title": "Platinum", "origin": "WildLeoKnight",
     "source": "https://lospec.com/palette-list/platinum",
     "colors": ["#e0f0e8","#a8c0b0","#507868","#183030"],
+    "tags": ["Lospec","🩵"]
+  },
+  {
+    "title": "Pocket Memories", "origin": "trzyglow",
+    "source": "https://lospec.com/palette-list/pocket-memories",
+    "colors": ["#b0c0a0","#889878","#607050","#283818"],
     "tags": ["Lospec","MGB","💚"]
   },
   {
@@ -1045,10 +1117,22 @@
     "tags": ["Lospec","Camo","🌈"]
   },
   {
+    "title": "Pumpkin Pie", "origin": "Dr_Succubus",
+    "source": "https://lospec.com/palette-list/pumpkin-pie",
+    "colors": ["#fff2e5","#f7b58c","#739ca1","#5d446c"],
+    "tags": ["Lospec","Pastel","🌈"]
+  },
+  {
     "title": "Purpledawn", "origin": "WildLeoKnight",
     "source": "https://lospec.com/palette-list/purpledawn",
     "colors": ["#eefded","#9a7bbc","#2d757e","#001b2e"],
     "tags": ["Lospec","🌈"]
+  },
+  {
+    "title": "Qameboy", "origin": "Qirlfriend",
+    "source": "https://lospec.com/palette-list/qameboy",
+    "colors": ["#b2c27d","#739a56","#42665a","#353d46"],
+    "tags": ["Lospec","DMG","💚"]
   },
   {
     "title": "Rustic GB", "origin": "Kerrie Lake",
@@ -1085,6 +1169,12 @@
     "source": "https://lospec.com/palette-list/spacehaze",
     "colors": ["#f8e3c4","#cc3495","#6b1fb1","#0b0630"],
     "tags": ["Lospec","🌈"]
+  },
+  {
+    "title": "Star Pop", "origin": "Dr_Succubus",
+    "source": "https://lospec.com/palette-list/star-pop",
+    "colors": ["#ffebe5","#ffa3d6","#64b9ca","#674577"],
+    "tags": ["Lospec","Pastel","🌈"]
   },
   {
     "title": "Sunrise", "origin": "SoundsDotZip",
@@ -1269,7 +1359,7 @@
     "title": "GB", "origin": "Umbl",
     "source": "https://lospec.com/palette-list/1-bit-gb",
     "colors": ["#97bfa4","#97bfa4","#18232e","#18232e"],
-    "tags": ["Lospec","Binary","MGB","💚"]
+    "tags": ["Lospec","Binary","Minty","🌈"]
   },
   {
     "title": "Goop", "origin": "PureAsbestos / Gato Roboto",
