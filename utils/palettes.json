@@ -1599,6 +1599,38 @@
     "source": "https://lospec.com/palette-list/obra-dinn-zenith-zvm-1240",
     "colors": ["#fdca55","#fdca55","#3f291e","#3f291e"],
     "tags": ["Lospec","Binary","Obra-Dinn","🤎","🧡"]
+  },
+
+
+  {
+    "title": "GBCM DMG", "origin": "marcrobledo",
+    "source": "https://github.com/marcrobledo/game-boy-camera-manager/",
+    "colors": ["#9bbc0f","#809f0e","#306230","#0f380f"],
+    "tags": ["DMG","💚"]
+  },
+  {
+    "title": "GBCM Emulators", "origin": "marcrobledo",
+    "source": "https://github.com/marcrobledo/game-boy-camera-manager/",
+    "colors": ["#e0f8d0","#88c070","#346856","#081820"],
+    "tags": ["MGB","🩵"]
+  },
+  {
+    "title": "GBCM GBC", "origin": "marcrobledo",
+    "source": "https://github.com/marcrobledo/game-boy-camera-manager/",
+    "colors": ["#ffffff","#67e421","#0e5faf","#000000"],
+    "tags": ["GBC","Minty","🌈"]
+  },
+  {
+    "title": "GBCM Grayscale", "origin": "marcrobledo",
+    "source": "https://github.com/marcrobledo/game-boy-camera-manager/",
+    "colors": ["#ffffff","#a0a0a0","#505050","#000000"],
+    "tags": ["Lo-Chroma","🩶"]
+  },
+  {
+    "title": "GBCM SGB", "origin": "marcrobledo",
+    "source": "https://github.com/marcrobledo/game-boy-camera-manager/",
+    "colors": ["#ffefce","#de944a","#ad2921","#311952"],
+    "tags": ["SGB","🌈"]
   }
 
 ]
