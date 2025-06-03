@@ -1,5 +1,5 @@
 // Bookmarklet: 🎨 Lospec > JSON extractor
-// javascript:(function(){function f(a){return a.trim().replace(/ PALETTE$/i,'').replace(/\b([A-Za-z]{4,})\b/g,w=>w[0].toUpperCase()+w.slice(1).toLowerCase())}var c=document.createElement('canvas');c.width=c.height=1;var x=c.getContext('2d');function b(h){x.filter='grayscale(1)';x.fillStyle=h;x.fillRect(0,0,1,1);return x.getImageData(0,0,1,1).data[0]/255}var t=f(document.querySelector('h1').innerText),o=document.querySelector('.attribution a'),u=o?o.innerText.trim():'',C=(document.body.innerText.match(/#[0-9A-Fa-f]{6}/g)||[]).filter((h,i,a)=>a.indexOf(h)===i).map(h=>h.toLowerCase());if(b(C[0])<b(C[C.length-1]))C.reverse();var out='{\n    "title": "'+t+'", "origin": "'+u+'",\n    "source": "'+location.href+'",\n    "colors": ["'+C.join('","')+'"],\n    "tags": ["Lospec"]\n  },';if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(out).then(()=>alert("🎨 Copied ~\n"+out)).catch(()=>prompt("📋",out))}else prompt("📋",out)})();
+// javascript:(function(){function f(a){return a.trim().replace(/ PALETTE$/i,'').replace(/\b([A-Za-z]{4,})\b/g,w=>w[0].toUpperCase()+w.slice(1).toLowerCase())}var c=document.createElement('canvas');c.width=c.height=1;var x=c.getContext('2d');function b(h){x.filter='grayscale(1)';x.fillStyle=h;x.fillRect(0,0,1,1);return x.getImageData(0,0,1,1).data[0]/255}var t=f(document.querySelector('h1').innerText),o=document.querySelector('.attribution a'),u=o?o.innerText.trim():'',C=(document.body.innerText.match(/#[0-9A-Fa-f]{6}/g)||[]).map(h=>h.toLowerCase()).filter((h,i,a)=>a.indexOf(h)===i);if(b(C[0])<b(C[C.length-1]))C.reverse();var out='{\n    "title": "'+t+'", "origin": "'+u+'",\n    "source": "'+location.href+'",\n    "colors": ["'+C.join('","')+'"],\n    "tags": ["Lospec"]\n  },';if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(out).then(()=>alert("🎨 Copied ~\n"+out)).catch(()=>prompt("📋",out))}else prompt("📋",out)})();
 
 
 javascript:(function() {
@@ -28,8 +28,9 @@ javascript:(function() {
     // Extract unique hex colors from page text
     function extractHexColors() {
         var matches = document.body.innerText.match(/#[0-9A-Fa-f]{6}/g) || [];
-        return matches.filter((hex, idx, arr) => arr.indexOf(hex) === idx)
-                      .map(hex => hex.toLowerCase());
+        return matches
+            .map(hex => hex.toLowerCase())
+            .filter((hex, idx, arr) => arr.indexOf(hex) === idx);
     }
 
     // Main execution
